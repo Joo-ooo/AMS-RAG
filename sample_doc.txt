@@ -1,0 +1,27 @@
+# TechFramework API Documentation
+
+## Overview
+TechFramework is a modern web development framework designed for building scalable applications. 
+It supports both REST and GraphQL APIs, provides built-in authentication, and includes database integration.
+
+## Authentication
+To authenticate with TechFramework API, you need to obtain an API key from the developer console.
+Include the API key in your request headers as 'Authorization: Bearer YOUR_API_KEY'.
+
+## Getting Started
+1. Install TechFramework: npm install techframework
+2. Initialize a new project: techframework init my-project
+3. Configure your database connection in config/database.js
+4. Start the development server: npm run dev
+
+## Password Reset Functionality
+To implement password reset in your application:
+1. Create a password reset endpoint: POST /api/auth/reset-password
+2. The system will send a reset token to the user's email
+3. Users can then use the token to set a new password via PUT /api/auth/update-password
+4. Tokens expire after 24 hours for security reasons
+
+## Troubleshooting Common Issues
+- API calls failing with 401 errors: Check your API key configuration
+- Database connection timeouts: Increase the timeout settings in database.js
+- SSL certificate errors in production: Ensure proper certificate installation
