@@ -9,3 +9,7 @@ __pycache__/
 # VSCode
 .vscode/
 
+# Ignore local-only folders
+Python\ Scripts/
+Credentials
+RAW_SQL
