@@ -1,4 +1,4 @@
-question,gt_answer,Context,response,retrieved_contexts,answer_relevancy,faithfulness,context_recall,context_precision
+question,gt_answer,Context,response,retrieved_contexts,answer_relevancy,faithfulness,context_recall,context_precision,
 What were the top five digital platforms used in e-commerce scams and their percentages in 2020?,"The top five digital platforms used in e-commerce scams and their corresponding percentages are Carousell (40.4%), Shopee (21.2%), Facebook (16.6%), Lazada (6.4%),  and Telegram (2.9%)","Carousell (40.4%), Shopee (21.2%), Facebook (16.6%), Lazada (6.4%),  and Telegram (2.9%)","Carousell was used in 37% of e-commerce scams, followed by Facebook at 21%, Shopee at 14%, Instagram at 7%, and Telegram at 4%.","TOP FIVE DIGITAL PLATFORMS USED IN E-COMMERCE SCAMS 
  
  
@@ -29,8 +29,8 @@ TELEGRAM
 4%
 OTHERS
 2021
-Total: 2729",,0.0,0.0,0.0
-What percentage of reported crimes in 2020 were scams?,Scams made up 42.0% of all reported crimes in 2020.,"The total number of scam cases reported increased by 64.0% to 15,651 cases in 2020, from 9,545 cases in 2019. It made up 42.0% of Overall Crime in 2020, up from 27.2% in 2019.",42.,"Page 2 of 13 
+Total: 2729",,0,0,0,visual
+What percentage of reported crimes in 2020 were scams?,Scams made up 42.0% of all reported crimes in 2020.,"The total number of scam cases reported increased by 64.0% to 15,651 cases in 2020, from 9,545 cases in 2019. It made up 42.0% of Overall Crime in 2020, up from 27.2% in 2019.",42,"Page 2 of 13 
 2019. Housebreaking and related crimes decreased by 25.3% to 210 cases in 2020, 
 from 281 cases in 2019. Both these crime classes recorded a 36-year low.  
  
@@ -75,7 +75,7 @@ a) Social media impersonation scams
 • The number of cases increased by 271.4% to 2,919 cases in 2020, from 
 786 in 2019. 
 • The total amount cheated increased to at least S$5.5 million in 2020, 
-from at least S$3.1 million in 2019.",,1.0,1.0,0.99999999995
+from at least S$3.1 million in 2019.",,1,1,1,
 Which scam type had the highest number of cases in 2020?,"E-commerce scams were the top scam type in 2020, with 3,359 reported cases.","E-commerce scams remains the top scam type, with the highest number of reported cases in 2020. E-commerce scam cases increased by 19.3% to 3,359 cases in 2020, from 2,816 cases in 2019.",E-commerce scams.,"Page 2 of 13 
 2019. Housebreaking and related crimes decreased by 25.3% to 210 cases in 2020, 
 from 281 cases in 2019. Both these crime classes recorded a 36-year low.  
@@ -121,8 +121,8 @@ a) Social media impersonation scams
 • The number of cases increased by 271.4% to 2,919 cases in 2020, from 
 786 in 2019. 
 • The total amount cheated increased to at least S$5.5 million in 2020, 
-from at least S$3.1 million in 2019.",,1.0,1.0,0.9999999999
-How much was lost to e-commerce scams in 2020?,The total amount lost to e-commerce scams in 2020 was at least S$7.1 million.,"E-commerce scam cases increased by 19.3% to 3,359 cases in 2020, from 2,816 cases in 2019. The total amount cheated increased to S$7.1 million in 2020, from S$2.3 million in 2019.","15,651.","Page 2 of 32 
+from at least S$3.1 million in 2019.",,1,1,1,
+How much was lost to e-commerce scams in 2020?,The total amount lost to e-commerce scams in 2020 was at least S$7.1 million.,"E-commerce scam cases increased by 19.3% to 3,359 cases in 2020, from 2,816 cases in 2019. The total amount cheated increased to S$7.1 million in 2020, from S$2.3 million in 2019.","15,651.00","Page 2 of 32 
  
  
  
@@ -179,7 +179,7 @@ Total Scam Cases
 Total Amount Lost to All Scams (in millions) 
 +55.6% 
 +137.9% 
-+4.5% -1.3%",,0.0,0.0,0.0
++4.5% -1.3%",,0,0,0,
 What was the largest sum cheated in a single e-commerce scam in 2020?,The largest sum cheated in a single e-commerce scam case during 2020 was S$1.9 million.,"E-commerce scam cases increased by 19.3% to 3,359 cases in 2020, from 2,816 cases in 2019. The total amount cheated increased to S$7.1 million in 2020, from S$2.3 million in 2019.The largest sum cheated in a single case in 2020 was S$1.9 million.",S$1.,"• The total amount cheated decreased to at least $5.9 million in 2021, 
 from at least $7.1 million in 2020. 
 • The largest sum cheated in a single case in 2021 was $400,000. 
@@ -228,7 +228,7 @@ phone number, belonging to the scammers, that the victims could call to
 seek help with their suspended bank card. Subsequently, victims found 
 unauthorised transactions made to their bank account. 
 • Calls and SMSes were the most common channels used by the 
-scammers to approach the victims.",,0.0,1.0,0.49999999995
+scammers to approach the victims.",,0,1,0.5,
 Which platform had the most e-commerce scam cases in 2020?,"In 2020, Carousell had the largest number of e-commerce scam cases, with 1,344 cases reported on its platform.","Carousell continues to have the largest number of e-commerce scams with 1,344 cases (40.0%) reported on its platform.",There is no information about e-commerce scam cases in 2020 in the context.,"Page 5 of 22 
  
 • The most common platforms which victims encountered scammers  
@@ -282,8 +282,8 @@ Websites
 4.6%
 Others
 2022
-Total: 4,762",,1.0,0.0,0.0
-By how much did social media impersonation scams increase in 2020?,Social media impersonation scams increased by 271.4% in 2020.,"Social media impersonation scams • The number of cases increased by 271.4% to 2,919 cases in 2020, from 786 in 2019.",271.,"Page 2 of 13 
+Total: 4,762",,1,0,0,
+By how much did social media impersonation scams increase in 2020?,Social media impersonation scams increased by 271.4% in 2020.,"Social media impersonation scams • The number of cases increased by 271.4% to 2,919 cases in 2020, from 786 in 2019.",271,"Page 2 of 13 
 2019. Housebreaking and related crimes decreased by 25.3% to 210 cases in 2020, 
 from 281 cases in 2019. Both these crime classes recorded a 36-year low.  
  
@@ -328,8 +328,8 @@ a) Social media impersonation scams
 • The number of cases increased by 271.4% to 2,919 cases in 2020, from 
 786 in 2019. 
 • The total amount cheated increased to at least S$5.5 million in 2020, 
-from at least S$3.1 million in 2019.",,0.0,1.0,0.9999999999
-How many banking-related phishing scam cases were reported in 2020?,"There were 1,340 banking-related phishing scam cases reported in 2020.","Banking-related phishing scams • The number of cases increased by 1,575.0% to 1,340 in 2020, from 80 in 2019.","1,340.","Page 3 of 13 
+from at least S$3.1 million in 2019.",,0,1,1,
+How many banking-related phishing scam cases were reported in 2020?,"There were 1,340 banking-related phishing scam cases reported in 2020.","Banking-related phishing scams • The number of cases increased by 1,575.0% to 1,340 in 2020, from 80 in 2019.","1,340.00","Page 3 of 13 
 • The largest sum cheated in a single case in 2020 was S$367,000. 
 • In the majority of these cases, victims were tricked into disclosing their 
 mobile numbers or credit card information and One-Time Passwords 
@@ -375,7 +375,7 @@ victims.
 Loan scams remain a concern 
  
 10. Loan scams are the third highest type of scam in 2020. The total number of cases 
-and total amount cheated from loan scams also increased in 2020 as compared to 2019.",,1.0,1.0,0.99999999995
+and total amount cheated from loan scams also increased in 2020 as compared to 2019.",,1,1,1,
 What measure did the National Crime Prevention Council launch in Nov 2020 to block scam messages?,"In November 2020, the National Crime Prevention Council launched the ScamShield mobile app to filter out SMSes and phone calls from scammers.","To filter out SMSes and phone calls sent and made by scammers, the National Crime Prevention Council (NCPC) launched ScamShield - a new mobile application (app) - on 20 November 2020.",The ScamShield app was launched to filter and block scam SMSes and calls.,"Page 32 of 32 
  
 Annex D 
@@ -392,8 +392,8 @@ ACTions, we can collectively prevent the scourge of scams on our community.
  
  
 - Mr. Tan Puay Kern 
-Vice-Chairman, National Crime Prevention Council",,0.6666666666666666,0.0,0.9999999999666667
-How many bank accounts did the Anti-Scam Centre freeze in 2020?,"The Anti-Scam Centre froze more than 9,015 bank accounts in 2020.","The Anti-Scam Centre (ASC) uses technology to track island-wide scam trends and make sense of the voluminous crime data that the centre processes every day. In 2020, the ASC received more than 11,190 reports involving losses of more than S$164.6 million. In the same period, the ASC froze more than 9,015 bank accounts and recovered 35% of the total amount scammed, or about S$57.6 million.","12,600.","Page 20 of 22 
+Vice-Chairman, National Crime Prevention Council",,0.6666666666666666,0,0.9999999999666667,
+How many bank accounts did the Anti-Scam Centre freeze in 2020?,"The Anti-Scam Centre froze more than 9,015 bank accounts in 2020.","The Anti-Scam Centre (ASC) uses technology to track island-wide scam trends and make sense of the voluminous crime data that the centre processes every day. In 2020, the ASC received more than 11,190 reports involving losses of more than S$164.6 million. In the same period, the ASC froze more than 9,015 bank accounts and recovered 35% of the total amount scammed, or about S$57.6 million.","12,600.00","Page 20 of 22 
  
  
 Annex B 
@@ -419,8 +419,8 @@ education and awareness efforts, to better protect the public against scams.
  
  
 – Mr. David Chew 
-Director of Commercial Affairs Department",,0.0,0.0,0.0
-What percentage of scam losses was recovered by the Anti-Scam Centre in 2020?,"In 2020, the Anti-Scam Centre recovered about 35% of total scam losses, which amounted to approximately S$57.6 million.","The Anti-Scam Centre (ASC) uses technology to track island-wide scam trends and make sense of the voluminous crime data that the centre processes every day. In 2020, the ASC received more than 11,190 reports involving losses of more than S$164.6 million. In the same period, the ASC froze more than 9,015 bank accounts and recovered 35% of the total amount scammed, or about S$57.6 million.",16.,"Page 2 of 32 
+Director of Commercial Affairs Department",,0,0,0,
+What percentage of scam losses was recovered by the Anti-Scam Centre in 2020?,"In 2020, the Anti-Scam Centre recovered about 35% of total scam losses, which amounted to approximately S$57.6 million.","The Anti-Scam Centre (ASC) uses technology to track island-wide scam trends and make sense of the voluminous crime data that the centre processes every day. In 2020, the ASC received more than 11,190 reports involving losses of more than S$164.6 million. In the same period, the ASC froze more than 9,015 bank accounts and recovered 35% of the total amount scammed, or about S$57.6 million.",16,"Page 2 of 32 
  
  
  
@@ -477,8 +477,8 @@ Total Scam Cases
 Total Amount Lost to All Scams (in millions) 
 +55.6% 
 +137.9% 
-+4.5% -1.3%",0.7418264596262122,0.0,0.0,0.49999999995
-How many UML harassment cases were recorded in 2020?,"There were 3,336 unlicensed moneylending (UML) harassment cases recorded in 2020.","The total number of UML-related harassment cases, such as placing harassment notes in letter boxes and at residential units and splashing of paint, decreased by 36.8% to 3,336 cases in 2020, from 5,281 cases in 2019.","1,321.","Page 7 of 13 
++4.5% -1.3%",0.7418264596262122,0,0,0.5,
+How many UML harassment cases were recorded in 2020?,"There were 3,336 unlicensed moneylending (UML) harassment cases recorded in 2020.","The total number of UML-related harassment cases, such as placing harassment notes in letter boxes and at residential units and splashing of paint, decreased by 36.8% to 3,336 cases in 2020, from 5,281 cases in 2019.","1,321.00","Page 7 of 13 
 30. The SPF will also continue to work closely with relevant stakeholders, such as 
 the Infocomm Media Development Authority and the Ministry of Law’s Registry of 
 Moneylenders, to disrupt UML syndicate operations and increase public outreach efforts 
@@ -524,8 +524,8 @@ camera. Thereafter, the criminals would use the video footage or images to extor
 money or online credits from these victims. The total amount lost by victims of cyber 
 extortion cases was more than S$793,000. The highest amount lost by a victim in a 
 single case was about S$200,000. The most common social media platforms where 
-these cases took place were on Tinder, Facebook and MiChat.",,0.0,0.0,0.0
-How many cyber extortion cases occurred in 2020?,There were 245 cyber extortion cases in 2020.,"The number of cyber extortion cases increased by 260.3% to 245 cases in 2020, from 68 cases in 2019.",0.,"Page 2 of 13 
+these cases took place were on Tinder, Facebook and MiChat.",,0,0,0,
+How many cyber extortion cases occurred in 2020?,There were 245 cyber extortion cases in 2020.,"The number of cyber extortion cases increased by 260.3% to 245 cases in 2020, from 68 cases in 2019.",0,"Page 2 of 13 
 2019. Housebreaking and related crimes decreased by 25.3% to 210 cases in 2020, 
 from 281 cases in 2019. Both these crime classes recorded a 36-year low.  
  
@@ -570,7 +570,7 @@ a) Social media impersonation scams
 • The number of cases increased by 271.4% to 2,919 cases in 2020, from 
 786 in 2019. 
 • The total amount cheated increased to at least S$5.5 million in 2020, 
-from at least S$3.1 million in 2019.",,0.0,0.0,0.0
+from at least S$3.1 million in 2019.",,0,0,0,
 What proportion of Singapore residents felt safe walking alone at night in 2020?,"According to a 2020 report, 97% of Singapore residents felt safe walking alone in their neighbourhood at night.","Singapore was ranked first in the Gallup's 2020 Global Law and Order report for the seventh consecutive year, with 97% of residents reporting that they felt safe walking home alone in their neighbourhood at night, as compared to an average of 69% worldwide.",97% of residents reported that they felt safe walking home alone in their neighbourhood at night.,"Page 1 of 13 
   
  
@@ -615,8 +615,8 @@ and related crimes decreased by 33.2% to 7,437 cases in 2020, from 11,128 cases 
 number of crime cases reported over the total Singapore population, and multiplied by 100,000. It is used 
 by many overseas Police forces to measure crime rate. 
 4  Extracted from: https://www.channelnewsasia.com/news/business/record-number-of-digital-banking-
-transactions-during-covid-19-12645256",0.9300132476962902,1.0,1.0,0.9999999999
-"In 2021, what was the percentage increase in scam cases compared to 2020?",Scam cases increased by 52.9% in 2021 compared to the previous year.,"However, a 52.9% increase in scam cases drove up the total number of reported crimes to 46,229 cases, from 37,273 cases in 2020.",52.,"Page 1 of 22 
+transactions-during-covid-19-12645256",0.9300132476962902,1,1,1,
+"In 2021, what was the percentage increase in scam cases compared to 2020?",Scam cases increased by 52.9% in 2021 compared to the previous year.,"However, a 52.9% increase in scam cases drove up the total number of reported crimes to 46,229 cases, from 37,273 cases in 2020.",52,"Page 1 of 22 
  
  
  
@@ -658,7 +658,7 @@ Total Scam and Cybercrime Cases
 +48.6% 
 +59.6% 
 +51.3% 
-+25.2%",,0.0,1.0,0.5833333333041666
++25.2%",,0,1,0.5833333333041666,
 What was the overall crime rate in Singapore in 2021?,"The overall crime rate in Singapore for 2021 was 848 cases per 100,000 population.","The Overall Crime Rate increased concomitantly, with 848 cases per 100,000 population in 2021, compared to 656 cases per 100,000 population in 2020.","848 cases per 100,000 population.","POLICE NEWS RELEASE 
 _________________________________________________________________  
 ANNUAL CRIME BRIEF 2021 
@@ -700,7 +700,7 @@ vehicles. PolCams have also helped the Police to solve crimes, more than 6,000 c
  
 1 Overall Crime excluding scams and cybercrimes. 
 2 Overall Crime Rate refers to the Overall Crime per 100,000 population. It is computed by dividing the 
-number of crime cases reported over the total Singapore population, and multiplied by 100,000.",,1.0,1.0,0.9999999999
+number of crime cases reported over the total Singapore population, and multiplied by 100,000.",,1,1,1,
 How many job scam cases were reported in 2021?,"In 2021, there were 4,550 reported cases of job scams.","The number of job scam cases jumped to 4,550 cases in 2021, from 132 cases in 2020.","4,550 cases.","to-date. More than 90,000 PolCams have been installed. The Police aim to have more 
 than 200,000 PolCams installed islandwide by 2030.   
  
@@ -751,7 +751,7 @@ scammers to approach the victims.
  
 c) E-commerce scams 
 • The number of cases decreased by 18.8% to 2,729 cases in 2021, from 
-3,359 cases in the same period in 2020.",,1.0,1.0,0.99999999995
+3,359 cases in the same period in 2020.",,1,1,1,
 What was the total loss from job scams in 2021?,The total amount lost to job scams in 2021 was at least $91.0 million.,"Job scams • Job scams have become the top scam type, with the highest number of reported cases in 2021. • The number of job scam cases jumped to 4,550 cases in 2021, from 132 cases in 2020. • The total amount cheated increased to at least $91.0 million in 2021, from at least $217,000 in 2020.",The total amount lost from job scams increased to at least $117.,"Page 2 of 32 
  
  
@@ -809,7 +809,7 @@ Total Scam Cases
 Total Amount Lost to All Scams (in millions) 
 +55.6% 
 +137.9% 
-+4.5% -1.3%",,0.0,0.0,0.0
++4.5% -1.3%",,0,0,0,
 Which scam type saw a four-fold increase in 2021 compared to 2020?,Non-banking related phishing scams saw a more than four-fold increase in cases in 2021 compared to 2020.,"Non-banking related phishing scams • The number of cases increased more than four-fold to 2,787 cases in 2021, from 644 cases in 2020.",Non-banking related phishing scams.,"• The total amount cheated decreased to at least $5.9 million in 2021, 
 from at least $7.1 million in 2020. 
 • The largest sum cheated in a single case in 2021 was $400,000. 
@@ -858,7 +858,7 @@ phone number, belonging to the scammers, that the victims could call to
 seek help with their suspended bank card. Subsequently, victims found 
 unauthorised transactions made to their bank account. 
 • Calls and SMSes were the most common channels used by the 
-scammers to approach the victims.",,1.0,1.0,0.49999999995
+scammers to approach the victims.",,1,1,0.5,
 Which initiative was launched in late 2021 to warn potential investment scam victims via SMS?,"Project Awakenings was launched on December 3, 2021, to proactively engage and warn potential investment scam victims.","One example is Project Awakenings, which the ASC launched on 3 December 2021, and which proactively engages potential victims on investment scams.",The ScamShield app.,"Page 19 of 32 
  
 41. The SPF ensures timely dissemination of information on the latest and trending 
@@ -910,7 +910,7 @@ fight against scams. In 2023, two more sessions of the Conversation on Safeguard
 the Community with Actionable Measures Against Scams (C -SCAMS) were 
 conducted, targeting the youth s and migrant workers.  Through the sessions, 
 participants brainstormed how to better keep the different population segments safe 
-from scams, and how organisations can work with the Government on more effective",,0.0,0.0,0.0
+from scams, and how organisations can work with the Government on more effective",,0,0,0,
 "How many days in 2021 were free from robbery, snatch theft and housebreaking?","In 2021, there were 250 days that were free from robbery, snatch theft, and housebreaking.","There were 250 days which were free from three confrontational crimes, namely snatch theft, robbery and housebreaking, an improvement of 48 days compared to 202 crime-free days in 2020.",250 days.,"POLICE NEWS RELEASE 
 _________________________________________________________________  
 ANNUAL CRIME BRIEF 2021 
@@ -952,8 +952,8 @@ vehicles. PolCams have also helped the Police to solve crimes, more than 6,000 c
  
 1 Overall Crime excluding scams and cybercrimes. 
 2 Overall Crime Rate refers to the Overall Crime per 100,000 population. It is computed by dividing the 
-number of crime cases reported over the total Singapore population, and multiplied by 100,000.",,1.0,1.0,0.9999999999
-How many bank accounts did the Anti-Scam Centre freeze in 2021?,"The Anti-Scam Centre froze more than 12,600 bank accounts in 2021.","In 2021, the ASC received more than 23,800 reports with losses amounting close to $520 million. In the same period, the ASC froze more than 12,600 bank accounts and recovered more than $102 million.","12,600.","9. Please see Annex C for the modus operandi of the top six scam types in 2021. 
+number of crime cases reported over the total Singapore population, and multiplied by 100,000.",,1,1,1,
+How many bank accounts did the Anti-Scam Centre freeze in 2021?,"The Anti-Scam Centre froze more than 12,600 bank accounts in 2021.","In 2021, the ASC received more than 23,800 reports with losses amounting close to $520 million. In the same period, the ASC froze more than 12,600 bank accounts and recovered more than $102 million.","12,600.00","9. Please see Annex C for the modus operandi of the top six scam types in 2021. 
  
 Police Efforts to Fight Scams  
  
@@ -1006,7 +1006,7 @@ systems holding registration information for prepaid SIM cards and selling them 
 customers who wanted to remain anonymous. The ASC has also worked with 
 telecommunication companies and online marketplaces to terminate more than 3,300 
 mobile lines, report more than 17,300 WhatsApp lines, and remove more than 1,300 
-suspicious online monikers and advertisements involved in suspected scams.",,1.0,1.0,0.9999999999
+suspicious online monikers and advertisements involved in suspected scams.",,1,1,1,
 How many voyeurism cases occurred in 2021?,There were 467 cases of voyeurism that occurred in 2021.,"Voyeurism cases increased to 467 in 2021, from 394 cases in 2020.",467 cases.,"Page 3 of 8 
  
 11 Please see Annex B for comments from the Vice-Chairman of NCPC. 
@@ -1060,7 +1060,7 @@ implemented. Such initiatives against shop theft ar e based on best practices in
 industry and SPF’s expertise in safety and security. The SPF will also conduct training 
 for the retail staff to enable them to help prevent and deter shop theft during their daily 
 Voyeurism 
-Shop Theft",0.8506550873472826,1.0,1.0,0.9999999999
+Shop Theft",0.8506550873472826,1,1,1,
 Which scam type in 2021 had the highest total amount lost?,"In 2021, investment scams resulted in the highest total amount lost, reaching at least $190.2 million.","Investment scams • The number of investment scam cases more than doubled to 2,467 cases in 2021, from 1,096 cases in 2020. • The total amount cheated increased to at least $190.2 million in 2021, from at least $68.8 million in 2020.",Investment scams.,"• The total amount cheated decreased to at least $5.9 million in 2021, 
 from at least $7.1 million in 2020. 
 • The largest sum cheated in a single case in 2021 was $400,000. 
@@ -1109,8 +1109,8 @@ phone number, belonging to the scammers, that the victims could call to
 seek help with their suspended bank card. Subsequently, victims found 
 unauthorised transactions made to their bank account. 
 • Calls and SMSes were the most common channels used by the 
-scammers to approach the victims.",0.8493049628965436,1.0,1.0,0.9999999999
-What was the largest amount lost in a single China officials impersonation scam in 2021?,The largest amount lost in a single China officials impersonation scam in 2021 was $6.2 million.,"The data in Annex A, 'Top Ten Scam Types in Singapore in 2021', shows that for China Officials Impersonation Scams, the largest sum cheated in a single case was $6.2m.",$6.,"• The total amount cheated decreased to at least $5.9 million in 2021, 
+scammers to approach the victims.",0.8493049628965436,1,1,1,visual
+What was the largest amount lost in a single China officials impersonation scam in 2021?,The largest amount lost in a single China officials impersonation scam in 2021 was $6.2 million.,"The data in Annex A, 'Top Ten Scam Types in Singapore in 2021', shows that for China Officials Impersonation Scams, the largest sum cheated in a single case was $6.2m.",$6.00 ,"• The total amount cheated decreased to at least $5.9 million in 2021, 
 from at least $7.1 million in 2020. 
 • The largest sum cheated in a single case in 2021 was $400,000. 
 • The most common platforms where these scams took place include 
@@ -1158,7 +1158,7 @@ phone number, belonging to the scammers, that the victims could call to
 seek help with their suspended bank card. Subsequently, victims found 
 unauthorised transactions made to their bank account. 
 • Calls and SMSes were the most common channels used by the 
-scammers to approach the victims.",,0.0,0.0,0.0
+scammers to approach the victims.",,0,0,0,
 "What was the trend in job scam cases from 2021 to 2022?""","The number of job scam cases increased by 42.7%, rising from 4,550 cases in 2021 to 6,492 cases in 2022.","Job scams • Job scams typically involve victims being offered online jobs that could be performed from home. Victims would be asked to perform simple tasks like making advance purchases, liking social media posts, or reviewing hotels/restaurants. Victims would initially receive some commission, luring them into providing more funds, purportedly required to get more commission over time. Eventually, the victims would not be able to get their money back. • There were 6,492 cases reported in 2022, compared to 4,550 cases in 2021, an increase of 42.7%.","The number of scam cases which scammers used to contact victims via social media increased to 7,539 in 2022, from 6,095 in 2021.","Page 13 of 32 
  
  
@@ -1200,7 +1200,7 @@ Investment Scam
 1.0%
 Others
 4.0%
-Types of Scam Cases via Phone Calls",,1.0,0.0,0.0
+Types of Scam Cases via Phone Calls",,1,0,0,
 Which scam type led in number of cases in 2022?,"In 2022, phishing scams recorded the highest number of cases among all scam types, with 7,097 cases reported.",Phishing scams recorded the highest number of reported cases amongst all scam types in 2022.,Job scams.,"Page 2 of 22 
  
  
@@ -1262,8 +1262,8 @@ Total Amount Lost to All Scams (in millions)
 +12.8% 
 +55.6% 
 +137.9% 
-+4.5%",0.0,0.0,0.0,0.0
-What was the total loss from investment scams in 2022?,The total amount lost to investment scams in 2022 was at least $198.3 million.,"The total amount reported to have been cheated increased by 4.3% to at least $198.3 million in 2022, from at least $190.2 million in 2021.",198.,"Page 2 of 32 
++4.5%",0,0,0,0,
+What was the total loss from investment scams in 2022?,The total amount lost to investment scams in 2022 was at least $198.3 million.,"The total amount reported to have been cheated increased by 4.3% to at least $198.3 million in 2022, from at least $190.2 million in 2021.",198,"Page 2 of 32 
  
  
  
@@ -1320,7 +1320,7 @@ Total Scam Cases
 Total Amount Lost to All Scams (in millions) 
 +55.6% 
 +137.9% 
-+4.5% -1.3%",,0.0,1.0,0.3333333333
++4.5% -1.3%",,0,1,0.333333333,
 "In 2022, which platform hosted the most e-commerce scam cases?","According to the 2022 data, Carousell hosted the most e-commerce scam cases, with 1,834 reported incidents.","The data in the 'Top Five Digital Platforms Used In E-Commerce Scams in 2022' table shows that Carousell had 1,834 cases, which was 38.5% of the total.",Carousell.,"Page 5 of 22 
  
 • The most common platforms which victims encountered scammers  
@@ -1374,8 +1374,8 @@ Websites
 4.6%
 Others
 2022
-Total: 4,762",,1.0,1.0,0.99999999995
-How many scam cases in 2022 were fake friend call scams?,"There were 2,106 fake friend call scam cases reported in 2022.","There were 2,106 fake friend call scam cases in 2022, compared to 686 cases in 2021, an increase of 207.0%.","2,106.","Page 6 of 22 
+Total: 4,762",,1,1,1,
+How many scam cases in 2022 were fake friend call scams?,"There were 2,106 fake friend call scam cases reported in 2022.","There were 2,106 fake friend call scam cases in 2022, compared to 686 cases in 2021, an increase of 207.0%.","2,106.00","Page 6 of 22 
  
 Victims would end up transferring money to bank accounts belonging to 
 unknown individuals. 
@@ -1433,8 +1433,8 @@ Social Media
 Messaging Platforms
 Breakdown of cases based on top contact methods 
 2022 2021
-Top Contact Methods",,1.0,1.0,0.99999999995
-What percentage of scam cases in 2022 were contacted through WhatsApp?,"In 2022, about 56.0% of scam cases initiated on messaging platforms were conducted via WhatsApp.","In 2022, the number of scam cases used by scammers to contact victims via messaging platforms increased to 7,599 from 5,095 in 2021, with about 56.0% of the cases via WhatsApp, and 36.1% via Telegram.",56.,"Page 12 of 32 
+Top Contact Methods",,1,1,1,
+What percentage of scam cases in 2022 were contacted through WhatsApp?,"In 2022, about 56.0% of scam cases initiated on messaging platforms were conducted via WhatsApp.","In 2022, the number of scam cases used by scammers to contact victims via messaging platforms increased to 7,599 from 5,095 in 2021, with about 56.0% of the cases via WhatsApp, and 36.1% via Telegram.",56,"Page 12 of 32 
  
  
 15. The number of scam cases where scammers contacted victims via messaging 
@@ -1452,8 +1452,8 @@ WeChat
 Others
 2.0%
 Proportion of Top Messaging Platforms which Scammers 
-used to contact Victims",,1.0,1.0,0.5833333333041666
-What percentage of scam victims in 2022 were aged 20-29?,"In 2022, young adults aged 20 to 29 made up 26.7% of all scam victims.","Young adults, aged 20 to 29, made up 26.7% of the total number of scam victims.",26.,"Page 10 of 22 
+used to contact Victims",,1,1,0.5833333333041666,
+What percentage of scam victims in 2022 were aged 20-29?,"In 2022, young adults aged 20 to 29 made up 26.7% of all scam victims.","Young adults, aged 20 to 29, made up 26.7% of the total number of scam victims.",26,"Page 10 of 22 
  
  
  
@@ -1495,7 +1495,7 @@ prey to fake friend call scams and 10.9% fell prey to investment scams.
 Scammers tend to reach out to the elderly via messaging platforms, phone calls, 
 and social media. 
  
-Scam Victim Profile",,0.0,1.0,0.9999999999
+Scam Victim Profile",,0,1,1,
 How many bank accounts were frozen by ASCom in 2022?,"In 2022, the Anti-Scam Command (ASCom) froze more than 16,700 bank accounts.","In 2022, the ASCom froze more than 16,700 bank accounts based on reports referred to the ASC and recovered about $146.6 million.","16,700 bank accounts were frozen by ASCom in 2022.","Page 12 of 22 
  
 Compromise’, which were spoofed emails purporting to be from the victims’ busine ss 
@@ -1546,7 +1546,7 @@ agencies led to the  successful take-down of 13 scam syndicates comprising six j
 scam syndicates, three government officials impersonation scam syndicates, two 
 phishing scam syndicates and two Internet love scam syndicates . More  than 70 
 persons based overseas , who were responsible for more than 280  cases, were 
-arrested.",0.9999999999999996,1.0,1.0,0.49999999995
+arrested.",0.9999999999999996,1,1,0.5,
 When was ScamShield for Android launched?,"The ScamShield application for Android devices was launched on September 28, 2022.",The ScamShield app for iOS and Android was launched on 20 November 2020 and 28 September 2022 respectively.,28 September 2022.,"Page 15 of 22 
  
  
@@ -1598,7 +1598,7 @@ scams or preventive steps they can take.
  
  
  
-WOG Efforts to Fight Scams",,1.0,1.0,0.9999999999
+WOG Efforts to Fight Scams",,1,1,1,
 What‚Äôs the meaning of ACT in NCPC‚Äôs anti-scam campaign?,"In the National Crime Prevention Council's campaign, 'ACT' is an acronym for 'Add, Check, Tell'.",The word ‚ÄúACT‚Äù in the campaign headline stands for ‚ÄúAdd. Check. Tell‚Äù ‚Äì the three main actions that individuals should proactively take to safeguard themselves and our community against scams.,The word “ACT” in the campaign headline stands for “Add.,"Page 15 of 22 
  
  
@@ -1650,8 +1650,8 @@ scams or preventive steps they can take.
  
  
  
-WOG Efforts to Fight Scams",,1.0,1.0,0.9999999999
-What was the total number of physical crime cases in 2022?,"The total number of reported physical crime cases in 2022 was 20,193.","With the relaxation of COVID-19 measures and the resumption of more activities, the total number of reported physical crime cases increased by 4.4% to 20,193 in 2022, from 19,343 in 2021.","20,193.","Page 1 of 7 
+WOG Efforts to Fight Scams",,1,1,1,
+What was the total number of physical crime cases in 2022?,"The total number of reported physical crime cases in 2022 was 20,193.","With the relaxation of COVID-19 measures and the resumption of more activities, the total number of reported physical crime cases increased by 4.4% to 20,193 in 2022, from 19,343 in 2021.","20,193.00","Page 1 of 7 
  
  
  
@@ -1692,7 +1692,7 @@ Physical Crime Situation
 -18.7% 
 -0.8% 
  +4.4% 
- -1.1%",,1.0,1.0,0.99999999995
+ -1.1%",,1,1,1,
 Which physical crime saw a significant increase in 2022?,"In 2022, rioting cases increased to 60 cases, up from 46 cases in the previous year.","With increased interaction among larger groups of people after the resumption of social activities and reopening of nightspots, rioting cases increased to 60 cases in 2022 from 46 in 2021, and accounted for 0.3% of total physical crime cases.",Physical crime cases increased by 4.,"Page 1 of 8 
  
  
@@ -1733,7 +1733,7 @@ Total Physical Crime Cases
 -0.8% +4.4% 
 -6.4% 
 Annual Crime Brief 2022  
-Physical Crime Situation",,0.0,0.0,0.0
+Physical Crime Situation",,0,0,0,
 How many OM cases in 2022 occurred at nightspots?,There were 129 Outrage of Modesty (OM) cases that took place at nightspots in 2022.,"With the public entertainment (PE) landscape regaining vibrance as we emerged from the COVID-19 pandemic, the number of OM cases which took place at nightspots increased to 129 cases in 2022, compared to 21 in 2021.",129 cases.,"Page 3 of 7 
  
  
@@ -1784,7 +1784,7 @@ and outlets to do their part in keeping our PE landscape safe, secure and
 orderly.  
  
 Outrage of Modesty 
-Theft in Dwelling",0.8342828225220758,1.0,1.0,0.99999999995
+Theft in Dwelling",0.8342828225220758,1,1,1,
 What was the number of voyeurism cases on public transport in 2022?,"In 2022, there were 55 reported cases of voyeurism on the public transport system.","Public transport system - 55 cases reported in 2022, compared to 79 in 2021.",55 cases.,"Page 4 of 7 
  
 12 Despite the increased usage of the public transport network, the number of OM 
@@ -1838,7 +1838,7 @@ A for a quote by Ms. Felice Low, Director, Infrastructure, NTUC Club.
 business operators, such as public transport operators, retail outlet owners and PE 
 operators, who have a responsibility towards their customers to prevent, deter and 
 Voyeurism 
-Everyone Has a Role to Play in Fighting Crime",,1.0,1.0,0.9999999999
+Everyone Has a Role to Play in Fighting Crime",,1,1,1,
 How many shop theft cases were there in 2022?,"There were 3,244 shop theft cases reported in 2022.","Shop theft cases increased to 3,244 cases in 2022 from 2,652 in 2021, and accounted for 16.1% of total physical crime cases.","3,244 cases.","Page 4 of 8 
  
 work. To sustain the effectiveness of the crime pre vention measures, the SPF will 
@@ -1892,8 +1892,8 @@ community to continue to support us in the fight against crime.
  
 Theft in Dwelling 
 Everyone Plays a Key Role in Fighting Crime  
-Rioting",,1.0,1.0,0.49999999995
-What proportion of shop thefts in 2022 occurred at retail chains/shops?,"In 2022, 67.0% of shop theft cases occurred at retail chains and shops such as department stores, supermarkets, and convenience stores.","Shop theft cases increased to 3,244 cases in 2022 from 2,652 in 2021, and accounted for 16.1% of total physical crime cases. 67.0% of the cases occurred at retail chains/shops such as department stores, supermarkets, pharmacies, and mini marts/convenience stores.",67.,"Page 4 of 8 
+Rioting",,1,1,0.5,
+What proportion of shop thefts in 2022 occurred at retail chains/shops?,"In 2022, 67.0% of shop theft cases occurred at retail chains and shops such as department stores, supermarkets, and convenience stores.","Shop theft cases increased to 3,244 cases in 2022 from 2,652 in 2021, and accounted for 16.1% of total physical crime cases. 67.0% of the cases occurred at retail chains/shops such as department stores, supermarkets, pharmacies, and mini marts/convenience stores.",67,"Page 4 of 8 
  
 work. To sustain the effectiveness of the crime pre vention measures, the SPF will 
 continue to work closely with the retailer-adopters  after onboarding onto the 
@@ -1946,7 +1946,7 @@ community to continue to support us in the fight against crime.
  
 Theft in Dwelling 
 Everyone Plays a Key Role in Fighting Crime  
-Rioting",0.7420636021778318,1.0,1.0,0.49999999995
+Rioting",0.7420636021778318,1,1,0.5,
 How many theft in dwelling cases occurred in 2022?,"There were 1,729 cases of theft in dwelling reported for the year 2022.","Theft in dwelling cases increased to 1,729 cases in 2022 from 1,359 in 2021, and accounted for 8.6% of total physical crime cases.","1,729 cases.","Page 3 of 7 
  
  
@@ -1997,7 +1997,7 @@ and outlets to do their part in keeping our PE landscape safe, secure and
 orderly.  
  
 Outrage of Modesty 
-Theft in Dwelling",,1.0,1.0,0.99999999995
+Theft in Dwelling",,1,1,1,
 How many Public Spiritedness Awards were given in 2022?,"In 2022, the Singapore Police Force presented 46 Public Spiritedness Awards.","To recognise the community partners and stakeholders for their support in helping to keep Singapore safe and secure, the SPF presented 46 Public Spiritedness Awards and 146 Community Partnership Awards in 2022.",47 Public Spiritedness Awards were given in 2024.,"Page 7 of 8 
  
 have received the Police Pal storybooks, and our Community Policing Unit officers 
@@ -2018,8 +2018,8 @@ secure home.
  
 PUBLIC AFFAIRS DEPARTMENT 
 SINGAPORE POLICE FORCE 
-17 FEBRUARY 2025 @ 3PM",0.9753030411510412,1.0,0.0,0.0
-What was the total number of physical crimes in 2023?,"The total number of reported physical crime cases in 2023 was 19,966.","The total number of reported physical crime cases decreased slightly by 1.1% to 19,966 in 2023, from 20,193 in 2022.","19,966.","Page 1 of 7 
+17 FEBRUARY 2025 @ 3PM",0.9753030411510412,1,0,0,
+What was the total number of physical crimes in 2023?,"The total number of reported physical crime cases in 2023 was 19,966.","The total number of reported physical crime cases decreased slightly by 1.1% to 19,966 in 2023, from 20,193 in 2022.","19,966.00","Page 1 of 7 
  
  
  
@@ -2060,7 +2060,7 @@ Physical Crime Situation
 -18.7% 
 -0.8% 
  +4.4% 
- -1.1%",,1.0,1.0,0.9999999999
+ -1.1%",,1,1,1,
 What physical crime category had the most cases in 2023?,"In 2023, shop theft was the physical crime category with the most reported cases, totaling 3,939.","Shop theft cases increased by 695 cases to 3,939 cases in 2023 from 3,244 cases in 2022, and accounted for 19.7% of total physical crime cases.",Shop theft constituted the highest proportion of reported cases amongst all the physical crimes.,"Page 1 of 7 
  
  
@@ -2102,8 +2102,8 @@ Physical Crime Situation
 -18.7% 
 -0.8% 
  +4.4% 
- -1.1%",,1.0,0.0,0.9999999999
-What was the percentage of OM cases involving known culprits in 2023?,"In 2023, 57.9% of Outrage of Modesty (OM) cases involved culprits who were known to the victims.","The number of outrage of modesty (OM) cases decreased to 1,528 in 2023 from 1,610 in 2022 and accounted for 7.7% of the total physical crime cases. Most cases (884 cases or 57.9%) involved culprits known to the victims. The top three locations where OM offences were committed were:",57.,"Page 3 of 7 
+ -1.1%",,1,0,1,
+What was the percentage of OM cases involving known culprits in 2023?,"In 2023, 57.9% of Outrage of Modesty (OM) cases involved culprits who were known to the victims.","The number of outrage of modesty (OM) cases decreased to 1,528 in 2023 from 1,610 in 2022 and accounted for 7.7% of the total physical crime cases. Most cases (884 cases or 57.9%) involved culprits known to the victims. The top three locations where OM offences were committed were:",57,"Page 3 of 7 
  
  
  
@@ -2153,7 +2153,7 @@ and outlets to do their part in keeping our PE landscape safe, secure and
 orderly.  
  
 Outrage of Modesty 
-Theft in Dwelling",,0.0,1.0,0.9999999999
+Theft in Dwelling",,0,1,1,
 Which crime prevention campaign was launched in Jan 2024?,"The fourth edition of the Safe Clubbing Campaign (SCC) 2024 was launched on January 24, 2024.","On 24 January 2024, the SPF and the NCPC launched the fourth edition of the Safe Clubbing Campaign (SCC) 2024 (previously known as the ‚ÄúSmart Clubbing Campaign‚Äù).",The fourth edition of the Safe Clubbing Campaign (SCC) 2024.,"Page 3 of 7 
  
  
@@ -2204,7 +2204,7 @@ and outlets to do their part in keeping our PE landscape safe, secure and
 orderly.  
  
 Outrage of Modesty 
-Theft in Dwelling",0.8302052924662343,1.0,1.0,0.9999999999
+Theft in Dwelling",0.8302052924662343,1,1,1,
 How many voyeurism cases were reported in 2023?,There were 476 voyeurism cases reported in 2023.,"Voyeurism cases increased by 52 cases to 476 cases in 2023 from 424 cases in 2022, and accounted for 2.4% of total physical crime cases.",476 cases.,"Page 3 of 8 
  
 11 Please see Annex B for comments from the Vice-Chairman of NCPC. 
@@ -2258,7 +2258,7 @@ implemented. Such initiatives against shop theft ar e based on best practices in
 industry and SPF’s expertise in safety and security. The SPF will also conduct training 
 for the retail staff to enable them to help prevent and deter shop theft during their daily 
 Voyeurism 
-Shop Theft",0.8268069039639036,1.0,1.0,0.49999999995
+Shop Theft",0.8268069039639036,1,1,0.5,
 Name one mall that installed anti-voyeurism mirrors by 2023.,Kallang Wave Mall is one of the locations that had installed anti-voyeurism mirrors in its public toilets by 2023.,"This has been implemented in several malls, including Downtown East Singapore, Kallang Wave Mall and the Punggol Regional Library, and will be progressively scaled up to more locations.",Kallang Wave Mall.,"Page 6 of 7 
  
  
@@ -2276,8 +2276,8 @@ concerns, we believe i n taking pre -emptive steps to ensure a safe and secure
 environment for all.   
  
 - Ms. Felice Low 
-Director, Infrastructure, NTUC Club",0.818968003768672,1.0,1.0,0.3333333333
-"In 2024, what was the number of physical crime cases?","In 2024, the total number of physical crime cases reported was 19,969.","The total number of physical crime cases reported remained stable at 19,969 in 2024 as compared to 19,966 in 2023.","19,969.","Page 1 of 8 
+Director, Infrastructure, NTUC Club",0.818968004,1,1,0.333333333,
+"In 2024, what was the number of physical crime cases?","In 2024, the total number of physical crime cases reported was 19,969.","The total number of physical crime cases reported remained stable at 19,969 in 2024 as compared to 19,966 in 2023.","19,969.00","Page 1 of 8 
  
  
  
@@ -2315,8 +2315,8 @@ Physical Crime Situation
 +0.02% 
 -0.8% 
  +4.4% 
- -1.1%",,1.0,1.0,0.9999999999
-How much did shop theft increase in 2024 compared to 2023?,"Shop theft cases increased by 7.6%, which is equivalent to 298 cases, in 2024 compared to 2023.","Shop theft cases increased by 7.6% (298 cases) to 4,237 cases in 2024 from 3,939 cases in 2023 and accounted for 21.2% of total physical crime cases.",7.,"Page 2 of 8 
+ -1.1%",,1,1,1,
+How much did shop theft increase in 2024 compared to 2023?,"Shop theft cases increased by 7.6%, which is equivalent to 298 cases, in 2024 compared to 2023.","Shop theft cases increased by 7.6% (298 cases) to 4,237 cases in 2024 from 3,939 cases in 2023 and accounted for 21.2% of total physical crime cases.",7,"Page 2 of 8 
  
  
  
@@ -2351,7 +2351,7 @@ x) Watsons @ Toa Payoh Central
  
 6. For shop theft cases involving the arrest of youths, majority of the cases 
 occurred at supermarkets, beauty shops, personal care/health and wellness shops.  
-Shop Theft",,0.0,1.0,0.9999999999
+Shop Theft",,0,1,1,
 Which supermarket chain joined the STAR Programme in 2024?,"In November 2024, FairPrice Group, which is one of Singapore‚Äôs major supermarket chains, joined the STAR Programme.","FairPrice Group, one of Singapore's major supermarket chains, joined the programme in November 2024.",FairPrice Group.,"Page 3 of 8 
  
  
@@ -2384,7 +2384,7 @@ and strengthen their retail security measures.
 their stores’ risk factors and vulnerabilities to shop theft , and jointly identify effective 
 and practical crime prevention measures which can be adopted at the different stores. 
 Through the programme, retailers such as Popular have put in place enhanced in-
-store security measures and surveillance signages for stronger deterrence and",,1.0,1.0,0.9999999999
+store security measures and surveillance signages for stronger deterrence and",,1,1,1,
 How many OM cases occurred in the public transport network in 2024?,There were 158 Outrage of Modesty (OM) cases reported in the public transport network during 2024.,"Although the number of outrage of modesty (OM) cases decreased by 6.6% (101 cases) to 1,427 in 2024 from 1,528 in 2023, it remains a crime of concern and accounted for 7.1% of the total physical crime cases. More than half of the cases involved culprits known to the victims. There was a decrease in the number of cases in public entertainment (PE) outlets and the public transport network. The top four locations where OM offences were committed were: (a) Residential premises – 356 cases reported in 2024, compared to 374 in 2023. (b) Public transport network – 158 cases reported in 2024, compared to 169 in 2023.",There is no information about OM cases in 2024.,"Reporting such crimes early is crucial in helping the Police identify and arrest the 
 perpetrators. 
  
@@ -2434,7 +2434,7 @@ a link or to download an app that may result in granting the criminals access to
 victims’ contact data, which will then be used to extort the victims. The total amount 
 lost by victims of cyber  extortion cases was at le ast $1.3 million. The most common 
 social media platforms where these cases took place were Facebook, Instagram and 
-Tinder.",,1.0,0.0,0.0
+Tinder.",,1,0,0,
 What was the increase in voyeurism cases from 2023 to 2024?,"From 2023 to 2024, voyeurism cases increased by 9%, which amounted to an additional 43 cases.","Voyeurism cases increased by 9% (43 cases) to 519 cases in 2024 from 476 cases in 2023, and accounted for 2.6% of total physical crime cases.",52 cases.,"Page 3 of 8 
  
 11 Please see Annex B for comments from the Vice-Chairman of NCPC. 
@@ -2488,7 +2488,7 @@ implemented. Such initiatives against shop theft ar e based on best practices in
 industry and SPF’s expertise in safety and security. The SPF will also conduct training 
 for the retail staff to enable them to help prevent and deter shop theft during their daily 
 Voyeurism 
-Shop Theft",0.8137892548589662,0.0,0.0,0.0
+Shop Theft",0.8137892548589662,0,0,0,
 What new award category will be launched by RAS in 2025?,"In 2025, the Restroom Association of Singapore (RAS) will launch a new award category called the 'Safe Toilet Award'.",The SPF will be working with the RAS to launch a new ‚ÄúSafe Toilet Award‚Äù category at the 2025 ‚ÄúLet‚Äôs Observe Ourselves‚Äù Awards.,The SPF will be working with the RAS to launch a new “Safe Toilet Award” category at the 2025 “Let’s Observe Ourselves” Awards.,"Page 6 of 8 
  
 during peak hours. Under the “Spot It. Report it.” campaign, crime prevention 
@@ -2524,8 +2524,8 @@ receive relevant information about SPF-related events and training sessions.
 21. Since June 2024, the SPF have launched the Police Pal storybook series, 
 which expanded the Police Pal programme to include the engagement of preschoolers 
 in addition to primary school students. As of February 2025, over 1,000 pre -schools 
-Everyone Has a Role to Play in Fighting Crime",,1.0,1.0,0.9999999999
-How many scam and cybercrime cases were reported in 2023?,"In 2023, a total of 50,376 scam and cybercrime cases were reported.","The number of scam and cybercrime cases increased by 49.6% to 50,376 in 2023, compared to 33,669 cases in 2022.","50,376.","Page 1 of 32 
+Everyone Has a Role to Play in Fighting Crime",,1,1,1,
+How many scam and cybercrime cases were reported in 2023?,"In 2023, a total of 50,376 scam and cybercrime cases were reported.","The number of scam and cybercrime cases increased by 49.6% to 50,376 in 2023, compared to 33,669 cases in 2022.","50,376.00","Page 1 of 32 
  
   
  
@@ -2571,8 +2571,8 @@ Total Scam and Cybercrime Cases
 +59.6% 
 +51.3% 
 +25.2% 
-+49.6%",,1.0,1.0,0.9999999999
-"What percentage of 2023 scams had losses under $2,000?","In 2023, 55.6% of all reported scam cases resulted in losses of $2,000 or less.","The average amount lost to each of the top five scam types, i.e. job scams, e-commerce scams, fake friend call scams, phishing scams, and investment scams, has generally decreased. Overall, the average amount lost per scam case for all reported scam cases has also decreased, by about 32.8% from $20,824 in 2022 to $13,999 in 2023. 55.6% of scam cases have losses less than or equal to $2,000.",55.,"Page 3 of 30 
++49.6%",,1,1,1,
+"What percentage of 2023 scams had losses under $2,000?","In 2023, 55.6% of all reported scam cases resulted in losses of $2,000 or less.","The average amount lost to each of the top five scam types, i.e. job scams, e-commerce scams, fake friend call scams, phishing scams, and investment scams, has generally decreased. Overall, the average amount lost per scam case for all reported scam cases has also decreased, by about 32.8% from $20,824 in 2022 to $13,999 in 2023. 55.6% of scam cases have losses less than or equal to $2,000.",55,"Page 3 of 30 
  
  
  
@@ -2627,7 +2627,7 @@ less than
 $100,000
 $100,000 and
 above
-Proportion of scam cases by amount lost in 2024",,0.0,1.0,0.49999999995
+Proportion of scam cases by amount lost in 2024",,0,1,0.5,
 What scam type had the most cases in 2023?,"Job scams recorded the highest number of reported cases among all scam types in 2023, with a total of 9,914 cases.","Job scams recorded the highest number of reported cases amongst all the scam types in 2023. There were 9,914 cases reported in 2023, compared to 6,492 cases in 2022, an increase of 52.7%.",Job Scam.,"Page 2 of 22 
  
  
@@ -2689,7 +2689,7 @@ Total Amount Lost to All Scams (in millions)
 +12.8% 
 +55.6% 
 +137.9% 
-+4.5%",,1.0,1.0,0.49999999995
++4.5%",,1,1,0.5,
 Which scam type had the highest losses in 2023?,"In 2023, investment scams resulted in the highest total amount lost, with losses reaching at least $204.5 million.","There were 4,030 investment scam cases reported in 2023, compared to 3,108 cases in 2022, an increase of 29.7%. The total amount lost to investment scams increased by 3.1% to at least $204.5 million in 2023, from at least $198.3 million in 2022. Among the top ten scam types, investment scam recorded the highest amount lost, even though the average amount lost per investment scam case had decreased by 20.5% to $50,754 in 2023 from $63,834 in 2022.","Government officials impersonation scams had the highest average losses at about $103,600 per case.","Page 3 of 32 
  
 are also concerned about the sharp increase in number of scams that were 
@@ -2745,7 +2745,7 @@ Others
 2023
 46,563
 Cases
-Top Scam Concerns",,1.0,0.0,0.0
+Top Scam Concerns",,1,0,0,
 How many malware-enabled scam cases occurred in 2023?,"There were about 1,899 cases in 2023 where victims had malware downloaded onto their phones as part of a scam.","In 2023, there were about 1,899 cases of victims having downloaded malware onto their phones, and the total amount lost was at least $34.1 million.",289 cases.,"Page 1 of 32 
  
   
@@ -2792,8 +2792,8 @@ Total Scam and Cybercrime Cases
 +59.6% 
 +51.3% 
 +25.2% 
-+49.6%",,0.0,0.0,0.0
-Which social media platform was most frequently used to contact scam victims in 2023?,"In 2023, Facebook was the most over-represented social media platform for contacting scam victims, accounting for about 71.7% of such cases.","In 2023, the number of scam cases where scammers contacted victims via social media increased to 13,725 from 7,539 in 2022, with about 71.7% on Facebook, and 18.5% on Instagram.",71.,"Page 10 of 32 
++49.6%",,0,0,0,
+Which social media platform was most frequently used to contact scam victims in 2023?,"In 2023, Facebook was the most over-represented social media platform for contacting scam victims, accounting for about 71.7% of such cases.","In 2023, the number of scam cases where scammers contacted victims via social media increased to 13,725 from 7,539 in 2022, with about 71.7% on Facebook, and 18.5% on Instagram.",71,"Page 10 of 32 
  
 11. Scammers tend to reach out to victims through social media, messaging 
 platforms, phone calls, online shopping platforms and other websites. These formed 
@@ -2844,7 +2844,7 @@ Phone Calls
 Messaging Platforms
 Social Media
 Breakdown of cases based on top contact methods 
-2023 2022",,0.0,1.0,0.99999999995
+2023 2022",,0,1,1,
 Which messaging app accounted for the most scam contacts in 2023?,"WhatsApp was the messaging platform most used by scammers to contact victims in 2023, accounting for about 68.0% of such cases.","The number of scam cases where scammers contacted victims via messaging platforms increased to 12,368 in 2023, from 7,599 in 2022, with about 68.0% of the cases via WhatsApp, and 26.5% via Telegram.",WhatsApp.,"Page 12 of 32 
  
  
@@ -2863,7 +2863,7 @@ WeChat
 Others
 2.0%
 Proportion of Top Messaging Platforms which Scammers 
-used to contact Victims",,1.0,1.0,0.9999999999
+used to contact Victims",,1,1,1,
 How many bank accounts did ASCom freeze in 2023?,"In 2023, the Anti-Scam Command (ASCom) froze more than 19,600 bank accounts.","In 2023, the ASCom froze more than 19,600 bank accounts based on reports referred to the Anti-Scam Centre (ASC) and recovered more than $100 million.","16,700 bank accounts were frozen in 2022.","Page 12 of 22 
  
 Compromise’, which were spoofed emails purporting to be from the victims’ busine ss 
@@ -2914,8 +2914,8 @@ agencies led to the  successful take-down of 13 scam syndicates comprising six j
 scam syndicates, three government officials impersonation scam syndicates, two 
 phishing scam syndicates and two Internet love scam syndicates . More  than 70 
 persons based overseas , who were responsible for more than 280  cases, were 
-arrested.",,1.0,0.0,0.0
-How many scam websites were blocked in 2023?,"The Singapore Police Force worked with Internet Service Providers to block over 25,000 scam websites in 2023.","In 2023, SPF worked with local Internet Service Providers to block over 25,000 scam websites.",0.,"Page 12 of 32 
+arrested.",,1,0,0,
+How many scam websites were blocked in 2023?,"The Singapore Police Force worked with Internet Service Providers to block over 25,000 scam websites in 2023.","In 2023, SPF worked with local Internet Service Providers to block over 25,000 scam websites.",0,"Page 12 of 32 
  
  
 15. The number of scam cases where scammers contacted victims via messaging 
@@ -2933,8 +2933,8 @@ WeChat
 Others
 2.0%
 Proportion of Top Messaging Platforms which Scammers 
-used to contact Victims",,0.0,0.0,0.0
-How many scam syndicates were dismantled with foreign help in 2023?,"In 2023, collaborative efforts with overseas law enforcement agencies led to the successful takedown of 19 scam syndicates.","In 2023, the close collaboration between SPF and overseas law enforcement agencies led to the successful take-down of 19 scam syndicates comprising eight job scam and money laundering syndicates, six fake friend call scam syndicates, three phishing scam syndicates and two Internet love scam syndicates.",19.,"Page 13 of 30 
+used to contact Victims",,0,0,0,
+How many scam syndicates were dismantled with foreign help in 2023?,"In 2023, collaborative efforts with overseas law enforcement agencies led to the successful takedown of 19 scam syndicates.","In 2023, the close collaboration between SPF and overseas law enforcement agencies led to the successful take-down of 19 scam syndicates comprising eight job scam and money laundering syndicates, six fake friend call scam syndicates, three phishing scam syndicates and two Internet love scam syndicates.",19,"Page 13 of 30 
  
 in supporting ASCom in swift intervention in scam cases on these platforms and 
 proactively detecting and taking down scam-tainted online monikers and suspicious 
@@ -2970,7 +2970,7 @@ International cooperation for asset recovery
 Compromise Scam and paid US$42.3 million (approximately $57.2 million) to a 
 fraudulent bank account in Timor-Leste. Swift actions by the ASC, INTERPOL and 
 Timor-Leste authorities led to the interception of US$39.3 million. Further 
-investigations resulted in nine arrests and the recovery of an additional US$2.7 million.",,1.0,1.0,0.49999999995
+investigations resulted in nine arrests and the recovery of an additional US$2.7 million.",,1,1,0.5,
 When was the ScamShield app launched?,"The ScamShield mobile application was launched by the National Crime Prevention Council on November 20, 2020.","To filter out SMSes and phone calls sent and made by scammers, the National Crime Prevention Council (NCPC) launched ScamShield ‚Äì a new mobile application (app) ‚Äì on 20 November 2020.",20 November 2020 for iOS and 28 September 2022 for Android.,"Page 15 of 30 
  
 Increasing accessibility to self-help anti-scam resources 
@@ -3007,7 +3007,7 @@ Raising awareness on anti-scam protective measures and on scam types
 against Scams” campaign. Launched in January 2023, the objective of the campaign 
 is to encourage people to take protective actions against scams. The campaign 
 promotes three simple anti-scam actions – Add, Check, Tell. From January 2023 to 
-October 2024, the campaign focused on the “Add” part of the framework, to encourage",,1.0,1.0,0.49999999995
+October 2024, the campaign focused on the “Add” part of the framework, to encourage",,1,1,0.5,
 "In 2024, what was the total loss from scams?",The total amount lost from scams in 2024 increased to at least $1.1 billion.,"Scams accounted for 92.3% of these 55,810 cases. The total number of scam cases increased by 10.6% to 51,501 cases in 2024, from 46,563 cases in 2023. The total amount lost increased by 70.6% to at least $1.1 billion in 2024, from at least $651.8 million in 2023.","$51,501 million.","Page 24 of 30 
  
 This is largely attributed to a single case where about $21.7 million was 
@@ -3017,8 +3017,8 @@ cryptocurrency transfers under the impression that he was
 communicating with a known contact (e.g. company director) via 
 Telegram. 
 It is estimated that the amount lost in the four scam cases involving very high 
-losses mentioned above, accounted for 21.4% of the total scam losses in 2024.",,0.0,0.0,0.3333333333
-What was the proportion of self-effected transfer scams in 2024?,"In 2024, scams that involved self-effected transfers accounted for 82.4% of all reported scam cases.","In 2024, self-effected transfers accounted for 82.4% of total reported scam cases.",82.,"Page 4 of 30 
+losses mentioned above, accounted for 21.4% of the total scam losses in 2024.",,0,0,0.333333333,
+What was the proportion of self-effected transfer scams in 2024?,"In 2024, scams that involved self-effected transfers accounted for 82.4% of all reported scam cases.","In 2024, self-effected transfers accounted for 82.4% of total reported scam cases.",82,"Page 4 of 30 
  
 9. In 2024, self-effected transfers accounted for 82.4% of total reported scam 
 cases. In most of these cases, the scammers did not gain direct control of the victims’ 
@@ -3062,7 +3062,7 @@ Others
 21.8%
 2024
 51,501 
-cases",,0.0,1.0,0.9999999999
+cases",,0,1,1,
 Which scam type had the most reported cases in 2024?,"E-commerce scams recorded the highest number of reported cases in 2024, with a total of 11,665 incidents.","E-commerce scams recorded the highest number of reported cases among all scam types in 2024, with 11,665 cases reported and at least $17.5 million lost.","E-commerce scams recorded the highest number of reported cases among all scam types in 2024, with 11,665 cases reported.","Page 5 of 30 
  
 Breakdown of scam types in terms of amount lost (in millions) 
@@ -3112,7 +3112,7 @@ Others
 $266.3M
 23.9%
 2024
-$1.1B lost",,1.0,1.0,0.99999999995
+$1.1B lost",,1,1,1,
 Which scam type had the highest monetary losses in 2024?,"Investment scams resulted in the highest total amount lost in 2024, at least $320.7 million.","The total amount lost to investment scams in 2024, on the other hand, is the highest amongst the various scam types, at least $320.7 million.",Investment scams.,"Page 5 of 30 
  
 Breakdown of scam types in terms of amount lost (in millions) 
@@ -3162,7 +3162,7 @@ Others
 $266.3M
 23.9%
 2024
-$1.1B lost",,1.0,1.0,0.9999999999
+$1.1B lost",,1,1,1,
 Which messaging app saw a nearly 96% increase in scam cases in 2024?,"In 2024, the number of scam cases perpetrated on the Telegram messaging app increased by about 95.7%.",The number of scam cases perpetrated on Telegram saw an increase of about 95.7% in 2024.,Telegram saw a nearly 96% increase in scam cases in 2024.,"Page 12 of 32 
  
  
@@ -3181,7 +3181,7 @@ WeChat
 Others
 2.0%
 Proportion of Top Messaging Platforms which Scammers 
-used to contact Victims",,1.0,1.0,0.5833333333041666
+used to contact Victims",,1,1,0.5833333333041666,
 Which new law allows police to restrict banking transactions of likely scam victims?,"The Protection from Scams Bill, passed in January 2025, empowers the Police to restrict the banking transactions of an individual believed to be a likely scam victim.","In January 2025, Parliament passed the Protection from Scams Bill. The Bill empowers the Police to issue a Restriction Order (RO) to banks to restrict the banking transactions of an individual if there is reason to believe that the individual is likely to make money transfers to a scammer.",The Protection from Scams Bill.,"Page 11 of 30 
  
 ii. To provide, as an option for users, payment protection mechanisms 
@@ -3219,8 +3219,8 @@ services utilised mobile numbers associated with pre-registered SIM cards.
 32. These operations resulted in the seizure of over 31,000 SIM cards and the 
 arrest of 13 individuals, including two Malaysian runners who were linked to a 
 syndicate operating in Malaysia, who allegedly procured prepaid SIM cards from 
-convenience stores in Singapore and brought them back to Malaysia for the",0.864179919298012,1.0,1.0,0.9999999999
-How many mobile lines did the SPF disrupt in 2024?,"In 2024, the Singapore Police Force disrupted more than 57,700 scam-related mobile lines.","In 2024, the SPF disrupted more than 57,700 mobile lines, more than 40,500 WhatsApp lines, more than 33,600 online monikers and advertisements, and more than 44,900 websites that were scam-related.","57,700.","Page 12 of 30 
+convenience stores in Singapore and brought them back to Malaysia for the",0.864179919,1,1,1,
+How many mobile lines did the SPF disrupt in 2024?,"In 2024, the Singapore Police Force disrupted more than 57,700 scam-related mobile lines.","In 2024, the SPF disrupted more than 57,700 mobile lines, more than 40,500 WhatsApp lines, more than 33,600 online monikers and advertisements, and more than 44,900 websites that were scam-related.","57,700.00","Page 12 of 30 
  
 syndicate’s illicit activities. Two retailers were also arrested, for their suspected 
 involvement in fraudulent registration of prepaid/postpaid SIM cards, and one of 
@@ -3257,7 +3257,7 @@ losses. This is achieved through establishing direct communication channels with
 these partners. In 2024, the ASCom froze more than 21,000 bank accounts based 
 on reports referred to the ASC and recovered more than $182 million. 
 36. In particular, the co-location initiative was expanded to include the co-location 
-of Carousell and Shopee staff within ASCom in 2024. This initiative was instrumental",0.765353043713974,1.0,1.0,0.9999999999
+of Carousell and Shopee staff within ASCom in 2024. This initiative was instrumental",0.765353044,1,1,1,
 How many transnational scam syndicates were dismantled in 2024?,A total of 16 transnational scam syndicates were taken down in 2024 through collaboration with overseas law enforcement agencies.,"In 2024, the close collaboration between the SPF and overseas law enforcement agencies resulted in the successful takedown of 16 transnational scam syndicates...",16 transnational scam syndicates were dismantled in 2024.,"Page 13 of 30 
  
 in supporting ASCom in swift intervention in scam cases on these platforms and 
@@ -3294,7 +3294,7 @@ International cooperation for asset recovery
 Compromise Scam and paid US$42.3 million (approximately $57.2 million) to a 
 fraudulent bank account in Timor-Leste. Swift actions by the ASC, INTERPOL and 
 Timor-Leste authorities led to the interception of US$39.3 million. Further 
-investigations resulted in nine arrests and the recovery of an additional US$2.7 million.",,1.0,1.0,0.9999999999
+investigations resulted in nine arrests and the recovery of an additional US$2.7 million.",,1,1,1,
 How much in potential losses was averted via Project A.S.T.R.O. in 2024?,"In 2024, the proactive victim-centric approach of Project A.S.T.R.O. averted over $420 million of potential losses.",This proactive victim-centric approach averted over $420 million of potential losses.,Over $420 million of potential losses were averted.,"Page 14 of 30 
  
 42. In October 2024, the SPF formalised “FRONTIER+” with the anti-scam 
@@ -3332,7 +3332,7 @@ Education
 45. SPF has continued its public education efforts to encourage individuals to 
 proactively adopt anti-scam measures, and raise awareness on scam types, including 
 through partnerships with community stakeholders to co-create and amplify anti-scam 
-initiatives.",,1.0,1.0,0.9999999999
+initiatives.",,1,1,1,
 When was the ScamShield Suite launched?,"The ScamShield Suite was jointly launched by the SPF, the National Crime Prevention Council (NCPC), and Open Government Products (OGP) on September 27, 2024.","The SPF, the National Crime Prevention Council (NCPC) and Open Government Products (OGP) jointly launched the ScamShield Suite on 27 September 2024.",27 September 2024.,"Page 15 of 30 
  
 Increasing accessibility to self-help anti-scam resources 
@@ -3369,8 +3369,8 @@ Raising awareness on anti-scam protective measures and on scam types
 against Scams” campaign. Launched in January 2023, the objective of the campaign 
 is to encourage people to take protective actions against scams. The campaign 
 promotes three simple anti-scam actions – Add, Check, Tell. From January 2023 to 
-October 2024, the campaign focused on the “Add” part of the framework, to encourage",0.7669819340128355,1.0,1.0,0.9999999999
-How many ScamShield app downloads were there after its enhancement in 2024?,"After the enhanced app was launched, ScamShield downloads increased to over 1.18 million.","The ScamShield app saw an increase in downloads from 944,000 before the launch of the enhanced app, to over 1.18 million downloads.",1.,"Page 15 of 30 
+October 2024, the campaign focused on the “Add” part of the framework, to encourage",0.7669819340128355,1,1,1,
+How many ScamShield app downloads were there after its enhancement in 2024?,"After the enhanced app was launched, ScamShield downloads increased to over 1.18 million.","The ScamShield app saw an increase in downloads from 944,000 before the launch of the enhanced app, to over 1.18 million downloads.",1,"Page 15 of 30 
  
 Increasing accessibility to self-help anti-scam resources 
 Launch of ScamShield Suite 
@@ -3406,7 +3406,7 @@ Raising awareness on anti-scam protective measures and on scam types
 against Scams” campaign. Launched in January 2023, the objective of the campaign 
 is to encourage people to take protective actions against scams. The campaign 
 promotes three simple anti-scam actions – Add, Check, Tell. From January 2023 to 
-October 2024, the campaign focused on the “Add” part of the framework, to encourage",0.0,0.0,1.0,0.9999999999
+October 2024, the campaign focused on the “Add” part of the framework, to encourage",0,0,1,1,
 Which web game did the NCPC launch in October 2024?,"On October 24, 2024, the National Crime Prevention Council (NCPC) launched a web game called #XiamTheScams.",The #XiamTheScams web game was launched on 24 October 2024 by the NCPC.,The #XiamTheScams web game.,"Page 17 of 30 
  
 #XiamTheScams web game by NCPC 
@@ -3444,7 +3444,7 @@ recommended safeguards, specifically user verification against Government-issued
 documentation and secure payment options. These measures have proven to be 
 effective in combatting scams. Specifically, several e-commerce marketplaces which 
 have implemented the recommended safety features under the TSR (e.g. Amazon, 
-Lazada) have seen significantly fewer scams than other platforms.",,1.0,1.0,0.9999999999
+Lazada) have seen significantly fewer scams than other platforms.",,1,1,1,
 What was the uptake of the Money Lock feature by the end of 2024?,"As of December 31, 2024, more than 245,000 customers had used the Money Lock feature, setting aside nearly $20.9 billion in savings.","As at 31 December 2024, more than 245,000 customers have utilised Money Lock, with close to $20.9 billion of savings set aside.","245,000 customers had utilised Money Lock, with close to $20.","Page 18 of 30 
  
 Whole of Government Efforts to Fight Scams 
@@ -3481,8 +3481,8 @@ Singapore. This feature automatically blocks the installation of potentially mal
 apps that use sensitive runtime permissions. As of December 2024, the EFP feature 
  
 3      Money Lock provides added protection against digital scams by allowing the customer to block 
-online access to a portion of their funds, should their digital banking access be compromised.",0.8748838898417715,0.5,1.0,0.9999999999
-What was the maximum daily withdrawal limit for online CPF withdrawals as of September 2024?,"In September 2024, the maximum Daily Withdrawal Limit (DWL) for online CPF withdrawals was lowered to $50,000.","In September 2024, the maximum Daily Withdrawal Limit (DWL) for online CPF withdrawals was lowered from $200,000 to $50,000.","50,000.","Page 21 of 32 
+online access to a portion of their funds, should their digital banking access be compromised.",0.8748838898417715,0.5,1,1,
+What was the maximum daily withdrawal limit for online CPF withdrawals as of September 2024?,"In September 2024, the maximum Daily Withdrawal Limit (DWL) for online CPF withdrawals was lowered to $50,000.","In September 2024, the maximum Daily Withdrawal Limit (DWL) for online CPF withdrawals was lowered from $200,000 to $50,000.","50,000.00","Page 21 of 32 
  
 tech-related games and activities organised by partners from various sectors, 
 including GovTech, National Library Board (NLB), SG Digital Office, Google, 
@@ -3533,7 +3533,7 @@ contributed directly to the decrease in malware -enabled scams towards the end o
 59. In November 2023, local banks introduced Money Lock, a feature that lowers 
 the impact of scams by allowing customers to set aside a portion of their funds in bank 
 accounts that cannot be transferred digitally. As of January 2024, more than 49,000 
-Money Lock accounts have been set up, with more than $4.2 billion set aside. The",,1.0,1.0,0.49999999995
+Money Lock accounts have been set up, with more than $4.2 billion set aside. The",,1,1,0.5,
 "In 2021, how many Public Spiritedness Awards were presented?","In 2021, the Police presented 80 Public Spiritedness Awards to recognise the support from the community and business operators.","To recognise the community and business operators for their support in helping to keep Singapore safe and secure, the Police presented 80 Public Spiritedness Awards and 131 Community Partnership Awards in 2021.",80 Public Spiritedness Awards.,"Page 7 of 8 
  
 have received the Police Pal storybooks, and our Community Policing Unit officers 
@@ -3554,7 +3554,7 @@ secure home.
  
 PUBLIC AFFAIRS DEPARTMENT 
 SINGAPORE POLICE FORCE 
-17 FEBRUARY 2025 @ 3PM",,1.0,1.0,0.3333333333
+17 FEBRUARY 2025 @ 3PM",,1,1,0.333333333,
 "In 2020, what was the total amount lost from loan scams?",The total amount lost to loan scams in 2020 increased to at least S$14.3 million.,"The total amount cheated increased to at least S$14.3 million in 2020, from at least S$6.8 million in 2019.",At least $14.,"Page 2 of 32 
  
  
@@ -3612,7 +3612,7 @@ Total Scam Cases
 Total Amount Lost to All Scams (in millions) 
 +55.6% 
 +137.9% 
-+4.5% -1.3%",,0.0,1.0,0.3333333333
++4.5% -1.3%",,0,1,0.333333333,
 "In 2020, which scam type recorded the largest amount lost in a single case?","In 2020, an investment scam recorded the largest loss in a single case, amounting to $6.4 million.","The data in Annex A, 'Top Ten Scam Types in Singapore in 2020', shows that for Investment Scams, the largest sum cheated in a single case was $6.4m.",Investment scams.,"• The total amount cheated decreased to at least $5.9 million in 2021, 
 from at least $7.1 million in 2020. 
 • The largest sum cheated in a single case in 2021 was $400,000. 
@@ -3661,7 +3661,7 @@ phone number, belonging to the scammers, that the victims could call to
 seek help with their suspended bank card. Subsequently, victims found 
 unauthorised transactions made to their bank account. 
 • Calls and SMSes were the most common channels used by the 
-scammers to approach the victims.",,0.0,0.0,0.9999999999
+scammers to approach the victims.",,0,0,1,visual
 "In the 2023 physical crime data, how many days were free from robbery, snatch theft, and motor vehicle theft?","In 2023, there were 277 days that were free from robbery, snatch theft, and theft of motor vehicle.","There were 277 days in 2023 which were free from robbery, snatch theft and theft of motor vehicle - an improvement of 36 days compared to 241 days in 2022.",277 days.,"Page 1 of 7 
  
  
@@ -3703,7 +3703,7 @@ Physical Crime Situation
 -18.7% 
 -0.8% 
  +4.4% 
- -1.1%",,1.0,1.0,0.9999999999
+ -1.1%",,1,1,1,
 "In 2023, which platform had the most e-commerce scams?","In 2023, Facebook was the platform with the most e-commerce scams, accounting for 46.5% of all such cases.","The data in the 'Top five digital platforms used in e-commerce scams in 2023' chart shows that Facebook accounted for 4,550 cases, which was 46.5% of the total.",Facebook.,"Page 5 of 22 
  
 • The most common platforms which victims encountered scammers  
@@ -3757,7 +3757,7 @@ Websites
 4.6%
 Others
 2022
-Total: 4,762",0.8058706380118063,0.0,0.0,0.49999999995
+Total: 4,762",0.8058706380118063,0,0,0.5,visual
 "In the 2024 scams data, which age group had the highest average loss per victim?","According to 2024 data, the elderly (aged 65 and above) had the highest average amount lost per victim among all age groups.","In 2024, 70.9% of scam victims were youths, young adults, and adults aged below 50. As for the elderly, while they made up only a small proportion of the scam victims, the average amount they lost per victim is the highest among the various age groups.",The elderly.,"Page 7 of 30 
  
 victims via messaging platforms increased to 15,145 from 12,368 in 2023. WhatsApp 
@@ -3792,7 +3792,7 @@ commerce scams, while 18.9% fell prey to job scams and 17.2% fell prey to
 phishing scams. Scammers tend to contact this victim group via social media, 
 messaging platforms and online shopping platforms. 
 d) Young seniors, aged 50 to 64, made up 20.7% of scam victims. 19.7% fell prey 
-to phishing scams, while 18.6% fell prey to investment scams and 14.1% fell",0.7788047276625254,1.0,0.0,0.9999999999
+to phishing scams, while 18.6% fell prey to investment scams and 14.1% fell",0.7788047276625254,1,0,1,
 Which scam type's losses rose to $151.3 million in 2024?,"In 2024, losses from government officials impersonation scams rose to at least $151.3 million.","The data in Annex A, 'Top 10 Scam Types in Singapore', for 2024 shows that Government Officials Impersonation Scams had a total amount lost of $151.3M.",Government Officials Impersonation Scam.,"Page 5 of 30 
  
 Breakdown of scam types in terms of amount lost (in millions) 
@@ -3842,8 +3842,8 @@ Others
 $266.3M
 23.9%
 2024
-$1.1B lost",,1.0,1.0,0.9999999999
-"In 2023, what proportion of scam victims were aged under 50?","In 2023, a significant proportion of scam victims, 73.0%, were under the age of 50.","73.0% of scam victims were youths, young adults and adults aged below 50.",73.,"Page 14 of 32 
+$1.1B lost",,1,1,1,visual
+"In 2023, what proportion of scam victims were aged under 50?","In 2023, a significant proportion of scam victims, 73.0%, were under the age of 50.","73.0% of scam victims were youths, young adults and adults aged below 50.",73,"Page 14 of 32 
  
  
  
@@ -3887,8 +3887,8 @@ Young Seniors
 Elderly
 7.1%
 Scam Victim Age Profile (2023)
-Scam Victim Profile",,1.0,1.0,0.8333333332916666
-"In 2022, what percentage of scam cases on Carousell were phishing scams?","In 2022, 56.0% of the scam cases that victims encountered on the Carousell platform were phishing scams.","Among the scam cases which victims encountered scammers via Carousell, 56.0% were phishing scams and 42.8% were e-commerce scams.",56.,"Page 9 of 22 
+Scam Victim Profile",,1,1,0.8333333332916666,
+"In 2022, what percentage of scam cases on Carousell were phishing scams?","In 2022, 56.0% of the scam cases that victims encountered on the Carousell platform were phishing scams.","Among the scam cases which victims encountered scammers via Carousell, 56.0% were phishing scams and 42.8% were e-commerce scams.",56,"Page 9 of 22 
  
 10 Another contact method of concern is online shopping platforms. There was an 
 increase in the number of scam cases to 4,818 in 2022 from 1,570 in 2021, with 89.0% 
@@ -3917,8 +3917,8 @@ Phishing Scam
 56.0%
 Others
 1.2%
-Type of Scam Cases via Carousell",0.7367346637269527,1.0,1.0,0.9999999999
-How many internet love scams were there in 2022?,There were 868 cases of internet love scams reported in 2022.,The data in Annex A of the 2022 Annual Scams and Cybercrime Brief shows that there were 868 Internet Love Scam cases reported.,868.,"Page 2 of 22 
+Type of Scam Cases via Carousell",0.7367346637269527,1,1,1,
+How many internet love scams were there in 2022?,There were 868 cases of internet love scams reported in 2022.,The data in Annex A of the 2022 Annual Scams and Cybercrime Brief shows that there were 868 Internet Love Scam cases reported.,868,"Page 2 of 22 
  
  
  
@@ -3979,7 +3979,7 @@ Total Amount Lost to All Scams (in millions)
 +12.8% 
 +55.6% 
 +137.9% 
-+4.5%",0.0,1.0,1.0,0.9999999999
++4.5%",0,1,1,1,visual
 "In 2021, which scam type had 2,236 cases reported?","Banking-related phishing scams had 2,236 reported cases in 2021.","Banking related phishing scams • The number of cases increased by 66.9% to 2,236 cases in 2021, from 1,340 cases in 2020.",Banking related phishing scams.,"Page 7 of 22 
  
  
@@ -4013,7 +4013,7 @@ Loan Scam
 5.5%
 Others
 17.3%
-Types of Scam Cases via WhatsApp",,1.0,1.0,0.49999999995
+Types of Scam Cases via WhatsApp",,1,1,0.5,
 How many China officials impersonation scams were reported in 2021?,"In 2021, there were 750 reported cases of China officials impersonation scams.",The data in Annex A of the 2021 Annual Crime Brief shows that 750 China Officials Impersonation Scam cases were reported.,353 cases.,"Page 30 of 30 
  
 staff (e.g. DBS, UOB) or China government officials (e.g. China Police). The 
@@ -4047,8 +4047,8 @@ being involved in criminal activities (e.g. money laundering). Scammers
 would instruct victims to transfer money to “safety accounts” supposedly 
 designated by China authorities, purportedly for investigation or bail 
 purposes. This variant saw an increase of 26.1% to 353 cases in 2024 
-and 51.0% increase in amount lost to $43.8 million.",0.8020471969796974,0.0,0.0,0.0
-What was the largest amount lost in a single internet love scam in 2020?,The largest sum lost in a single internet love scam case in 2020 was $1.1 million.,"The data in Annex A of the 2020 Annual Crime Brief shows that for Internet Love Scams, the largest sum cheated in a single case was $1.1m.",$3.,"Page 2 of 22 
+and 51.0% increase in amount lost to $43.8 million.",0.8020471969796974,0,0,0,visual
+What was the largest amount lost in a single internet love scam in 2020?,The largest sum lost in a single internet love scam case in 2020 was $1.1 million.,"The data in Annex A of the 2020 Annual Crime Brief shows that for Internet Love Scams, the largest sum cheated in a single case was $1.1m.",$3.00 ,"Page 2 of 22 
  
  
  
@@ -4109,7 +4109,7 @@ Total Amount Lost to All Scams (in millions)
 +12.8% 
 +55.6% 
 +137.9% 
-+4.5%",,0.0,0.0,0.0
++4.5%",,0,0,0,visual
 By how much did investment scam cases increase in 2020?,The number of investment scam cases increased by 609 cases in 2020 compared to the previous year.,"The data in Annex A of the 2020 Annual Crime Brief shows that Investment Scam cases increased by 609 cases from 2019, to a total of 1,096 in 2020.",117% more than in 2020.,"• The total amount cheated decreased to at least $5.9 million in 2021, 
 from at least $7.1 million in 2020. 
 • The largest sum cheated in a single case in 2021 was $400,000. 
@@ -4158,7 +4158,7 @@ phone number, belonging to the scammers, that the victims could call to
 seek help with their suspended bank card. Subsequently, victims found 
 unauthorised transactions made to their bank account. 
 • Calls and SMSes were the most common channels used by the 
-scammers to approach the victims.",,0.0,0.0,0.0
+scammers to approach the victims.",,0,0,0,visual
 "In 2024, how many government official impersonation scam cases were there?","There were 1,504 cases of government official impersonation scams reported in 2024.","The data in Annex A of the 2024 Annual Scams and Cybercrime Brief shows there were 1,504 Government Officials Impersonation Scams cases reported.","1,151 cases.","Page 30 of 30 
  
 staff (e.g. DBS, UOB) or China government officials (e.g. China Police). The 
@@ -4192,8 +4192,8 @@ being involved in criminal activities (e.g. money laundering). Scammers
 would instruct victims to transfer money to “safety accounts” supposedly 
 designated by China authorities, purportedly for investigation or bail 
 purposes. This variant saw an increase of 26.1% to 353 cases in 2024 
-and 51.0% increase in amount lost to $43.8 million.",,1.0,1.0,0.9999999999
-How many phishing scam cases were there in 2024?,"A total of 8,552 phishing scam cases were reported in 2024.","There were 8,552 phishing scam cases reported in 2024 and the total amount lost was at least $59.4 million.","8,552.","Page 24 of 30 
+and 51.0% increase in amount lost to $43.8 million.",,1,1,1,visual
+How many phishing scam cases were there in 2024?,"A total of 8,552 phishing scam cases were reported in 2024.","There were 8,552 phishing scam cases reported in 2024 and the total amount lost was at least $59.4 million.","8,552.00","Page 24 of 30 
  
 This is largely attributed to a single case where about $21.7 million was 
 lost in cryptocurrency. 
@@ -4202,7 +4202,7 @@ cryptocurrency transfers under the impression that he was
 communicating with a known contact (e.g. company director) via 
 Telegram. 
 It is estimated that the amount lost in the four scam cases involving very high 
-losses mentioned above, accounted for 21.4% of the total scam losses in 2024.",0.7588161427583039,1.0,1.0,0.3333333333
+losses mentioned above, accounted for 21.4% of the total scam losses in 2024.",0.7588161427583039,1,1,0.333333333,
 How much was lost to phishing scams in 2024?,"In 2024, the total amount lost to phishing scams was at least $59.4 million.","There were 8,552 phishing scam cases reported in 2024 and the total amount lost was at least $59.4 million.",There is no information about the amount lost to phishing scams in 2024.,"Page 24 of 30 
  
 This is largely attributed to a single case where about $21.7 million was 
@@ -4212,7 +4212,7 @@ cryptocurrency transfers under the impression that he was
 communicating with a known contact (e.g. company director) via 
 Telegram. 
 It is estimated that the amount lost in the four scam cases involving very high 
-losses mentioned above, accounted for 21.4% of the total scam losses in 2024.",0.0,1.0,0.0,0.0
+losses mentioned above, accounted for 21.4% of the total scam losses in 2024.",0,1,0,0,
 "In 2022, which scam type resulted in $97.6 million in losses?","In 2022, government officials impersonation scams resulted in total losses of $97.6 million.",The data in Annex A of the 2022 Annual Scams and Cybercrime Brief shows that Government Officials Impersonation Scams had a total amount lost of $97.6M.,Investment scams.,"Page 3 of 32 
  
 are also concerned about the sharp increase in number of scams that were 
@@ -4268,8 +4268,8 @@ Others
 2023
 46,563
 Cases
-Top Scam Concerns",0.8541488866049091,0.0,0.0,0.0
-In which year did total scam losses see their first decrease in five years?,The year 2023 marked the first time in five years that the total amount lost to scams had decreased.,"While this is the first time that the total amount lost to scams had dropped in the last five years, it remains very significant.",2023.,"Page 2 of 32 
+Top Scam Concerns",0.8541488866049091,0,0,0,visual
+In which year did total scam losses see their first decrease in five years?,The year 2023 marked the first time in five years that the total amount lost to scams had decreased.,"While this is the first time that the total amount lost to scams had dropped in the last five years, it remains very significant.",2023,"Page 2 of 32 
  
  
  
@@ -4326,7 +4326,7 @@ Total Scam Cases
 Total Amount Lost to All Scams (in millions) 
 +55.6% 
 +137.9% 
-+4.5% -1.3%",,0.0,1.0,0.99999999995
++4.5% -1.3%",,0,1,1,visual
 Which department of the Singapore Police Force runs the Anti-Scam Command?,The Anti-Scam Command was operationalised by the Commercial Affairs Department (CAD) of the Singapore Police Force.,"On 22 March 2022, the Commercial Affairs Department (CAD) operationalised the Anti-Scam Command (ASCom) for greater synergy among various scam-fighting units, by bringing scam investigation, incident response, intervention, enforcement and sense-making under a single Command.",The Commercial Affairs Department.,"ANNEX D 
  
 Quote by Director of Commercial Affairs Department 
@@ -4361,4 +4361,4 @@ nation.
  
  
 – Mr. David Chew 
-Director of Commercial Affairs Department",,0.0,1.0,0.99999999995
+Director of Commercial Affairs Department",,0,1,1,visual
