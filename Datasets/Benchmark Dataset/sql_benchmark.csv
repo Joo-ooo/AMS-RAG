@@ -1,5 +1,5 @@
 ﻿question,gt_answer,gt_query
-"In 2010, what was the number of male inmates?","In 2010, the number of male inmates was 10,156.",SELECT number_of_population FROM convicted_penal_population_by_offence_group WHERE year = 2019 AND population_by_main_offence_group = 'Traffic Offences';
+"In 2010, what was the number of male inmates?","In 2010, the number of male inmates was 10,156.",SELECT number_of_population FROM convicted_penal_population_by_gender WHERE year = 2010 AND population_by_gender = 'Male';
 How many female inmates were there in 2022?,"In 2022, there were 464 female inmates.",SELECT number_of_population FROM convicted_penal_population_by_education_level WHERE year = 2011 AND population_by_education_level = 'Vocational';
 What was the population of inmates with a Primary education level in 2006?,"In 2006, 4,740 inmates were recorded to have a Primary education level.",SELECT number_of_population FROM convicted_penal_population_by_education_level WHERE year = 2006 AND population_by_education_level = 'Primary';
 How many inmates had 'No Education' in 2022?,"In 2022, 64 inmates had no formal education.",SELECT number_of_population FROM convicted_penal_population_by_education_level WHERE year = 2022 AND population_by_education_level = 'No Education';

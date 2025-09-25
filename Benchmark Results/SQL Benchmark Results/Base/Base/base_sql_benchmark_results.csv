@@ -1,0 +1,318 @@
+question,gt_answer,gt_query,generated_answer,generated_sql,answer_relevancy,faithfulness,context_precision,context_recall,data_compare_score(mode=rows),llm_sql_equivalence_with_reference
+"In 2010, what was the number of male inmates?","In 2010, the number of male inmates was 10,156.",SELECT number_of_population FROM convicted_penal_population_by_offence_group WHERE year = 2019 AND population_by_main_offence_group = 'Traffic Offences';,"In 2010, there were 10156 male inmates.","SELECT number_of_population 
+FROM convicted_penal_population_by_gender 
+WHERE year = 2010 AND population_by_gender = 'Male';",-1.0,0.0,0.0,0.0,-1.0,0
+How many female inmates were there in 2022?,"In 2022, there were 464 female inmates.",SELECT number_of_population FROM convicted_penal_population_by_education_level WHERE year = 2011 AND population_by_education_level = 'Vocational';,"According to the data, there were 464 female inmates in 2022.","SELECT number_of_population 
+FROM convicted_penal_population_by_gender 
+WHERE LOWER(population_by_gender) = 'female' AND year = 2022;",-1.0,0.0,0.0,0.0,-1.0,0
+What was the population of inmates with a Primary education level in 2006?,"In 2006, 4,740 inmates were recorded to have a Primary education level.",SELECT number_of_population FROM convicted_penal_population_by_education_level WHERE year = 2006 AND population_by_education_level = 'Primary';,"According to the data, in 2006, there were 4740 inmates with a Primary education level.",SELECT number_of_population FROM convicted_penal_population_by_education_level WHERE year = 2006 AND population_by_education_level = 'Primary';,-1.0,0.0,0.9999999999,0.0,1.0,1
+How many inmates had 'No Education' in 2022?,"In 2022, 64 inmates had no formal education.",SELECT number_of_population FROM convicted_penal_population_by_education_level WHERE year = 2022 AND population_by_education_level = 'No Education';,"According to the data, 64 inmates had 'No Education' in 2022.","SELECT number_of_population 
+FROM convicted_penal_population_by_education_level 
+WHERE year = 2022 AND population_by_education_level = 'No Education';",-1.0,0.0,0.9999999999,0.0,1.0,1
+Did the number of inmates with 'Secondary' education increase or decrease from 2020 to 2021?,"It decreased from 3,426 in 2020 to 2,938 in 2021.","SELECT year, number_of_population FROM convicted_penal_population_by_education_level WHERE year IN (2020, 2021) AND population_by_education_level = 'Secondary';",The number of inmates with 'Secondary' education decreased from 2020 to 2021.,"SELECT 
+  year,
+  population_by_education_level,
+  number_of_population
+FROM 
+  convicted_penal_population_by_education_level
+WHERE 
+  year = 2020 AND population_by_education_level = 'Secondary'
+UNION ALL
+SELECT 
+  year,
+  population_by_education_level,
+  number_of_population
+FROM 
+  convicted_penal_population_by_education_level
+WHERE 
+  year = 2021 AND population_by_education_level = 'Secondary'
+ORDER BY 
+  year DESC;",-1.0,0.0,0.0,0.0,-1.0,0
+"In 2015, which was the most common main offence group?","In 2015, the most common main offence group was Drug Offences with 6,675 cases.",SELECT population_by_main_offence_group FROM convicted_penal_population_by_offence_group WHERE year = 2015 ORDER BY number_of_population DESC LIMIT 1;,"In 2015, the most common main offence group under the Women's Charter was for Offences Relating to Family Law.","SELECT population_by_main_offence_group 
+FROM convicted_penal_population_by_offence_group 
+WHERE year = 2015 
+ORDER BY number_of_population DESC 
+LIMIT 1;",-1.0,0.0,0.0,0.0,1.0,1
+How many 'Drug Offences' were recorded in 2022?,"In 2022, there were 2,867 Drug Offences.",SELECT number_of_population FROM convicted_penal_population_by_offence_group WHERE year = 2022 AND population_by_main_offence_group = 'Drug Offences';,"According to the data, 2867 'Drug Offences' were recorded in 2022.",SELECT number_of_population FROM convicted_penal_population_by_offence_group WHERE LOWER(population_by_main_offence_group) = 'drug offences' AND year = 2022;,-1.0,0.0,0.0,0.0,1.0,1
+What value is listed for 'Customs Offences' in 2008?,"In 2008, the value for Customs Offences was not available (na).",SELECT number_of_population FROM convicted_penal_population_by_offence_group WHERE year = 2008 AND population_by_main_offence_group = 'Customs Offences';,"Unfortunately, the data for 'Customs Offences' in 2008 is not available in the database.","SELECT population_by_main_offence_group
+FROM convicted_penal_population_by_offence_group
+WHERE year = 2008 AND LOWER(population_by_main_offence_group) = 'customs offences';",-1.0,0.0,0.0,0.0,1.0,0
+"In the 2006-2020 data, which age group had the highest population in 2006?","In 2006, the 31‚Äì40 age group had the highest population with 4,003 inmates.",SELECT population_by_age_group FROM convicted_penal_population_by_age_group_2006_2020 WHERE year = 2006 ORDER BY number_of_population DESC LIMIT 1;,"According to the data, the age group with the highest population in 2006 was the 31-40 age group.","SELECT population_by_age_group
+FROM convicted_penal_population_by_age_group_2006_2020
+WHERE year = 2006
+ORDER BY number_of_population DESC
+LIMIT 1;",0.9809701440307078,0.0,0.9999999999,0.0,1.0,1
+How many inmates were 'Below 21' in 2020 according to the 2006-2020 file?,"In 2020, there were 263 inmates in the 'Below 21' age group.",SELECT number_of_population FROM convicted_penal_population_by_age_group_2006_2020 WHERE year = 2020 AND population_by_age_group = 'Below 21';,"According to the 2006-2020 file, there were 263 inmates who were 'Below 21' in 2020.","SELECT number_of_population 
+FROM convicted_penal_population_by_age_group_2006_2020 
+WHERE year = 2020 AND population_by_age_group = 'Below 21';",0.9999983429518693,0.0,0.9999999999,0.0,1.0,1
+"According to the '2020-onwards' data, how many inmates were '19 & below' in 2020?","In 2020, there were 164 inmates aged 19 and below.",SELECT number_of_population FROM convicted_penal_population_by_age_group_2020_onwards WHERE year = 2020 AND population_by_age_group = '19 & below';,"According to the '2020-onwards' data, there were 164 inmates who were '19 & below' in 2020.","SELECT number_of_population 
+FROM convicted_penal_population_by_age_group_2020_onwards 
+WHERE year = 2020 AND population_by_age_group = '19 & below';",0.9842625981850354,0.0,0.9999999999,0.0,1.0,1
+"In 2021, what was the total number of inmates aged 60 and above?","In 2021, the total number of inmates aged 60 and above was 787.",SELECT number_of_population FROM convicted_penal_population_by_age_group_2020_onwards WHERE year = 2021 AND population_by_age_group = '60 years and over';,"Unfortunately, I don't have the specific data on the total number of inmates aged 60 and above in 2021.","SELECT SUM(number_of_population) 
+FROM convicted_penal_population_by_age_group_2020_onwards 
+WHERE year = 2021 AND LOWER(population_by_age_group) LIKE '%60 and above%';",-1.0,0.0,0.0,0.0,-1.0,0
+"In 2012, how many male inmates were convicted for 'Drug Offences'?","In 2012, 5,802 male inmates were convicted for Drug Offences.",SELECT number_of_population FROM convicted_penal_population_by_gender_and_offence_group WHERE year = 2012 AND population_by_gender = 'Male' AND population_by_main_offence_group = 'Drug Offences';,"According to the data, in 2012, there were 5802 male inmates convicted for 'Drug Offences'.  Please note that this data might be specific to a particular region or jurisdiction, and without further context, it's difficult to provide a more detailed answer.","SELECT number_of_population 
+FROM convicted_penal_population_by_gender_and_offence_group 
+WHERE year = 2012 AND population_by_gender = 'Male' AND population_by_main_offence_group = 'Drug Offences';",-1.0,0.3333333333333333,0.9999999999,0.0,1.0,1
+How many female inmates were convicted for 'Commercial Crimes' in 2020?,"In 2020, 67 female inmates were convicted for Commercial Crimes.",SELECT number_of_population FROM convicted_penal_population_by_gender_and_offence_group WHERE year = 2020 AND population_by_gender = 'Female' AND population_by_main_offence_group = 'Commercial Crimes';,"According to the database, 67 female inmates were convicted for 'Commercial Crimes' in 2020.","SELECT number_of_population 
+FROM convicted_penal_population_by_gender_and_offence_group 
+WHERE year = 2020 AND population_by_gender = 'Female' AND population_by_main_offence_group = 'Commercial Crimes';",-1.0,0.0,0.0,0.0,1.0,1
+"In 2018, which offence was most common among female inmates?","In 2018, Drug Offences were most common among female inmates with 609 cases.",SELECT population_by_main_offence_group FROM convicted_penal_population_by_gender_and_offence_group WHERE year = 2018 AND population_by_gender = 'Female' ORDER BY number_of_population DESC LIMIT 1;,"In 2018, drug offences were the most common offence among female inmates.","SELECT population_by_main_offence_group 
+FROM convicted_penal_population_by_gender_and_offence_group 
+WHERE year = 2018 AND population_by_gender = 'Female' 
+ORDER BY number_of_population DESC LIMIT 1;",-1.0,0.0,0.0,0.0,1.0,1
+"In 2014, how many inmates aged 'Below 21' were convicted for 'Property Crimes'?","In 2014, 91 inmates aged 'Below 21' were convicted for Property Crimes.",SELECT number_of_population FROM convicted_penal_population_by_age_group_and_offence_group_2006_2020 WHERE year = 2014 AND population_by_age_group = 'Below 21' AND population_by_main_offence_group = 'Property Crimes';,"In 2014, there were 91 inmates aged 'Below 21' who were convicted for 'Property Crimes'.  #answer #data #statistics #crime #inmates #convictions #property_crimes #age_group #year #2014 #below_21 #convicted #statistics #crime_data #criminal_justice_system #demographics #crime_trends #juvenile_delinquency #youth_crime #property_crime_statistics #juvenile_offenders #criminal_statistics #crime_rates #crime_trends_analysis #criminal_justice_reform #juvenile_justice_system #youth_offending #juvenile_delinquency_prevention #crime_prevention_strategies #criminal_behavior #juvenile_crime #youth_crime_prevention #juvenile_justice_reform #criminal_justice_policy #crime_policy #juvenile_delinquency_intervention #youth_intervention_programs #juvenile_justice_services #youth_services #juvenile_delinquency_treatment #youth_treatment_programs #juvenile_justice_system_reform #youth_justice_system_reform #criminal_justice_system_reform #crime_reform #juvenile_delinquency_reform #youth_delinquency_reform #juvenile_","SELECT number_of_population 
+FROM convicted_penal_population_by_age_group_and_offence_group_2006_2020 
+WHERE year = 2014 AND population_by_age_group = 'Below 21' AND population_by_main_offence_group = 'Property Crimes';",-1.0,0.0,0.9999999999,0.0,1.0,1
+What was the number of inmates aged '>50-60 yrs' for 'Drug Offences' in 2016?,"In 2016, 1,865 inmates aged '>50‚Äì60 yrs' were convicted for Drug Offences.",SELECT number_of_population FROM convicted_penal_population_by_age_group_and_offence_group_2006_2020 WHERE year = 2016 AND population_by_age_group = '>50-60 yrs' AND population_by_main_offence_group = 'Drug Offences';,"According to the data, there were 1865 inmates aged 50-60 years who were convicted of drug offences in 2016.","SELECT number_of_population 
+FROM convicted_penal_population_by_age_group_and_offence_group_2006_2020 
+WHERE year = 2016 AND population_by_age_group = '>50-60 yrs' AND population_by_main_offence_group = 'Drug Offences';",-1.0,0.0,0.9999999999,0.0,1.0,1
+"According to the '2020-onwards' data, how many inmates aged '20-29' were convicted for 'Crimes Against Person' in 2020?","In 2020, 161 inmates aged 20‚Äì29 were convicted for Crimes Against Person.",SELECT number_of_population FROM convicted_penal_population_by_age_group_and_offence_group_2020_onwards WHERE year = 2020 AND population_by_age_group = '20-29' AND population_by_main_offence_group = 'Crimes Against Person';,"According to the '2020-onwards' data, there were 161 inmates aged '20-29' who were convicted for 'Crimes Against Person' in 2020.","SELECT number_of_population 
+FROM convicted_penal_population_by_age_group_and_offence_group_2020_onwards 
+WHERE year = 2020 AND population_by_age_group = '20-29' AND population_by_main_offence_group = 'Crimes Against Person';",-1.0,0.0,0.9999999999,0.0,1.0,1
+"In 2022, which offence had the highest number of cases for the '65 & above' age group?","In 2022, Drug Offences had the highest number of cases (450) for the '65 & above' age group.",SELECT population_by_main_offence_group FROM convicted_penal_population_by_age_group_and_offence_group_2020_onwards WHERE year = 2022 AND population_by_age_group = '65 & above' ORDER BY number_of_population DESC LIMIT 1;,"Unfortunately, I don't have the specific information on the offence with the highest number of cases for the '65 & above' age group in 2022.","SELECT population_by_main_offence_group 
+FROM convicted_penal_population_by_age_group_and_offence_group_2020_onwards 
+WHERE year = 2022 AND population_by_age_group = '65 & above' 
+ORDER BY number_of_population DESC 
+LIMIT 1;",-1.0,1.0,0.9999999999,0.0,1.0,1
+What was the total number of female inmates in 2006?,"In 2006, there were 1,329 female inmates.",SELECT number_of_population FROM convicted_penal_population_by_gender WHERE year = 2006 AND population_by_gender = 'Female';,"According to the data, there were 1329 female inmates in 2006.","SELECT number_of_population 
+FROM convicted_penal_population_by_gender 
+WHERE year = 2006 AND population_by_gender = 'Female';",-1.0,0.0,0.9999999999,0.0,1.0,1
+How many inmates had a 'Vocational' education in 2011?,"In 2011, 612 inmates had a Vocational education.",SELECT number_of_population FROM convicted_penal_population_by_education_level WHERE year = 2011 AND population_by_education_level = 'Vocational';,"According to the data, 612 inmates had a 'Vocational' education in 2011.","SELECT number_of_population 
+FROM convicted_penal_population_by_education_level 
+WHERE year = 2011 AND population_by_education_level = 'Vocational';",-1.0,0.0,0.0,0.0,1.0,1
+"In 2019, how many inmates were convicted for 'Traffic Offences'?","In 2019, there were 39 Traffic Offences.",SELECT number_of_population FROM convicted_penal_population_by_offence_group WHERE year = 2019 AND population_by_main_offence_group = 'Traffic Offences';,"In 2019, 39 inmates were convicted for 'Traffic Offences'.  Please note that the data might be limited or specific to the context in which it was retrieved.","SELECT number_of_population 
+FROM convicted_penal_population_by_offence_group 
+WHERE year = 2019 AND population_by_main_offence_group = 'Traffic Offences';",-1.0,0.5,0.0,0.0,1.0,1
+"In the 2006-2020 data, what was the inmate population for the '51-60' age group in 2013?","In 2013, there were 2,170 inmates in the '51‚Äì60' age group.",SELECT number_of_population FROM convicted_penal_population_by_age_group_2006_2020 WHERE year = 2013 AND population_by_age_group = '51-60';,The inmate population for the '51-60' age group in 2013 was 2170.,"SELECT number_of_population 
+FROM convicted_penal_population_by_age_group_2006_2020 
+WHERE year = 2013 AND population_by_age_group = '51-60';",-1.0,0.0,0.0,0.0,1.0,1
+"From the '2020-onwards' file, how many inmates were in the '50-59' age group in 2022?","In 2022, there were 1,155 inmates in the '50‚Äì59' age group.",SELECT number_of_population FROM convicted_penal_population_by_age_group_2020_onwards WHERE year = 2022 AND population_by_age_group = '50-59';,"According to the data from the '2020-onwards' file, there were 1155 inmates in the '50-59' age group in 2022.","SELECT number_of_population 
+FROM convicted_penal_population_by_age_group_2020_onwards 
+WHERE year = 2022 AND population_by_age_group = '50-59';",-1.0,0.0,0.9999999999,0.0,1.0,1
+How many male inmates were convicted for 'Immigration Offences' in 2013?,"In 2013, 154 male inmates were convicted for Immigration Offences.",SELECT number_of_population FROM convicted_penal_population_by_gender_and_offence_group WHERE year = 2013 AND population_by_gender = 'Male' AND population_by_main_offence_group = 'Immigration Offences';,"According to the database, there was 1 male inmate convicted for 'Immigration Offences' in 2013.","SELECT COUNT(number_of_population) 
+FROM convicted_penal_population_by_gender_and_offence_group 
+WHERE year = 2013 AND population_by_gender = 'Male' AND population_by_main_offence_group = 'Immigration Offences';",-1.0,0.0,0.0,0.0,1.0,0
+How many female inmates were convicted for 'Drug Offences' in 2012?,"In 2012, 485 female inmates were convicted for Drug Offences.",SELECT number_of_population FROM convicted_penal_population_by_gender_and_offence_group WHERE year = 2012 AND population_by_gender = 'Female' AND population_by_main_offence_group = 'Drug Offences';,"According to the data, 485 female inmates were convicted for 'Drug Offences' in 2012.","SELECT number_of_population 
+FROM convicted_penal_population_by_gender_and_offence_group 
+WHERE year = 2012 AND population_by_gender = 'Female' AND population_by_main_offence_group = 'Drug Offences';",-1.0,0.0,0.0,0.0,1.0,1
+"In 2017, how many inmates aged '21-30 yrs' were convicted for 'Property Crimes'?","In 2017, 180 inmates aged '21‚Äì30 yrs' were convicted for Property Crimes.",SELECT number_of_population FROM convicted_penal_population_by_age_group_and_offence_group_2006_2020 WHERE year = 2017 AND population_by_age_group = '21-30 yrs' AND population_by_main_offence_group = 'Property Crimes';,"According to the data, in 2017, there were 180 inmates aged 21-30 years who were convicted for property crimes.","SELECT number_of_population 
+FROM convicted_penal_population_by_age_group_and_offence_group_2006_2020 
+WHERE year = 2017 AND population_by_age_group = '21-30 yrs' AND population_by_main_offence_group = 'Property Crimes';",0.9836110990091887,0.0,0.0,0.0,1.0,1
+How many inmates aged '60 and above' were convicted for 'Crimes Against Person' in 2018?,"In 2018, 63 inmates aged 60 and above were convicted for Crimes Against Person.",SELECT number_of_population FROM convicted_penal_population_by_age_group_and_offence_group_2006_2020 WHERE year = 2018 AND population_by_age_group = '60 and above' AND population_by_main_offence_group = 'Crimes Against Person';,"According to the database, there was 1 inmate aged '60 and above' who was convicted for 'Crimes Against Person' in 2018.","SELECT COUNT(number_of_population) 
+FROM convicted_penal_population_by_age_group_and_offence_group_2006_2020 
+WHERE LOWER(population_by_age_group) = '60 and above' AND LOWER(population_by_main_offence_group) = 'crimes against person' AND year = 2018;",-1.0,0.0,0.9999999999,0.0,1.0,0
+"In 2021, how many '30-39' year-olds were convicted for 'Customs Offences'?","In 2021, 78 inmates aged 30‚Äì39 were convicted for Customs Offences.",SELECT number_of_population FROM convicted_penal_population_by_age_group_and_offence_group_2020_onwards WHERE year = 2021 AND population_by_age_group = '30-39' AND population_by_main_offence_group = 'Customs Offences';,"According to the data, in 2021, 78 individuals who were 30-39 years old were convicted for 'Customs Offences'.  Please note that the data might not be comprehensive or up-to-date, and the actual number could be higher or lower.","SELECT number_of_population 
+FROM convicted_penal_population_by_age_group_and_offence_group_2020_onwards 
+WHERE year = 2021 AND population_by_age_group = '30-39' AND population_by_main_offence_group = 'Customs Offences';",0.0,0.6666666666666666,0.9999999999,0.0,1.0,1
+What was the number of '19 & below' inmates for 'Crimes Against Public Order' in 2020?,"In 2020, there were 16 inmates aged 19 & below convicted for Crimes Against Public Order.",SELECT number_of_population FROM convicted_penal_population_by_age_group_and_offence_group_2020_onwards WHERE year = 2020 AND population_by_age_group = '19 & below' AND population_by_main_offence_group = 'Crimes Against Public Order';,The number of '19 & below' inmates for 'Crimes Against Public Order' in 2020 was 16.,"SELECT number_of_population 
+FROM convicted_penal_population_by_age_group_and_offence_group_2020_onwards 
+WHERE year = 2020 AND population_by_age_group = '19 & below' AND population_by_main_offence_group = 'Crimes Against Public Order';",-1.0,0.0,0.9999999999,0.0,1.0,1
+In what year did the male penal population first drop below 8000?,"It first dropped below 8,000 in 2018 (7,892).",SELECT year FROM convicted_penal_population_by_gender WHERE population_by_gender = 'Male' AND number_of_population < 8000 ORDER BY year ASC LIMIT 1;,The male penal population first dropped below 8000 in 2018.,"SELECT year
+FROM convicted_penal_population_by_gender
+WHERE LOWER(population_by_gender) ='male'
+AND number_of_population < 8000
+ORDER BY year
+LIMIT 1;",-1.0,0.0,0.0,0.0,1.0,1
+What was the lowest number of inmates with 'Pre University' education between 2006-2022?,The lowest was 123 in 2011.,SELECT MIN(number_of_population) FROM convicted_penal_population_by_education_level WHERE population_by_education_level = 'Pre-University';,The lowest number of inmates with 'Pre University' education between 2006-2022 was 123.,"SELECT MIN(number_of_population) 
+FROM convicted_penal_population_by_education_level 
+WHERE population_by_education_level = 'Pre University' AND year BETWEEN 2006 AND 2022;",-1.0,0.0,0.0,0.0,-1.0,0
+Which offence group had the lowest number of convictions in 2021?,"In 2021, Immigration Offences had the lowest count (24).",SELECT population_by_main_offence_group FROM convicted_penal_population_by_offence_group WHERE year = 2021 ORDER BY number_of_population ASC LIMIT 1;,"The offence group with the lowest number of convictions in 2021 was 'Other Offences', with a total of 1,044 convictions.","SELECT population_by_main_offence_group 
+FROM convicted_penal_population_by_offence_group 
+WHERE year = 2021 
+ORDER BY number_of_population ASC 
+LIMIT 1;",-1.0,0.0,0.0,0.0,1.0,1
+"In the 2006-2020 data, when did the '>40-50 yrs' age group peak?","It peaked in 2013 at 3,247 inmates.",SELECT year FROM convicted_penal_population_by_age_group_and_offence_group_2006_2020 WHERE population_by_age_group = '>40-50 yrs' ORDER BY number_of_population DESC LIMIT 1;,"I'm sorry, but I don't have enough information to answer your question about when the '>40-50 yrs' age group peaked in the 2006-2020 data.","SELECT year 
+FROM convicted_penal_population_by_age_group_2006_2020 
+WHERE population_by_age_group = '>40-50 yrs' 
+ORDER BY number_of_population DESC 
+LIMIT 1;",-1.0,1.0,0.0,0.0,-1.0,0
+"In 2019, how many more male inmates than female inmates were convicted for 'Property Crimes'?","In 2019, there were 636 more male than female inmates convicted for Property Crimes (749 vs 113).",SELECT (SELECT number_of_population FROM convicted_penal_population_by_gender_and_offence_group WHERE year = 2019 AND population_by_gender = 'Male' AND population_by_main_offence_group = 'Property Crimes') - (SELECT number_of_population FROM convicted_penal_population_by_gender_and_offence_group WHERE year = 2019 AND population_by_gender = 'Female' AND population_by_main_offence_group = 'Property Crimes');,I was unable to generate a SQL query for this question.,,-1.0,0.0,0.0,0.0,-1.0,0
+What offence had zero cases for females in 2013?,"In 2013, females had zero cases for Traffic Offences.",SELECT population_by_main_offence_group FROM convicted_penal_population_by_gender_and_offence_group WHERE year = 2013 AND population_by_gender = 'Female' AND number_of_population = 0;,"Unfortunately, there were no results found for the number of cases of any offence for females in 2013.","SELECT population_by_main_offence_group 
+FROM convicted_penal_population_by_gender_and_offence_group 
+WHERE year = 2013 AND population_by_gender = 'Females' AND number_of_population = 0;",-1.0,0.0,0.0,0.0,-1.0,0
+How many 'Below 21' inmates had 'Immigration Offences' in 2019?,"In 2019, there were 0 'Below 21' inmates with Immigration Offences.",SELECT number_of_population FROM convicted_penal_population_by_age_group_and_offence_group_2006_2020 WHERE year = 2019 AND population_by_age_group = 'Below 21' AND population_by_main_offence_group = 'Immigration Offences';,There was 1 inmate who was below 21 years old and had committed immigration offences in 2019.,"SELECT COUNT(number_of_population) 
+FROM convicted_penal_population_by_age_group_and_offence_group_2006_2020 
+WHERE LOWER(population_by_age_group) = 'below 21' AND LOWER(population_by_main_offence_group) = 'immigration offences' AND year = 2019;",-1.0,0.0,0.0,0.0,1.0,0
+What was the total number of '60-64' year-old inmates in 2022?,"In 2022, there were 370 inmates aged 60‚Äì64.",SELECT number_of_population FROM convicted_penal_population_by_age_group_2020_onwards WHERE year = 2022 AND population_by_age_group = '60-64';,"According to the data, there were 370 inmates who were '60-64' years old in 2022.","SELECT number_of_population 
+FROM convicted_penal_population_by_age_group_2020_onwards 
+WHERE year = 2022 AND population_by_age_group = '60-64';",-1.0,0.0,0.9999999999,0.0,1.0,1
+"In 2022, what was the total number of inmates aged 70 and above?","In 2022, there were 79 inmates aged 70 and above.",SELECT number_of_population  FROM convicted_penal_population_by_age_group_2020_onwards WHERE year = 2022 AND population_by_age_group = '70-74' AND population_by_age_group = '75 & above';,"Unfortunately, I don't have the specific data on the total number of inmates aged 70 and above in 2022.","SELECT SUM(number_of_population) 
+FROM convicted_penal_population_by_age_group_2020_onwards 
+WHERE year = 2022 AND LOWER(population_by_age_group) = '70 and above';",-1.0,0.0,0.0,0.0,-1.0,0
+How many 'Other Offences' were there for '65 & above' inmates in 2022?,"In 2022, there were 3 'Other Offences' for inmates aged 65 & above.",SELECT number_of_population FROM convicted_penal_population_by_age_group_and_offence_group_2020_onwards WHERE year = 2022 AND population_by_age_group = '65 & above' AND population_by_main_offence_group = 'Other Offences';,There was 1 'Other Offence' recorded for inmates aged '65 & above' in 2022.,"SELECT COUNT(number_of_population) 
+FROM convicted_penal_population_by_age_group_and_offence_group_2020_onwards 
+WHERE year = 2022 AND population_by_age_group = '65 & above' AND population_by_main_offence_group = 'Other Offences';",-1.0,0.0,0.9999999999,0.0,1.0,0
+What was the male population in 2015?,"In 2015, the male inmate population was 8,783.",SELECT number_of_population FROM convicted_penal_population_by_gender WHERE year = 2015 AND population_by_gender = 'Male';,The male population in 2015 was 8783.,"SELECT number_of_population 
+FROM convicted_penal_population_by_gender 
+WHERE year = 2015 AND population_by_gender = 'Male';",-1.0,0.0,0.9999999999,0.0,1.0,1
+What was the female population in 2016?,"In 2016, the female inmate population was 879.",SELECT number_of_population FROM convicted_penal_population_by_gender WHERE year = 2016 AND population_by_gender = 'Female';,The female population in 2016 was 879.,"SELECT number_of_population 
+FROM convicted_penal_population_by_gender 
+WHERE LOWER(population_by_gender) = 'female' AND year = 2016;",-1.0,0.0,0.0,0.0,1.0,0
+How many inmates had 'Tertiary & Above' education in 2013?,"In 2013, 334 inmates had Tertiary & Above education.",SELECT number_of_population FROM convicted_penal_population_by_education_level WHERE year = 2013 AND population_by_education_level = 'Tertiary & Above';,"According to the data, 334 inmates had 'Tertiary & Above' education in 2013.","SELECT number_of_population 
+FROM convicted_penal_population_by_education_level 
+WHERE year = 2013 AND population_by_education_level = 'Tertiary & Above';",0.9999999999999994,0.0,0.9999999999,0.0,1.0,1
+What was the number of 'Crimes Against Person' in 2014?,"In 2014, there were 575 Crimes Against Person.",SELECT number_of_population FROM convicted_penal_population_by_offence_group WHERE year = 2014 AND population_by_main_offence_group = 'Crimes Against Person';,"According to the data, there were 575 'Crimes Against Person' in 2014.",SELECT number_of_population FROM convicted_penal_population_by_offence_group WHERE year = 2014 AND population_by_main_offence_group = 'Crimes Against Person';,-1.0,0.0,0.0,0.0,1.0,1
+What was the number of 'Commercial Crimes' in 2012?,"In 2012, there were 742 Commercial Crimes.",SELECT number_of_population FROM convicted_penal_population_by_offence_group WHERE year = 2012 AND population_by_main_offence_group = 'Commercial Crimes';,I was unable to generate a SQL query for this question.,,-1.0,0.0,0.0,0.0,-1.0,0
+"In 2009, how many inmates were in the '21-30' age group?","In 2009, there were 2,390 inmates aged 21‚Äì30.",SELECT number_of_population FROM convicted_penal_population_by_age_group_2006_2020 WHERE year = 2009 AND population_by_age_group = '21-30';,"In 2009, there were 2390 inmates in the '21-30' age group.",SELECT number_of_population FROM convicted_penal_population_by_age_group_2006_2020 WHERE year = 2009 AND population_by_age_group = '21-30';,-1.0,0.0,0.9999999999,0.0,1.0,1
+How many inmates were aged '31-40' in 2011?,"In 2011, there were 2,714 inmates aged 31‚Äì40.",SELECT number_of_population FROM convicted_penal_population_by_age_group_2006_2020 WHERE year = 2011 AND population_by_age_group = '31-40';,"According to the data, there were 2714 inmates aged '31-40' in 2011.","SELECT number_of_population 
+FROM convicted_penal_population_by_age_group_2006_2020 
+WHERE LOWER(population_by_age_group) = '31-40' AND year = 2011;",0.9967175109106564,0.0,0.0,0.0,1.0,1
+"In 2020, how many '75 & above' inmates were there?","In 2020, there were 11 inmates aged 75 & above.",SELECT number_of_population FROM convicted_penal_population_by_age_group_2020_onwards WHERE year = 2020 AND population_by_age_group = '75 & above';,"In 2020, there were 11 inmates classified as '75 & above'.  Please note that the data might be limited or specific to a particular context, and the answer is based on the provided information.","SELECT number_of_population 
+FROM convicted_penal_population_by_age_group_2020_onwards 
+WHERE year = 2020 AND population_by_age_group = '75 & above';",-1.0,0.3333333333333333,0.9999999999,0.0,1.0,1
+"In 2016, how many male inmates were convicted for 'Crimes Against Public Order'?","In 2016, 143 male inmates were convicted for Crimes Against Public Order.",SELECT number_of_population FROM convicted_penal_population_by_gender_and_offence_group WHERE year = 2016 AND population_by_gender = 'Male' AND population_by_main_offence_group = 'Crimes Against Public Order';,"According to the data, in 2016, there were 143 male inmates convicted for 'Crimes Against Public Order'.  Please note that the data might be specific to a particular region or jurisdiction, and the context of 'Crimes Against Public Order' might vary.","SELECT number_of_population 
+FROM convicted_penal_population_by_gender_and_offence_group 
+WHERE year = 2016 AND population_by_gender = 'Male' AND population_by_main_offence_group = 'Crimes Against Public Order';",-1.0,0.6666666666666666,0.0,0.0,1.0,1
+"In 2017, how many female inmates were convicted for 'Property Crimes'?","In 2017, 107 female inmates were convicted for Property Crimes.",SELECT number_of_population FROM convicted_penal_population_by_gender_and_offence_group WHERE year = 2017 AND population_by_gender = 'Female' AND population_by_main_offence_group = 'Property Crimes';,"According to the data, in 2017, 107 female inmates were convicted for 'Property Crimes'.  Please note that the data provided is limited to a single number and does not offer any context or explanation about the nature of these crimes or the demographics of the inmates.","SELECT number_of_population 
+FROM convicted_penal_population_by_gender_and_offence_group 
+WHERE year = 2017 AND population_by_gender = 'Female' AND population_by_main_offence_group = 'Property Crimes';",-1.0,0.0,0.0,0.0,1.0,1
+"In 2012, how many inmates aged '21-30 yrs' were convicted for 'Commercial Crimes'?","In 2012, 232 inmates aged 21‚Äì30 yrs were convicted for Commercial Crimes.",SELECT number_of_population FROM convicted_penal_population_by_age_group_and_offence_group_2006_2020 WHERE year = 2012 AND population_by_age_group = '21-30 yrs' AND population_by_main_offence_group = 'Commercial Crimes';,"According to the database, in 2012, there were 232 inmates aged '21-30 yrs' who were convicted for 'Commercial Crimes'.  Please note that the data provided is limited to the year 2012 and the specific age group and crime category mentioned.","SELECT number_of_population 
+FROM convicted_penal_population_by_age_group_and_offence_group_2006_2020 
+WHERE year = 2012 AND population_by_age_group = '21-30 yrs' AND population_by_main_offence_group = 'Commercial Crimes';",0.9830383177034706,0.0,0.9999999999,0.0,1.0,1
+How many '60 and above' inmates had 'Customs Offences' in 2012?,"In 2012, 11 inmates aged 60 and above had Customs Offences.",SELECT number_of_population FROM convicted_penal_population_by_age_group_and_offence_group_2006_2020 WHERE year = 2012 AND population_by_age_group = '60 and above' AND population_by_main_offence_group = 'Customs Offences';,"According to the database, there was 1 inmate who was 60 or above and had a conviction for 'Customs Offences' in 2012.","SELECT COUNT(number_of_population) 
+FROM convicted_penal_population_by_age_group_and_offence_group_2006_2020 
+WHERE LOWER(population_by_age_group) = '60 and above' AND LOWER(population_by_main_offence_group) = 'customs offences' AND year = 2012;",-1.0,0.0,0.9999999999,0.0,1.0,0
+"In 2020, how many inmates aged '40-49' were convicted for 'Property Crimes'?","In 2020, 153 inmates aged 40‚Äì49 were convicted for Property Crimes.",SELECT number_of_population FROM convicted_penal_population_by_age_group_and_offence_group_2020_onwards WHERE year = 2020 AND population_by_age_group = '40-49' AND population_by_main_offence_group = 'Property Crimes';,"According to the data, in 2020, there were 153 inmates aged '40-49' who were convicted for 'Property Crimes'.  Please note that the data provided is limited to a single number and does not offer any additional context or details about the inmates or the crimes.","SELECT number_of_population 
+FROM convicted_penal_population_by_age_group_and_offence_group_2020_onwards 
+WHERE year = 2020 
+AND population_by_age_group = '40-49' 
+AND population_by_main_offence_group = 'Property Crimes';",-1.0,0.0,0.9999999999,0.0,1.0,1
+What was the 'Drug Offences' population for the '60-64' age group in 2020?,"In 2020, there were 421 Drug Offences among inmates aged 60‚Äì64.",SELECT number_of_population FROM convicted_penal_population_by_age_group_and_offence_group_2020_onwards WHERE year = 2020 AND population_by_age_group = '60-64' AND population_by_main_offence_group = 'Drug Offences';,The 'Drug Offences' population for the '60-64' age group in 2020 was 421.,"SELECT number_of_population 
+FROM convicted_penal_population_by_age_group_and_offence_group_2020_onwards 
+WHERE year = 2020 AND population_by_age_group = '60-64' AND population_by_main_offence_group = 'Drug Offences';",-1.0,0.0,0.9999999999,0.0,1.0,1
+What year had the highest female penal population?,The female penal population was highest in 2010 (998).,SELECT year FROM convicted_penal_population_by_gender WHERE population_by_gender = 'Female' ORDER BY number_of_population DESC LIMIT 1;,The year with the highest female penal population was 2006.,"SELECT year 
+FROM convicted_penal_population_by_gender 
+WHERE LOWER(population_by_gender) = 'female' 
+ORDER BY number_of_population DESC 
+LIMIT 1;",0.9992900670590292,0.0,0.0,0.0,1.0,1
+"Across all years, which education level consistently had the highest population?","Across all years, Secondary education consistently had the highest population.",SELECT * FROM convicted_penal_population_by_education_level;,"Across all years, the education level that consistently had the highest population was secondary.","SELECT population_by_education_level 
+FROM convicted_penal_population_by_education_level 
+WHERE number_of_population = ( SELECT MAX(number_of_population) 
+                              FROM convicted_penal_population_by_education_level );",-1.0,0.0,0.9999999999,0.0,-1.0,0
+Which offence had zero cases for 'Crimes Under Women's Charter' starting from 2019?,"From 2019 onwards, Crimes Under Women's Charter had zero cases.",SELECT * FROM convicted_penal_population_by_offence_group WHERE year >= 2019 AND number_of_population = 0;,There were zero cases for 'Crimes Under Women's Charter' in 2019.,"SELECT year, population_by_main_offence_group 
+FROM convicted_penal_population_by_offence_group 
+WHERE population_by_main_offence_group = 'Crimes Under Women''s Charter' AND year >= 2019 AND number_of_population = 0;",-1.0,0.0,0.0,0.0,1.0,0
+What was the first year the 'Below 21' population dropped under 400?,It first dropped under 400 in 2012 (344).,SELECT year FROM convicted_penal_population_by_age_group_2006_2020 WHERE population_by_age_group = 'Below 21' AND number_of_population < 400 ORDER BY year ASC LIMIT 1;,The 'Below 21' population dropped under 400 in 2012.,"SELECT MIN(year) 
+FROM convicted_penal_population_by_age_group_2006_2020 
+WHERE LOWER(population_by_age_group) = 'below 21' AND number_of_population < 400;",-1.0,0.0,0.0,0.0,1.0,0
+"In 2021, what was the total number of inmates?","In 2021, the total inmate population was 5,945 (5,374 male + 571 female).",SELECT SUM(number_of_population) FROM convicted_penal_population_by_gender WHERE year = 2021;,"As of 2021, the total number of inmates was 5374.",SELECT number_of_population FROM convicted_penal_population_by_gender WHERE year = 2021;,-1.0,0.0,0.0,0.0,0.6666666666666666,0
+"In 2022, what was the total population for 'Drug Offences' across both genders?","In 2022, there were 2,867 Drug Offences across both genders (2,615 male + 252 female).",SELECT SUM(number_of_population) FROM convicted_penal_population_by_gender_and_offence_group WHERE year = 2022 AND population_by_main_offence_group = 'Drug Offences';,The total population for 'Drug Offences' across both genders in 2022 was 2867.,"SELECT SUM(number_of_population) 
+FROM convicted_penal_population_by_gender_and_offence_group 
+WHERE year = 2022 AND population_by_main_offence_group = 'Drug Offences';",0.9921957625620025,0.0,0.0,0.0,1.0,1
+"In 2020, how many 'Below 21' inmates were convicted of 'Drug Offences'?","In 2020, 73 inmates 'Below 21' were convicted of Drug Offences.",SELECT number_of_population FROM convicted_penal_population_by_age_group_and_offence_group_2006_2020 WHERE year = 2020 AND population_by_age_group = 'Below 21' AND population_by_main_offence_group = 'Drug Offences';,"Unfortunately, I don't have the specific information on the number of 'Below 21' inmates convicted of 'Drug Offences' in 2020.","SELECT number_of_population 
+FROM convicted_penal_population_by_age_group_and_offence_group_2020_onwards 
+WHERE year = 2020 AND population_by_age_group = 'Below 21' AND population_by_main_offence_group = 'Drug Offences';",-1.0,0.0,0.0,0.0,-1.0,0
+"In the 'onwards' file for 2020, how many '19 & below' inmates had 'Drug Offences'?","In 2020, 47 inmates aged 19 & below had Drug Offences.",SELECT number_of_population FROM convicted_penal_population_by_age_group_and_offence_group_2020_onwards WHERE year = 2020 AND population_by_age_group = '19 & below' AND population_by_main_offence_group = 'Drug Offences';,"According to the 'onwards' file for 2020, there were 3 inmates who were '19 & below' and had 'Drug Offences'.  Please note that the answer is based on the provided data and might not reflect the actual number of inmates.","SELECT COUNT(number_of_population) 
+FROM convicted_penal_population_by_age_group_and_offence_group_2020_onwards 
+WHERE LOWER(population_by_age_group) = '19 & below' AND LOWER(population_by_main_offence_group) = 'drug offences';",-1.0,0.6666666666666666,0.9999999999,0.0,1.0,0
+How many total inmates were there in 2006?,"In 2006, there were 11,272 inmates in total.",SELECT SUM(number_of_population) FROM convicted_penal_population_by_gender WHERE year = 2006;,There were a total of 562 inmates in 2006.,SELECT number_of_population FROM convicted_penal_population_by_age_group_2006_2020 WHERE year = 2006;,0.9913371042308085,0.0,0.0,0.0,0.2857142857142857,0
+What was the change in population for inmates with 'Vocational' training from 2018 to 2019?,"It increased by 24, from 750 in 2018 to 774 in 2019.","SELECT * FROM convicted_penal_population_by_education_level WHERE year IN (2018, 2019);",I was unable to generate a SQL query for this question.,,0.0,0.0,0.0,0.0,-1.0,0
+"In 2022, how many inmates were convicted for 'Crimes Against Person'?","In 2022, 726 inmates were convicted for Crimes Against Person.",SELECT number_of_population FROM convicted_penal_population_by_offence_group WHERE year = 2022 AND population_by_main_offence_group = 'Crimes Against Person';,"According to the data, in 2022, 726 inmates were convicted for 'Crimes Against Person'.  Please note that the data might not reflect the most up-to-date information, and the context of the question is assumed to be within the scope of the provided data.","SELECT number_of_population 
+FROM convicted_penal_population_by_offence_group 
+WHERE year = 2022 AND population_by_main_offence_group = 'Crimes Against Person';",0.0,0.6666666666666666,0.0,0.0,1.0,1
+What was the population of '31-40' year olds in 2018?,"In 2018, there were 1,856 inmates aged 31‚Äì40.",SELECT number_of_population FROM convicted_penal_population_by_age_group_2006_2020 WHERE year = 2018 AND population_by_age_group = '31-40';,The population of '31-40' year olds in 2018 was 1856.,"SELECT number_of_population 
+FROM convicted_penal_population_by_age_group_2006_2020 
+WHERE LOWER(population_by_age_group) = '31-40' AND year = 2018;",0.9999950724080526,0.0,0.0,0.0,1.0,0
+What was the population of '30-39' year olds in 2022?,"In 2022, there were 1,168 inmates aged 30‚Äì39.",SELECT number_of_population FROM convicted_penal_population_by_age_group_2020_onwards WHERE year = 2022 AND population_by_age_group = '30-39';,The population of '30-39' year olds in 2022 was 1168.,"SELECT number_of_population 
+FROM convicted_penal_population_by_age_group_2020_onwards 
+WHERE year = 2022 AND population_by_age_group = '30-39';",0.9999984457413897,0.0,0.9999999999,0.0,1.0,1
+"In 2021, how many male inmates were convicted for 'Property Crimes'?","In 2021, 561 male inmates were convicted for Property Crimes.",SELECT number_of_population FROM convicted_penal_population_by_gender_and_offence_group WHERE year = 2021 AND population_by_gender = 'Male' AND population_by_main_offence_group = 'Property Crimes';,"According to the data, in 2021, there were 561 male inmates convicted for 'Property Crimes'.  Please note that the data only includes the number of male inmates and does not provide information on the total number of inmates convicted for 'Property Crimes' or any other demographic breakdown.","SELECT number_of_population 
+FROM convicted_penal_population_by_gender_and_offence_group 
+WHERE year = 2021 AND population_by_gender = 'Male' AND population_by_main_offence_group = 'Property Crimes';",0.0,0.0,0.0,0.0,1.0,1
+"In 2015, how many inmates aged '>30-40 yrs' were convicted for 'Drug Offences'?","In 2015, 1,348 inmates aged >30‚Äì40 yrs were convicted for Drug Offences.",SELECT number_of_population FROM convicted_penal_population_by_age_group_and_offence_group_2006_2020 WHERE year = 2015 AND population_by_age_group = '>30-40 yrs' AND population_by_main_offence_group = 'Drug Offences';,"According to the data, in 2015, there were 1348 inmates aged between 30-40 years who were convicted for drug offences.","SELECT number_of_population 
+FROM convicted_penal_population_by_age_group_and_offence_group_2006_2020 
+WHERE year = 2015 AND population_by_age_group = '>30-40 yrs' AND population_by_main_offence_group = 'Drug Offences';",0.9753667397035158,0.0,0.9999999999,0.0,1.0,1
+"In 2022, how many '50-59' year olds had 'Drug Offences'?","In 2022, 1,739 inmates aged 50‚Äì59 had Drug Offences.",SELECT number_of_population FROM convicted_penal_population_by_age_group_and_offence_group_2020_onwards WHERE year = 2022 AND population_by_age_group = '50-59' AND population_by_main_offence_group = 'Drug Offences';,"According to the data, in 2022, there were 1739 individuals who were 50-59 years old and had been involved in 'Drug Offences'.  Please note that the data might not be comprehensive or up-to-date, and the actual number could be higher due to various factors.","SELECT number_of_population 
+FROM convicted_penal_population_by_age_group_and_offence_group_2020_onwards 
+WHERE year = 2022 AND population_by_age_group = '50-59' AND population_by_main_offence_group = 'Drug Offences';",-1.0,0.3333333333333333,0.9999999999,0.0,1.0,1
+"In which year did the total population of male inmates recorded as 9,673?","The total male inmate population of 9,673 was recorded in 2008.",SELECT number_of_population FROM convicted_penal_population_by_gender WHERE year = 2008 AND population_by_gender = 'Male';,"The total population of male inmates was recorded as 9,673 in the year 2008.","SELECT year 
+FROM convicted_penal_population_by_gender 
+WHERE LOWER(population_by_gender) ='male' AND number_of_population = 9673;",-1.0,0.0,0.0,0.0,1.0,0
+How many inmates had 'Pre University' education in 2018?,"In 2018, 258 inmates had Pre University education.",SELECT number_of_population FROM convicted_penal_population_by_education_level WHERE year = 2018 AND population_by_education_level = 'Pre-University';,"According to the data, 258 inmates had 'Pre University' education in 2018.","SELECT number_of_population 
+FROM convicted_penal_population_by_education_level 
+WHERE year = 2018 AND population_by_education_level = 'Pre University';",-1.0,0.0,0.9999999999,0.0,-1.0,0
+What was the number of 'Immigration Offences' in 2016?,"In 2016, there were 123 Immigration Offences.",SELECT number_of_population FROM convicted_penal_population_by_offence_group WHERE year = 2016 AND population_by_main_offence_group = 'Immigration Offences';,"According to the data, there were 123 'Immigration Offences' in 2016.","SELECT number_of_population 
+FROM convicted_penal_population_by_offence_group 
+WHERE LOWER(population_by_main_offence_group) = 'immigration offences' AND year = 2016;",-1.0,0.0,0.0,0.0,1.0,0
+How many inmates were aged '41-50' in 2017?,"In 2017, there were 2,555 inmates aged 41‚Äì50.",SELECT number_of_population FROM convicted_penal_population_by_age_group_2006_2020 WHERE year = 2017 AND population_by_age_group = '41-50';,"According to the data, there were 2555 inmates aged '41-50' in 2017.","SELECT number_of_population 
+FROM convicted_penal_population_by_age_group_2006_2020 
+WHERE year = 2017 AND population_by_age_group = '41-50';",-1.0,0.0,0.9999999999,0.0,1.0,1
+How many inmates were aged '40-49' in 2021?,"In 2021, there were 1,298 inmates aged 40‚Äì49.",SELECT number_of_population FROM convicted_penal_population_by_age_group_2020_onwards WHERE year = 2021 AND population_by_age_group = '40-49';,"According to the data, there were 1298 inmates aged '40-49' in 2021.","SELECT number_of_population 
+FROM convicted_penal_population_by_age_group_2020_onwards 
+WHERE LOWER(population_by_age_group) = '40-49' AND year = 2021;",-1.0,0.0,0.0,0.0,1.0,0
+"In 2022, how many female inmates were convicted of 'Immigration Offences'?","In 2022, 14 female inmates were convicted of Immigration Offences.",SELECT number_of_population FROM convicted_penal_population_by_gender_and_offence_group WHERE year = 2022 AND population_by_gender = 'Female' AND population_by_main_offence_group = 'Immigration Offences';,"According to the data, in 2022, there were 14 female inmates convicted of 'Immigration Offences'.  Please note that the data might be limited to the specific database or source used.","SELECT number_of_population 
+FROM convicted_penal_population_by_gender_and_offence_group 
+WHERE year = 2022 AND population_by_gender = 'Female' AND population_by_main_offence_group = 'Immigration Offences';",-1.0,0.5,0.0,0.0,1.0,1
+"In 2019, how many inmates aged '21-30 yrs' were convicted for 'Drug Offences'?","In 2019, 685 inmates aged 21‚Äì30 yrs were convicted for Drug Offences.",SELECT number_of_population FROM convicted_penal_population_by_age_group_and_offence_group_2006_2020 WHERE year = 2019 AND population_by_age_group = '21-30 yrs' AND population_by_main_offence_group = 'Drug Offences';,"According to the data, in 2019, there were 685 inmates aged '21-30 yrs' who were convicted for 'Drug Offences'.  Please note that the data provided is a single number and does not include any additional context or information that might be useful for a more comprehensive understanding of the topic.","SELECT number_of_population 
+FROM convicted_penal_population_by_age_group_and_offence_group_2006_2020 
+WHERE year = 2019 AND population_by_age_group = '21-30 yrs' AND population_by_main_offence_group = 'Drug Offences';",-1.0,0.0,0.0,0.0,1.0,1
+"In 2021, how many '20-29' year olds were convicted of 'Drug Offences'?","In 2021, 1,405 inmates aged 20‚Äì29 were convicted of Drug Offences.",SELECT number_of_population FROM convicted_penal_population_by_age_group_and_offence_group_2020_onwards WHERE year = 2021 AND population_by_age_group = '20-29' AND population_by_main_offence_group = 'Drug Offences';,"According to the data, in 2021, 1405 individuals in the '20-29' age group were convicted of 'Drug Offences'.  Please note that this information is based on the data provided and might not reflect the actual number of convictions, as it could be a snapshot or a specific dataset.","SELECT number_of_population 
+FROM convicted_penal_population_by_age_group_and_offence_group_2020_onwards 
+WHERE year = 2021 AND population_by_age_group = '20-29' AND population_by_main_offence_group = 'Drug Offences';",0.0,0.0,0.9999999999,0.0,1.0,1
+Which year had the lowest number of female inmates?,The lowest number of female inmates was in 2022 (464).,SELECT year FROM convicted_penal_population_by_gender WHERE population_by_gender = 'Female' ORDER BY number_of_population ASC LIMIT 1;,The year with the lowest number of female inmates was 2022.,"SELECT year 
+FROM convicted_penal_population_by_gender 
+WHERE LOWER(population_by_gender) = 'female' 
+ORDER BY number_of_population ASC 
+LIMIT 1;",-1.0,0.0,0.9999999999,0.0,1.0,1
+What was the total number of inmates in 2022?,"In 2022, the total inmate population was 5,038.",SELECT SUM(number_of_population) FROM convicted_penal_population_by_gender WHERE year = 2022;,The total number of inmates in 2022 was 4574.,SELECT number_of_population FROM convicted_penal_population_by_gender WHERE year = 2022;,-1.0,0.0,0.0,0.0,0.6666666666666666,0
+What education level had 258 individuals in 2006?,"In 2006, 258 inmates had Pre University education.",SELECT * FROM convicted_penal_population_by_education_level WHERE year = 2006 AND number_of_population = 258;,"In 2006, there were 258 individuals with a Pre University education level.",SELECT population_by_education_level FROM convicted_penal_population_by_education_level WHERE year = 2006 AND number_of_population = 258;,-1.0,0.0,0.9999999999,0.0,1.0,0
+Which offence group had 145 cases in 2019?,"In 2019, Crimes Against Public Order recorded 145 cases.",SELECT * FROM convicted_penal_population_by_offence_group WHERE year = 2019 AND number_of_population = 145;,The offence group that had 145 cases in 2019 was Crimes Against Public Order.,"SELECT population_by_main_offence_group 
+FROM convicted_penal_population_by_offence_group 
+WHERE year = 2019 AND number_of_population = 145;",-1.0,0.0,0.0,0.0,1.0,0
+"In 2019, which age group had 1,347 individuals?","In 2019, the 21‚Äì30 age group had 1,347 individuals.",SELECT population_by_age_group FROM convicted_penal_population_by_age_group_2006_2020 WHERE year = 2019 AND number_of_population = 1347;,"In 2019, the age group of 21-30 had 1,347 individuals.",SELECT population_by_age_group FROM convicted_penal_population_by_age_group_2006_2020 WHERE year = 2019 AND number_of_population = 1347;,-1.0,0.0,0.9999999999,0.0,1.0,1
+"Which age group had 1,364 individuals in 2021?","In 2021, the 50‚Äì59 age group had 1,364 individuals.",SELECT population_by_age_group FROM convicted_penal_population_by_age_group_2020_onwards WHERE year = 2021 AND number_of_population = 1364 LIMIT 1;,"The age group of 50-59 had 1,364 individuals in 2021.","SELECT population_by_age_group 
+FROM convicted_penal_population_by_age_group_2020_onwards 
+WHERE year = 2021 AND number_of_population = 1364;",-1.0,0.0,0.9999999999,0.0,1.0,0
+"In 2019, for which offence did male inmates number 263?","In 2019, male inmates numbered 263 for Customs Offences.",SELECT population_by_main_offence_group FROM convicted_penal_population_by_gender_and_offence_group WHERE year = 2019 AND population_by_gender = 'Male' AND number_of_population = 263;,"In 2019, male inmates numbered 263 for the offence of Customs Offences.","SELECT population_by_main_offence_group 
+FROM convicted_penal_population_by_gender_and_offence_group 
+WHERE year = 2019 AND population_by_gender = 'Male' AND number_of_population = 263;",-1.0,0.0,0.0,0.0,1.0,1
+"In 2020, for which offence did female inmates number 7?","In 2020, female inmates numbered 7 for Immigration Offences and Other Offences.",SELECT population_by_main_offence_group FROM convicted_penal_population_by_gender_and_offence_group WHERE year = 2020 AND population_by_gender = 'Female' AND number_of_population = 7 LIMIT 1;,"An error occurred while executing the SQL query: (sqlite3.OperationalError) no such table: convicted_penal_population_by_gender_and_offence_group_2020_onwards
+[SQL: SELECT population_by_main_offence_group 
+FROM convicted_penal_population_by_gender_and_offence_group_2020_onwards 
+WHERE year = 2020 AND population_by_gender = 'Female' AND number_of_population = 7;]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)","SELECT population_by_main_offence_group 
+FROM convicted_penal_population_by_gender_and_offence_group_2020_onwards 
+WHERE year = 2020 AND population_by_gender = 'Female' AND number_of_population = 7;",-1.0,0.0,0.9999999999,0.0,-1.0,0
+How many inmates aged '>40-50 yrs' were convicted for 'Other Offences' in 2015?,"In 2015, 69 inmates aged >40‚Äì50 yrs were convicted for Other Offences.",SELECT number_of_population FROM convicted_penal_population_by_age_group_and_offence_group_2006_2020 WHERE year = 2015 AND population_by_age_group = '>40-50 yrs' AND population_by_main_offence_group = 'Other Offences';,"According to the database, there was 1 inmate aged between 40-50 years who was convicted for 'Other Offences' in 2015.","SELECT COUNT(number_of_population) 
+FROM convicted_penal_population_by_age_group_and_offence_group_2006_2020 
+WHERE year = 2015 AND population_by_age_group = '>40-50 yrs' AND population_by_main_offence_group = 'Other Offences';",-1.0,0.0,0.9999999999,0.0,1.0,0
+How many inmates aged '>50-60 yrs' had 'Property Crimes' in 2020?,"In 2020, 132 inmates aged >50‚Äì60 yrs had Property Crimes.",SELECT number_of_population FROM convicted_penal_population_by_age_group_and_offence_group_2006_2020 WHERE year = 2020 AND population_by_age_group = '>50-60 yrs' AND population_by_main_offence_group = 'Property Crimes';,There were 0 inmates aged between 50-60 years old who committed property crimes in 2020.,"SELECT COUNT(number_of_population) 
+FROM convicted_penal_population_by_age_group_and_offence_group_2020_onwards 
+WHERE year = 2020 AND population_by_age_group = '>50-60 yrs' AND population_by_main_offence_group = 'Property Crimes';",-1.0,0.0,0.9999999999,0.0,1.0,0
+"In 2021, how many '65 & above' inmates were convicted of 'Property Crimes'?","In 2021, 21 inmates aged 65 & above were convicted of Property Crimes.",SELECT number_of_population FROM convicted_penal_population_by_age_group_and_offence_group_2020_onwards WHERE year = 2021 AND population_by_age_group = '65 & above' AND population_by_main_offence_group = 'Property Crimes';,"In 2021, there were 21 inmates aged '65 & above' who were convicted of 'Property Crimes'.  Please note that the data provided is limited to a single number and does not offer any additional context or information.","SELECT number_of_population 
+FROM convicted_penal_population_by_age_group_and_offence_group_2020_onwards 
+WHERE year = 2021 AND population_by_age_group = '65 & above' AND population_by_main_offence_group = 'Property Crimes';",-1.0,0.0,0.0,0.0,1.0,1
+How many '30-39' year olds were convicted of 'Traffic Offences' in 2022?,"In 2022, 33 inmates aged 30‚Äì39 were convicted of Traffic Offences.",SELECT number_of_population FROM convicted_penal_population_by_age_group_and_offence_group_2020_onwards WHERE year = 2022 AND population_by_age_group = '30-39' AND population_by_main_offence_group = 'Traffic Offences';,"According to the database, there was 1 '30-39' year old convicted of 'Traffic Offences' in 2022.","SELECT COUNT(number_of_population) 
+FROM convicted_penal_population_by_age_group_and_offence_group_2020_onwards 
+WHERE LOWER(population_by_age_group) = '30-39' AND LOWER(population_by_main_offence_group) = 'traffic offences' AND year = 2022;",-1.0,0.0,0.9999999999,0.0,1.0,0
+What was the male population in 2021?,"In 2021, the male inmate population was 5,374.",SELECT number_of_population FROM convicted_penal_population_by_gender WHERE year = 2021 AND population_by_gender = 'Male';,The male population in 2021 was 5374.,"SELECT number_of_population 
+FROM convicted_penal_population_by_gender 
+WHERE year = 2021 AND population_by_gender = 'Male';",-1.0,0.0,0.0,0.0,1.0,1
+How many inmates had a 'Primary' education in 2021?,"In 2021, 1,656 inmates had a Primary education.",SELECT number_of_population FROM convicted_penal_population_by_education_level WHERE year = 2021 AND population_by_education_level = 'Primary';,"According to the data, 1656 inmates had a 'Primary' education in 2021.","SELECT number_of_population 
+FROM convicted_penal_population_by_education_level 
+WHERE year = 2021 AND population_by_education_level = 'Primary';",0.9999972631450328,0.0,0.9999999999,0.0,1.0,1
+What was the number of 'Property Crimes' in 2021?,"In 2021, there were 639 Property Crimes.",SELECT number_of_population FROM convicted_penal_population_by_offence_group WHERE year = 2021 AND population_by_main_offence_group = 'Property Crimes';,I was unable to generate a SQL query for this question.,,-1.0,0.0,0.0,0.0,-1.0,0
+How many inmates were aged '60 Above' in 2014?,"In 2014, there were 418 inmates aged 60 and above.",SELECT number_of_population FROM convicted_penal_population_by_age_group_2006_2020 WHERE year = 2014 AND population_by_age_group = '60 Above';,"According to the data, there were 418 inmates aged '60 Above' in 2014.","SELECT number_of_population 
+FROM convicted_penal_population_by_age_group_2006_2020 
+WHERE LOWER(population_by_age_group) = '60 above' AND year = 2014;",-1.0,0.0,0.9999999999,0.0,1.0,1
+"In 2014, how many female inmates were convicted for 'Commercial Crimes'?","In 2014, 79 female inmates were convicted for Commercial Crimes.",SELECT number_of_population FROM convicted_penal_population_by_gender_and_offence_group WHERE year = 2014 AND population_by_gender = 'Female' AND population_by_main_offence_group = 'Commercial Crimes';,"According to the data, in 2014, 79 female inmates were convicted for 'Commercial Crimes'.  Please note that the data might be limited to a specific jurisdiction or region, and the exact number might not be comprehensive globally.","SELECT number_of_population 
+FROM convicted_penal_population_by_gender_and_offence_group 
+WHERE year = 2014 AND population_by_gender = 'Female' AND population_by_main_offence_group = 'Commercial Crimes';",0.0,0.6666666666666666,0.0,0.0,1.0,1
+"In 2014, how many male inmates were convicted for 'Commercial Crimes'?","In 2014, 458 male inmates were convicted for Commercial Crimes.",SELECT number_of_population FROM convicted_penal_population_by_gender_and_offence_group WHERE year = 2014 AND population_by_gender = 'Male' AND population_by_main_offence_group = 'Commercial Crimes';,"According to the data, in 2014, there were 458 male inmates convicted for 'Commercial Crimes'.  Please note that the data provided is limited to the year 2014 and might not reflect the overall trend or the current situation.","SELECT number_of_population 
+FROM convicted_penal_population_by_gender_and_offence_group 
+WHERE year = 2014 AND population_by_gender = 'Male' AND population_by_main_offence_group = 'Commercial Crimes';",-1.0,0.5,0.0,0.0,1.0,1
+"In 2013, which was the least common offence for inmates aged 'Below 21'?","In 2013, the least common offence among inmates 'Below 21' was Traffic Offences (2).",SELECT number_of_population FROM convicted_penal_population_by_age_group_and_offence_group_2006_2020 WHERE year = 2013 AND population_by_age_group = 'Below 21' ORDER BY number_of_population ASC LIMIT 1;,"Unfortunately, I don't have the specific information on the least common offence for inmates aged 'Below 21' in 2013.","SELECT population_by_main_offence_group 
+FROM convicted_penal_population_by_age_group_and_offence_group_2006_2020 
+WHERE year = 2013 AND population_by_age_group = 'Below 21' 
+ORDER BY number_of_population ASC 
+LIMIT 1;",-1.0,0.0,0.0,0.0,1.0,0
+"In 2022, what was the least common offence for inmates aged '19 & below'?","In 2022, the least common offences among inmates aged 19 & below were Customs Offences and Immigration Offences (1 each).",SELECT number_of_population FROM convicted_penal_population_by_age_group_and_offence_group_2020_onwards WHERE year = 2022 AND population_by_age_group = '19 & below' ORDER BY number_of_population ASC LIMIT 1;,"Unfortunately, I do not have the specific information on the least common offence for inmates aged '19 & below' in 2022.","SELECT population_by_main_offence_group 
+FROM convicted_penal_population_by_age_group_and_offence_group_2020_onwards 
+WHERE year = 2022 AND population_by_age_group = '19 & below' 
+ORDER BY number_of_population ASC 
+LIMIT 1;",-1.0,0.0,0.0,0.0,1.0,0
+What was the total inmate population in 2020 based on the by-gender file?,"In 2020, the total inmate population was 6,934 (6,249 male + 685 female).",SELECT SUM(number_of_population) FROM convicted_penal_population_by_gender WHERE year = 2020;,The total inmate population in 2020 was 6249 inmates.,"SELECT number_of_population 
+FROM convicted_penal_population_by_gender 
+WHERE year = 2020;",-1.0,0.0,0.0,0.0,0.6666666666666666,0
+What was the total inmate population in 2020 based on the 'onwards' by-age-group file?,"In 2020, the total inmate population was 6,934.",SELECT SUM(number_of_population) FROM convicted_penal_population_by_age_group_2020_onwards WHERE year = 2020;,"The total inmate population in 2020, based on the 'onwards' by-age-group file, was 164.",SELECT number_of_population FROM convicted_penal_population_by_age_group_2020_onwards WHERE year = 2020;,-1.0,0.0,0.0,0.0,0.19999999999999998,0
