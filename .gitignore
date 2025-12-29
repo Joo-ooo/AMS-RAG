@@ -12,4 +12,4 @@ __pycache__/
 # Ignore local-only folders
 Python\ Scripts/
 Credentials
-RAW_SQL
+RAW_SQL.env
