@@ -13,3 +13,5 @@ __pycache__/
 Python\ Scripts/
 Credentials
 RAW_SQL.env
+models
+Experimenting

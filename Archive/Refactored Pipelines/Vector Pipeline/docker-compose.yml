@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  chroma-server:
+    image: chromadb/chroma:latest
+    container_name: chroma-server
+    ports:
+      - "8000:8000"
+    volumes:
+      # This maps a folder named "chroma_db_data" in your current directory
+      # to the container's storage. This ensures your index is saved locally.
+      - ./chroma_db_data:/chroma/chroma
+    environment:
+      - IS_PERSISTENT=TRUE
+    restart: always
