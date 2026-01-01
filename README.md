@@ -29,7 +29,6 @@ Tech Stack: Text-to-Cypher generation grounded by Entity Disambiguation and Sche
 The repository is organized into three main directories: **Agent** for the active application, **Datasets** for data management, and **Archive** for development history and benchmarks.
 
 ```plaintext
-
 ├── Agent/                  # Unified pipeline and web interface
 │   ├── app.py              # Streamlit web application
 │   └── agent.py            # Agent Pipeline
@@ -66,7 +65,6 @@ Neo4j Desktop (for Graph Database)
 1) Clone the repository
 
 ```plaintext
-
 git clone https://sgts.gitlab-dedicated.com/wog/htx/htxdsaicoga/rnd/rnd-interns/heng-joo-capstone.git
 cd heng-joo-capstone
 ```
@@ -74,7 +72,6 @@ cd heng-joo-capstone
 2) Install Dependencies
 
 ```plaintext
-
 poetry install
 ```
 
@@ -82,7 +79,6 @@ poetry install
 Create a .env file in the root directory and add your necessary API keys and database credentials:
 
 ```plaintext
-
 Example .env structure
 OPENAI_API_KEY="sk-..."  # Or your local LLM endpoint
 NEO4J_URI="bolt://localhost:7687"
@@ -101,7 +97,6 @@ Run the ingestion scripts located in Datasets/ to populate the SQL and Graph sto
 To launch the unified Orchestrator Agent and Web Interface:
 
 ```plaintext
-
 streamlit run Agent/app.py
 ```
 Once running, navigate to http://localhost:8501 in your browser. You can ask questions such as:
