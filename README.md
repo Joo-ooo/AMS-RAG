@@ -52,14 +52,7 @@ The repository is organized into three main directories: **Agent** for the activ
 (Placeholder: Screenshot of Streamlit UI here showing the chat interface)
 
 ## Installation
-This project utilizes poetry for dependency management and requires a local Neo4j instance for the Graph pipeline.
-
-Prerequisites
-Python 3.10+
-
-Poetry
-
-Neo4j Desktop (for Graph Database)
+This project requires Python 3.10+ and a Neo4j instance for the Graph pipeline.
 
 ### Setup Steps
 1) Clone the repository
@@ -72,7 +65,7 @@ cd heng-joo-capstone
 2) Install Dependencies
 
 ```plaintext
-poetry install
+pip install -r requirements.txt
 ```
 
 3) Environment Configuration
@@ -108,17 +101,11 @@ SQL: "Calculate the total inmate population statistics from the provided CSV dat
 Graph: "How is the 'HTX' entity related to 'Projects' in the organization structure?"
 
 ## Roadmap
-Based on the current progress report, the following milestones frame the future development:
 
- Pipeline Development: Implementation of specialized Vector, SQL, and Graph pipelines.
 
- Optimization: Integration of HyDE, QTTR, and Entity Disambiguation.
+For a detailed timeline of completed milestones and upcoming development phases, please refer to the
 
- Benchmarking: Evaluation using Ragas, DataCompy, and CypherMatch.
-
- Model Standardization: Unifying all generation components to use Llama-3.1-8B-Instruct for consistency.
-
- Deployment: Containerization (Docker) for easier deployment within HTX infrastructure.
+**[📅 View Project Gantt Chart](https://docs.google.com/spreadsheets/d/1aQxM0jrjyhOpHAwQIIw-j-bsdkOsPX7a/edit?usp=sharing&ouid=103044922105855395613&rtpof=true&sd=true)**
 
 ## Contributing
 State if you are open to contributions and what your requirements are for accepting them.
