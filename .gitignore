@@ -16,3 +16,4 @@ RAW_SQL.env
 models
 Experimenting
 chroma_db
+Agent/.deepeval/
