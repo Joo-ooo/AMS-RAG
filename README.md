@@ -29,7 +29,7 @@ Tech Stack: Text-to-Cypher generation grounded by Entity Disambiguation and Sche
 The repository is organized into three main directories: **Agent** for the active application, **Datasets** for data management, and **Archive** for development history and benchmarks.
 
 ```plaintext
-.
+
 ├── Agent/                  # Unified pipeline and web interface
 │   ├── app.py              # Streamlit web application
 │   └── agent.py            # Agent Pipeline
@@ -62,27 +62,36 @@ Poetry
 
 Neo4j Desktop (for Graph Database)
 
-Setup Steps
-Clone the repository
+### Setup Steps
+1) Clone the repository
 
-bash
-git clone <repository_url>
+```plaintext
+
+git clone https://sgts.gitlab-dedicated.com/wog/htx/htxdsaicoga/rnd/rnd-interns/heng-joo-capstone.git
 cd heng-joo-capstone
-Install Dependencies
+```
 
-bash
+2) Install Dependencies
+
+```plaintext
+
 poetry install
-Environment Configuration
+```
+
+3) Environment Configuration
 Create a .env file in the root directory and add your necessary API keys and database credentials:
 
-text
-# Example .env structure
+```plaintext
+
+Example .env structure
 OPENAI_API_KEY="sk-..."  # Or your local LLM endpoint
 NEO4J_URI="bolt://localhost:7687"
 NEO4J_USERNAME="neo4j"
 NEO4J_PASSWORD="password"
 NANONETS_API_KEY="..."
-Database Initialization
+```
+
+4) Database Initialization
 
 Ensure your Neo4j instance is running.
 
@@ -91,8 +100,10 @@ Run the ingestion scripts located in Datasets/ to populate the SQL and Graph sto
 ## Usage
 To launch the unified Orchestrator Agent and Web Interface:
 
-bash
-poetry run streamlit run Agent/app.py
+```plaintext
+
+streamlit run Agent/app.py
+```
 Once running, navigate to http://localhost:8501 in your browser. You can ask questions such as:
 
 Vector: "What were the key crime trends in 2022 based on the SPF Annual Report?"
