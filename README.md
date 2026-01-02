@@ -84,7 +84,7 @@ NANONETS_API_KEY="..."
 
 Ensure your Neo4j instance is running.
 
-Populate the SQL and Graph stores by initiating the ingestion process through the Streamlit Web UI (Agent/app.py) or by running the agent script directly (Agent/agent.py).
+Populate the Vector, SQL and Graph stores by initiating the ingestion process through the Streamlit Web UI (Agent/app.py) or by running the agent script directly (Agent/agent.py).
 
 ## Usage
 To launch the unified Orchestrator Agent and Web Interface:
