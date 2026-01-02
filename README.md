@@ -84,7 +84,7 @@ NANONETS_API_KEY="..."
 
 Ensure your Neo4j instance is running.
 
-Run the ingestion scripts located in Datasets/ to populate the SQL and Graph stores (refer to individual folder READMEs for specific data loading instructions).
+Populate the SQL and Graph stores by initiating the ingestion process through the Streamlit Web UI (Agent/app.py) or by running the agent script directly (Agent/agent.py).
 
 ## Usage
 To launch the unified Orchestrator Agent and Web Interface:
@@ -103,7 +103,7 @@ Graph: "How is the 'HTX' entity related to 'Projects' in the organization struct
 ## Roadmap
 
 
-For a detailed timeline of completed milestones and upcoming development phases, please refer to the
+For a detailed timeline of completed milestones and upcoming development phases, please refer to
 
 **[📅 View Project Gantt Chart](https://docs.google.com/spreadsheets/d/1aQxM0jrjyhOpHAwQIIw-j-bsdkOsPX7a/edit?usp=sharing&ouid=103044922105855395613&rtpof=true&sd=true)**
 
