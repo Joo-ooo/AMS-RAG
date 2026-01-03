@@ -65,7 +65,7 @@ cd heng-joo-capstone
 2) Install Dependencies
 
 ```plaintext
-pip install -r requirements.txt
+uv sync
 ```
 
 3) Environment Configuration
