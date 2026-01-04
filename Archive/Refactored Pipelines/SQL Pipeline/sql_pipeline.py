@@ -55,7 +55,7 @@ class ConfigManager:
         self.pg_port = os.getenv("POSTGRES_PORT")
         self.pg_db = os.getenv("POSTGRES_DB")
 
-        self._verify_paths_and_keys() # Check if data directory exists
+        self._verify_paths_and_keys()
 
     # Construct the database connection URL
     def get_database_url(self):
@@ -252,7 +252,7 @@ class AdvancedQueryEngine:
         )
         obj_retriever = obj_index.as_retriever(similarity_top_k=3)
         
-        # Create query engine - exactly like the notebook (no extra parameters)
+        # Create query engine
         return SQLTableRetrieverQueryEngine(
             self.sql_database,
             obj_retriever,

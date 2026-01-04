@@ -102,11 +102,9 @@ class GraphIngestionPipeline:
     # Check for already ingested files to avoid duplicates
     def get_ingested_files(self) -> set:
         """Retrieves a set of source file paths that have already been ingested."""
-        # Query for any node with a 'source' property
         query = "MATCH (n) WHERE n.source IS NOT NULL RETURN DISTINCT n.source AS source"
         try:
             results = self.config.query_graph(query)
-            # Return a set of file paths
             return {record['source'] for record in results if record.get('source')}
         except Exception as e:
             print(f"Warning: Could not check existing files. Error: {e}")
@@ -126,7 +124,6 @@ class GraphIngestionPipeline:
         
         docs_to_ingest = []
         
-        # Walk through the directory to find files
         for root, _, files in os.walk(directory_path):
             for f in files:
                 if f.lower().endswith(suffixes):
@@ -183,7 +180,6 @@ class GraphIngestionPipeline:
             source = doc.metadata.get("source")
             # Check if the file path exists in the graph's source properties
             if source and source in ingested_files:
-                # Output as requested
                 print(f"File {os.path.basename(source)} has been ingested.")
             else:
                 docs_to_ingest.append(doc)
@@ -340,9 +336,6 @@ class GraphQueryPipeline:
 
     def create_query_engine(self, use_llm: str = "openai") -> RetrieverQueryEngine:
         custom_retriever = CustomTextToCypherRetriever(self.config, self.models, use_llm)
-        
-        # NOTE: If you still get the "Reranker model directory not set" error,
-        # you can temporarily comment out the two lines below to bypass it.
         reranker = self.models.load_reranker()
         node_postprocessors = [reranker]
 

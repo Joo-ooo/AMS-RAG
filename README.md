@@ -7,7 +7,7 @@ Agentic Multi-Store Retrieval-Augmented Generation (AMS-RAG) is a unified framew
 
 This project implements an Orchestrator Agent that acts as an intelligent router, analysing user queries to dynamically select the most appropriate retrieval pipeline. By treating data stores as specialised tools rather than a monolithic index, AMS-RAG ensures accurate retrieval across diverse data formats.
 
-Key Features
+## Key Features
 🤖 Orchestrator Agent: A central "brain" that classifies user intent and routes queries to the optimal pipeline (Vector, SQL, or Graph), enabling a single interface for diverse data questions.
 
 📄 Advanced Vector Pipeline: Optimised for unstructured text and visual data (PDFs/images).
@@ -23,6 +23,47 @@ Tech Stack: Llama-3.1-8B-Instruct for Text-to-SQL, optimized with Query-Time Tab
 Tech Stack: Text-to-Cypher generation grounded by Entity Disambiguation and Schema-Aware prompting to prevent hallucinations.
 
 📊 Comprehensive Benchmarking: Includes a custom evaluation suite using Ragas for vector metrics and execution-based metrics (DataCompy, CypherMatch) for validating SQL and Graph query accuracy.
+
+## Architecture & Methodology
+
+### System Architecture
+![AMS-RAG Architecture Diagram](assets/AMS-RAG%20Architecture.png)
+
+The AMS-RAG system operates on a **Hub-and-Spoke** architecture. The central hub is an **Orchestrator Agent** that intelligently routes user queries to one of three specialised retrieval pipelines ("spokes"), each optimised for a specific data type.
+
+### 🤖 Orchestrator Agent
+*   **Implementation:** `Agent/agent.py`
+*   **Logic:** Uses a `LlamaIndex` agent workflow with a specialized system prompt acting as the "Chief Data Orchestrator."
+*   **Routing:** It classifies user intent into three categories—**Crime/Scams** (Vector), **Inmate Statistics** (SQL), or **Project Relationships** (Graph)—and executes the corresponding tool (`spf_vector_tool`, `sps_sql_tool`, `htx_graph_tool`).
+*   **Key Libraries:** `llama_index.core.agent.workflow`, `transformers`.
+
+### 📄 Vector Pipeline (Unstructured Data)
+*   **Implementation:** `vector_pipeline.py`
+*   **Data Source:** Singapore Police Force (SPF) Annual Crime Reports (PDFs).
+*   **Methodology:**
+    *   **Ingestion:** Uses **Nanonets OCR** (via `transformers` `AutoModelForImageTextToText`) to parse complex PDF layouts and tables.
+    *   **Indexing:** Stores embeddings in **ChromaDB**.
+    *   **Retrieval:** Implements **Hybrid Search** combining Semantic Search (embedding similarity) with Keyword Search (`BM25Retriever`).
+    *   **Refinement:** Results are re-ranked using a Cross-Encoder (`BGE-Reranker`) and expanded using **HyDE** (Hypothetical Document Embeddings) to improve context relevance.
+
+### 🗄️ SQL Pipeline (Structured Data)
+*   **Implementation:** `sql_pipeline.py`
+*   **Data Source:** Singapore Prison Service (SPS) Inmate Statistics (CSVs).
+*   **Methodology:**
+    *   **Storage:** Ingests CSVs directly into a **PostgreSQL** database.
+    *   **Querying:** Utilizes a **Text-to-SQL** engine powered by `Llama-3.1-8B-Instruct`.
+    *   **Optimization:** employs **Query-Time Table Retrieval (QTTR)** to dynamically select relevant table schemas before generating SQL, reducing token usage and hallucination risks.
+
+### 🕸️ Graph Pipeline (Relationship Data)
+*   **Implementation:** `graph_pipeline.py`
+*   **Data Source:** HTX Annual Report (Complex Entity Relationships).
+*   **Methodology:**
+    *   **Storage:** **Neo4j** Graph Database.
+    *   **Indexing:** Constructs a Property Graph using `llama_index.core.PropertyGraphIndex`.
+    *   **Querying:** Uses **Text-to-Cypher** generation to traverse complex relationships (e.g., matching "Projects" to "Departments").
+    *   **Robustness:** Includes a custom `parse_cypher_query` regex utility to sanitize LLM outputs and ensure valid Cypher syntax execution.
+
+---
 
 ## 📂 Directory Structure
 

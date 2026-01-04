@@ -42,7 +42,7 @@ add_pipeline_path("VECTOR_PIPELINE_DIR")
 add_pipeline_path("SQL_PIPELINE_DIR")
 add_pipeline_path("GRAPH_PIPELINE_DIR")
 
-# Dynamic Imports (using module aliases to avoid name collisions)
+# Dynamic Imports
 try:
     import vector_pipeline
     import sql_pipeline
@@ -124,12 +124,14 @@ async def main():
         print(f"❌ HTX Graph Pipeline Failed: {e}")
 
     # --- TOOL DEFINITIONS ---
+
+    # VECTOR TOOL (SPF)
     def search_spf_data(query: str) -> str:
         """Queries the SPF database. Input must be a specific plain text topic."""
         if not query: return "Error: Query cannot be empty."
         clean_query = query.strip().strip('"').strip("'")
         return str(vec_pipe.query_engine.query(clean_query))
-
+    
     vector_tool = FunctionTool.from_defaults(
         fn=search_spf_data,
         name="spf_data",
@@ -142,17 +144,15 @@ async def main():
         "ALWAYS query for the full specific answer first (e.g., 'total scam losses in 2023')."
         )
     
-    # Tool 2: SQL (SPS)
+    # SQL TOOL (SPS)
     def search_sps_data(query: str) -> str:
         """Queries the SPS SQL Database (Prisoners)."""
         if not sql_pipe: return "Error: SPS Pipeline not initialized."
         clean_query = query.strip().strip('"').strip("'")
 
-        # Remove Markdown code blocks (```sql ... ```)
         if "```" in clean_query:
             clean_query = clean_query.replace("``````", "").strip()
         
-        # Remove "###" artifacts (e.g., "SELECT ...; ### ANSWER")
         if "###" in clean_query:
             clean_query = clean_query.split("###")[0].strip()
             
@@ -161,7 +161,7 @@ async def main():
     sql_tool = FunctionTool.from_defaults(
         fn=search_sps_data,
         name="sps_data",
-        description=(
+        description=
             "Primary database for Singapore Prison Service (SPS) statistical data (2006-2020). "
             "Use this tool for quantitative queries regarding 'Convicted Penal Population' "
             "broken down by 'Year', 'Age Group' (e.g., Below 21, 21-30, 60 Above), and 'Gender'. "
@@ -169,25 +169,23 @@ async def main():
             "ALWAYS formulate a precise query that specifies the Year, Gender, and Age Group filters immediately "
             "(e.g., 'Total male inmates aged 31-40 in 2015'). "
             "Trust the returned figures as the final official statistics."
-        )
     )
     
+    # GRAPH TOOL (HTX)
     def search_htx_data(query: str) -> str:
         """Queries the HTX Graph Database (Tech/Innovation)."""
         if not graph_pipe: return "Error: HTX Pipeline not initialized."
         clean_query = query.strip().strip('"').strip("'")
-        # Graph pipeline query method signature is query(question, use_llm="openai")
         return str(graph_pipe.query(clean_query))
 
     graph_tool = FunctionTool.from_defaults(
         fn=search_htx_data,
         name="htx_data",
-        description=(
+        description=
             "Primary database for Home Team Science & Technology Agency (HTX) knowledge, built as a knowledge graph from the FY2023 Annual Report." 
             "Use this tool for queries about science and technology capabilities, operational projects, and innovation initiatives across the Home Team" 
             "(e.g., robotics, biometrics, cybersecurity, CBRNE, XR/VR training systems)." 
             "It is best suited for questions on specific HTX projects (such as Rover-X, Marine Video Analytics for rescue, autonomous robots, or deepfake detection), strategic partnerships, and how technologies are deployed to support SPF, SCDF, ICA, SPS, and other Home Team departments. ALWAYS phrase queries as concrete questions about a particular capability, project, or domain (e.g., 'What technologies does HTX use to counter hostile drones?')."
-        )
     )
     
     def calculate_percentage_change(old_value: float, new_value: float) -> str:
@@ -210,25 +208,22 @@ async def main():
             for msg in messages
         ]
         
-        # Apply the chat template (e.g., adds <|begin_of_text|>, <|start_header_id|>, etc.)
         return tokenizer.apply_chat_template(
             conversation, 
             tokenize=False, 
             add_generation_prompt=True
         )
 
-    # --- 2. OVERRIDE THE LLM'S FORMATTER ---
-    # This ensures that when the AgentWorkflow passes your system prompt to the LLM,
+    # --- OVERRIDE THE LLM'S FORMATTER ---
+    # This ensures that when the AgentWorkflow passes system prompt to the LLM
     # it gets formatted by the official template instead of LlamaIndex's default string concatenation.
     vec_models.llm.messages_to_prompt = custom_messages_to_prompt
 
-    # --- 3. INITIALIZE WORKFLOW (Keep your content!) ---
+    # --- INITIALIZE WORKFLOW ---
     print("Initializing Agent Workflow...")
     workflow = AgentWorkflow.from_tools_or_functions(
         [vector_tool, sql_tool, graph_tool, math_tool],
         llm=vec_models.llm,
-        # You still need this string for the *instructions*, but the *formatting* 
-        # is now handled by the custom_messages_to_prompt function above.
         system_prompt=(
             "You are the Chief Data Orchestrator for the Singapore Home Team Agentic RAG pipeline. "
             "You manage access to three distinct databases: SPF Vector Store, SPS SQL Database, and HTX Graph Database. "
@@ -236,54 +231,15 @@ async def main():
         )
     )
 
-    # # --- AGENT WORKFLOW INITIALIZATION ---
-    # print("Initializing Agent Workflow...")
-    # workflow = AgentWorkflow.from_tools_or_functions(
-    #     [vector_tool, sql_tool, graph_tool, math_tool],
-    #     llm=vec_models.llm,
-    #     system_prompt="" \
-    #     "### CONTEXT (C) \n"
-    #     "You are the Chief Data Orchestrator for the Singapore Home Team Agentic RAG pipeline. "
-    #     "You manage access to three distinct databases:\n"
-    #     "1. **SPF Vector Store**: Unstructured reports on crime and scams (Singapore Police Force).\n\n"
-    #     "2. **SPS SQL Database**: Structured demographic data on convicted penal populations (Singapore Prison Service).\n\n"
-    #     "3. **HTX Graph Database**: Knowledge graph on science, technology, and innovation projects (Home Team Science & Tech Agency).\n\n"
-
-    #     "### OBJECTIVE (O) \n"
-    #     "1. Analyze the user's input for keywords relating to specific agencies (SPF, SPS, HTX) or topics (Crime, Prisoners, Technology).\n"
-    #     "2. Select the correct tool (`spf_vector_tool`, `sps_sql_tool`, or `htx_graph_tool`).\n"
-    #     "3. Call that tool with the exact query.\n"
-    #     "4. STOP immediately. Do not analyze the output.\n\n"
-
-    #     "### STYLE (S) \n"
-    #     "Decisive, precise, and classification-focused.\n"
-
-    #     "### TONE (T) \n"
-    #     "Objective and neutral.\n"
-
-    #     "### AUDIENCE (A) \n"
-    #     "A Python runtime environment waiting for a tool call.\n\n"
-
-    #     "### RESPONSE (R) \n"
-    #     "Output ONLY the tool call.\n"
-    #     "Do NOT attempt to answer the question yourself.\n"
-    #     "If the query mixes topics (e.g., \"Tech used by Prisons\"), prioritize the agency responsible for the *subject* of the query (e.g., if asking about the *tech*, route to HTX; if asking about the *inmates*, route to SPS).\n"
-    # )
-
-    # print("\nRunning Agent...")
-    # response = await workflow.run(user_msg="What are the top tourist attractions in Kyoto, Japan?")
-
-    # print(f"\nFinal Response: {response}")
-
     # --- DEBUGGING: AGENT WORKFLOW TRACE (Thought Process) ---
-    print("\n" + "="*50)
-    print("🤖 AGENT EXECUTION TRACE")
-    print("="*50)
+    # print("\n" + "="*50)
+    # print("🤖 AGENT EXECUTION TRACE")
+    # print("="*50)
 
-    # 1. Start the run, getting a handler back
+    # Start the run, getting a handler back
     handler = workflow.run(user_msg="How many inmates had 'No Education' in 2022?")
 
-    # 2. Iterate through events as they happen
+    # Iterate through events as they happen
     async for event in handler.stream_events():
         try:
             if isinstance(event, AgentInput):

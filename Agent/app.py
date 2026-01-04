@@ -2,6 +2,7 @@ import streamlit as st
 import asyncio
 import sys
 import os
+import re
 from dotenv import load_dotenv, find_dotenv
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
@@ -23,7 +24,7 @@ found_dotenv = find_dotenv()
 if found_dotenv:
     load_dotenv(found_dotenv)
 
-# Add pipeline paths (must be done before importing pipeline modules)
+# Add pipeline paths
 add_pipeline_path("VECTOR_PIPELINE_DIR")
 add_pipeline_path("SQL_PIPELINE_DIR")
 add_pipeline_path("GRAPH_PIPELINE_DIR")
@@ -42,11 +43,63 @@ if 'pipelines_initialized' not in st.session_state:
     st.session_state.workflow = None
     st.session_state.vec_models = None
 
+def format_thinking(text: str) -> str:
+    """Format thinking output - clean up Thoughts, remove Actions, and HIDE the Answer."""
+    if not text:
+        return ""
+
+    # STRICTLY CUT OFF at "Answer:" 
+    # This ensures the answer never appears in the thinking block
+    if "Answer:" in text:
+        text = text.split("Answer:")[0]
+
+    # Remove Action and Action Input lines
+    # Matches "Action: ..." up to a newline or end of string
+    text = re.sub(r'Action:.*?(\n|$)', '', text)
+    text = re.sub(r'Action Input:.*?(\n|$)', '', text)
+    
+    # Format Thoughts to start on new lines
+    lines = []
+    for line in text.split('\n'):
+        line = line.strip()
+        if not line:
+            continue
+            
+        # Handle multiple thoughts or thoughts embedded in lines
+        if 'Thought:' in line:
+            parts = line.split('Thought:')
+            for i, part in enumerate(parts):
+                clean_part = part.strip()
+                if clean_part:
+                    # If i > 0, it came after a "Thought:" delimiter, so add the prefix back
+                    # If i == 0 and the line didn't start with Thought, it's pre-thought text
+                    if i > 0:
+                        lines.append(f"Thought: {clean_part}")
+                    elif not line.startswith("Thought:"):
+                         lines.append(clean_part)
+        else:
+            lines.append(line)
+    
+    return '\n\n'.join(lines)
+
+def extract_answer(text: str) -> str:
+    """Extract only the final answer after 'Answer:' marker."""
+    if not text:
+        return ""
+    
+    # Find the last occurrence of "Answer:"
+    if "Answer:" in text:
+        answer_part = text.split("Answer:")[-1].strip()
+        return answer_part
+    
+    # If no Answer: marker, return empty (nothing to show)
+    return ""
+
 async def initialize_pipelines():
     """Initialize all pipelines and return the workflow."""
     if st.session_state.pipelines_initialized:
         return st.session_state.workflow
-    
+
     with st.spinner("Initializing pipelines..."):
         # Initialize Vector Pipeline
         try:
@@ -86,12 +139,36 @@ async def initialize_pipelines():
             st.error(f"Graph Pipeline Failed: {e}")
             return None
 
-        # Define tools
+        # --- TOOLS DEFINITION ---
+        
+        # Capture objects in local variables for safety
+        vec_pipe = st.session_state.vec_pipe
+        sql_pipe = st.session_state.sql_pipe
+        graph_pipe = st.session_state.graph_pipe
+
+        # Vector Tool (SPF)
         def search_spf_data(query: str) -> str:
             if not query: return "Error: Query cannot be empty."
             clean_query = query.strip().strip('"').strip("'")
-            return str(st.session_state.vec_pipe.query_engine.query(clean_query))
+            return str(vec_pipe.query_engine.query(clean_query))
 
+        # SQL Tool (SPS)
+        def search_sps_data(query: str) -> str:
+            # Direct access to sql_pipe, no st.session_state needed
+            clean_query = query.strip().strip('"').strip("'")
+            if "```" in clean_query:
+                clean_query = clean_query.replace("```", "")
+            if "###" in clean_query:
+                clean_query = clean_query.split("###").strip()
+            return str(sql_pipe.query(clean_query))
+
+        # Graph Tool (HTX)
+        def search_htx_data(query: str = "") -> str:  # Add default value = ""
+            if not query: return "Error: Query was empty."
+            clean_query = query.strip().strip('"').strip("'")
+            return str(graph_pipe.query(clean_query))
+
+        # Create Tool Objects
         vector_tool = FunctionTool.from_defaults(
             fn=search_spf_data,
             name="spf_data",
@@ -102,74 +179,50 @@ async def initialize_pipelines():
             "financial amounts lost, victim demographics, and police enforcement actions. "
             "It contains detailed tables, year-on-year comparisons, and specific figures. "
             "ALWAYS query for the full specific answer first (e.g., 'total scam losses in 2023')."
-        )
-        
-        def search_sps_data(query: str) -> str:
-            if not st.session_state.sql_pipe: return "Error: SPS Pipeline not initialized."
-            clean_query = query.strip().strip('"').strip("'")
-            if "```" in clean_query:
-                clean_query = clean_query.replace("``````", "").strip()
-            if "###" in clean_query:
-                clean_query = clean_query.split("###")[0].strip()
-            return str(st.session_state.sql_pipe.query(clean_query))
+            )
 
         sql_tool = FunctionTool.from_defaults(
             fn=search_sps_data,
             name="sps_data",
-            description=(
-                "Primary database for Singapore Prison Service (SPS) statistical data (2006-2020). "
-                "Use this tool for quantitative queries regarding 'Convicted Penal Population' "
-                "broken down by 'Year', 'Age Group' (e.g., Below 21, 21-30, 60 Above), and 'Gender'. "
-                "It contains structured annual tables suitable for aggregation and trend analysis. "
-                "ALWAYS formulate a precise query that specifies the Year, Gender, and Age Group filters immediately "
-                "(e.g., 'Total male inmates aged 31-40 in 2015'). "
-                "Trust the returned figures as the final official statistics."
+            description="Primary database for Singapore Prison Service (SPS) statistical data (2006-2020). "
+            "Use this tool for quantitative queries regarding 'Convicted Penal Population' "
+            "broken down by 'Year', 'Age Group' (e.g., Below 21, 21-30, 60 Above), and 'Gender'. "
+            "It contains structured annual tables suitable for aggregation and trend analysis. "
+            "ALWAYS formulate a precise query that specifies the Year, Gender, and Age Group filters immediately "
+            "(e.g., 'Total male inmates aged 31-40 in 2015'). "
+            "Trust the returned figures as the final official statistics."
             )
-        )
-        
-        def search_htx_data(query: str) -> str:
-            if not st.session_state.graph_pipe: return "Error: HTX Pipeline not initialized."
-            clean_query = query.strip().strip('"').strip("'")
-            return str(st.session_state.graph_pipe.query(clean_query))
 
         graph_tool = FunctionTool.from_defaults(
             fn=search_htx_data,
             name="htx_data",
-            description=(
-                "Primary database for Home Team Science & Technology Agency (HTX) knowledge, built as a knowledge graph from the FY2023 Annual Report." 
-                "Use this tool for queries about science and technology capabilities, operational projects, and innovation initiatives across the Home Team" 
-                "(e.g., robotics, biometrics, cybersecurity, CBRNE, XR/VR training systems)." 
-                "It is best suited for questions on specific HTX projects (such as Rover-X, Marine Video Analytics for rescue, autonomous robots, or deepfake detection), strategic partnerships, and how technologies are deployed to support SPF, SCDF, ICA, SPS, and other Home Team departments. ALWAYS phrase queries as concrete questions about a particular capability, project, or domain (e.g., 'What technologies does HTX use to counter hostile drones?')."
+            description="Primary database for Home Team Science & Technology Agency (HTX) knowledge, built as a knowledge graph from the FY2023 Annual Report." 
+            "Use this tool for queries about science and technology capabilities, operational projects, and innovation initiatives across the Home Team" 
+            "(e.g., robotics, biometrics, cybersecurity, CBRNE, XR/VR training systems)." 
+            "It is best suited for questions on specific HTX projects (such as Rover-X, Marine Video Analytics for rescue, autonomous robots, or deepfake detection), strategic partnerships, and how technologies are deployed to support SPF, SCDF, ICA, SPS, and other Home Team departments. ALWAYS phrase queries as concrete questions about a particular capability, project, or domain (e.g., 'What technologies does HTX use to counter hostile drones?')."
             )
-        )
-        
-        def calculate_percentage_change(old_value: float, new_value: float) -> str:
-            if old_value == 0: return "Cannot calculate percentage change from zero."
-            change = ((new_value - old_value) / old_value) * 100
-            return f"{change:.2f}%"
-        
-        math_tool = FunctionTool.from_defaults(fn=calculate_percentage_change)
+
 
         # Setup custom tokenizer
-        model_name = st.session_state.vec_models.llm.model_name 
+        model_name = st.session_state.vec_models.llm.model_name
         tokenizer = AutoTokenizer.from_pretrained(model_name)
-
+        
         def custom_messages_to_prompt(messages):
             conversation = [
-                {"role": msg.role.value, "content": msg.content} 
+                {"role": msg.role.value, "content": msg.content}
                 for msg in messages
             ]
             return tokenizer.apply_chat_template(
-                conversation, 
-                tokenize=False, 
+                conversation,
+                tokenize=False,
                 add_generation_prompt=True
             )
 
         st.session_state.vec_models.llm.messages_to_prompt = custom_messages_to_prompt
 
-        # Initialize workflow
+        # Initialize workflow with local tools
         workflow = AgentWorkflow.from_tools_or_functions(
-            [vector_tool, sql_tool, graph_tool, math_tool],
+            [vector_tool, sql_tool, graph_tool],
             llm=st.session_state.vec_models.llm,
             system_prompt=(
                 "You are the Chief Data Orchestrator for the Singapore Home Team Agentic RAG pipeline. "
@@ -177,11 +230,12 @@ async def initialize_pipelines():
                 "Analyze the user's input and route to the correct tool. Output ONLY the tool call."
             )
         )
-        
+
         st.session_state.workflow = workflow
         st.session_state.pipelines_initialized = True
-    
-    return st.session_state.workflow
+        
+        return st.session_state.workflow
+
 
 async def run_agent_with_streaming(query: str, placeholder):
     """Run the agent and stream updates to the placeholder."""
@@ -225,10 +279,14 @@ async def run_agent_with_streaming(query: str, placeholder):
             
             elif isinstance(event, AgentStream):
                 final_response += event.delta
-                # Update status with current thinking + partial response
-                full_content = "\n".join(thinking_log) + "\n\n📝 **Response:**\n" + final_response
-                placeholder.markdown(full_content)
+                formatted_thinking = format_thinking(final_response)
+                # Only show formatted chain-of-thought in the status box
+                full_content = "\n".join(thinking_log)
+                if formatted_thinking:
+                    full_content += "\n\n📝 **Agent Reasoning:**\n" + formatted_thinking
                 
+                placeholder.markdown(full_content)
+                            
         except Exception as e:
             pass
     
@@ -247,7 +305,6 @@ def main():
     if 'pipelines_initialized' not in st.session_state or not st.session_state.pipelines_initialized:
         with st.status("🚀 System Startup: Loading Models & Ingesting Data...", expanded=True) as status:
             st.write("Initializing Vector, SQL, and Graph pipelines...")
-            # Run the async initialization synchronously
             asyncio.run(initialize_pipelines())
             status.update(label="✅ System Ready!", state="complete", expanded=False)
     
@@ -273,8 +330,10 @@ def main():
             
             # Display final result in a markdown box
             st.markdown("### Final Result")
-            if result:
-                st.markdown(f"```\n{result}\n```")
+            answer_only = extract_answer(result)
+
+            if answer_only:
+                st.markdown(answer_only)
             else:
                 st.info("No result returned.")
 

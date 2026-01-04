@@ -372,21 +372,19 @@ class RAGPipeline:
                 new_docs = []
                 if documents:
                     for doc in documents:
-                        # Assume doc.metadata['file_name'] was set by ingestor
                         doc_filename = doc.metadata.get("file_name")
                         if doc_filename and doc_filename not in existing_filenames:
                             new_docs.append(doc)
                         elif not doc_filename:
-                            # If no filename metadata, default to adding it to be safe
                             new_docs.append(doc)
                 
                 # Update index if new docs are present
                 if new_docs:
                     print(f"Adding {len(new_docs)} new documents to the existing index...")
                     new_nodes = node_parser.get_nodes_from_documents(new_docs)
-                    vector_index.docstore.add_documents(new_nodes) # Add to docstore
-                    vector_index.insert_nodes(new_nodes)          # Insert vectors
-                    vector_index.storage_context.persist(persist_dir=PERSIST_DIR) # Persist changes
+                    vector_index.docstore.add_documents(new_nodes)
+                    vector_index.insert_nodes(new_nodes)
+                    vector_index.storage_context.persist(persist_dir=PERSIST_DIR)
                     print("New documents added and index persisted.")
                 else:
                     print("No new documents to add to the index.")
@@ -412,7 +410,6 @@ class RAGPipeline:
                 storage_context=storage_context,
             )
             
-            # Now that storage_context has the nodes, this will write them to docstore.json
             print("Persisting Docstore to local disk...")
             vector_index.storage_context.persist(persist_dir=PERSIST_DIR)
 
@@ -475,7 +472,7 @@ class RAGPipeline:
             return count == 0
         except Exception as e:
             print(f"Could not connect to ChromaDB to check status: {e}")
-            return True # Assume empty if we can't connect
+            return True
 
     def _post_process_answer(self, raw_answer: str, original_query: str) -> str:
         """Cleans and rephrases the final answer to be conversational."""
@@ -495,11 +492,9 @@ class RAGPipeline:
         rephrased_raw = self.models.llm.complete(rephrase_prompt_text, max_new_tokens=32)
         s = ' '.join(str(rephrased_raw).strip().split())
         
-        # Ensure the core answer is in the final output
         if answer_core not in s:
             s = f"The answer is {answer_core}."
         
-        # Ensure it's a single sentence
         idx = s.find('.')
         s = s[:idx+1].strip() if idx != -1 else s + '.'
         
