@@ -1,0 +1,126 @@
+services:
+  # vLLM Server Service
+  vllm:
+    image: vllm/vllm-openai:latest
+    container_name: vllm-server
+    runtime: nvidia
+    # Only uncomment if not calling models from disk
+    # environment:
+    #   - HUGGING_FACE_HUB_TOKEN=${HUGGINGFACE_TOKEN}
+    volumes:
+      - ./models:/models  # Mount local models folder
+    shm_size: '8gb' # Increase shared memory to prevent Qwen tensors from crashing the container
+    command: >
+      --model /models/Llama-3.1-8B-Instruct
+      --gpu-memory-utilization 0.5
+      --max-model-len 16384
+      --port 8001
+      --host 0.0.0.0
+      --trust-remote-code
+      --disable-uvicorn-access-log
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/v1/models"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      # This tells Docker to NOT kill the container for the first 5 minutes 
+      # while vLLM is busy loading the weights into VRAM.
+      start_period: 300s
+    ports:
+      - "8001:8001"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  # ChromaDB Service (ADDED THIS)
+  chroma-server:
+    image: chromadb/chroma:latest
+    container_name: chroma-server
+    volumes:
+      - ./chroma_storage:/chroma/chroma  # Persist vector data
+    ports:
+      - "8000:8000"
+    environment:
+      - IS_PERSISTENT=TRUE
+
+  # PostgreSQL Service
+  postgres-db:
+    image: postgres:15
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_SQL_DB}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_SQL_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Streamlit App Service
+  streamlit-app:
+    build:
+      context: .
+      dockerfile: Agent/Dockerfile
+    container_name: streamlit-app
+    depends_on:
+      vllm: 
+        condition: service_started  # Wait for vLLM to start
+      chroma-server:
+        condition: service_started  # Wait for ChromaDB to start
+      postgres-db:
+        condition: service_healthy  # Wait for PostgreSQL to start
+    environment:
+      - PYTHONPATH=/app:/pipelines/vector_pipeline:/pipelines/sql_pipeline:/pipelines/graph_pipeline
+
+      # Pipeline Directories
+      - VECTOR_PIPELINE_DIR=/pipelines/vector_pipeline
+      - SQL_PIPELINE_DIR=/pipelines/sql_pipeline
+      - GRAPH_PIPELINE_DIR=/pipelines/graph_pipeline
+
+      # --- MODEL PATH OVERRIDES (Container Paths) ---
+      - LLAMA_3.1_8B_INSTRUCT_DIR=/models/Llama-3.1-8B-Instruct
+      - NANONETS_OCR_S_DIR=/models/Nanonets-OCR-s
+      - MULTILINGUAL_E5_LARGE_DIR=/models/intfloat_multilingual_e5_large
+      - BGE_RERANKER_V2_M_DIR=/models/bge-reranker-v2-m3
+
+      # --- DATABASE CONFIG ---
+      - CHROMA_HOST=chroma-server   # Connect to service name above
+      - CHROMA_PORT=8000
+      - POSTGRES_HOST=postgres-db
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_AUTH_DB=${POSTGRES_AUTH_DB}
+      - VLLM_API_BASE=http://vllm:8001/v1 
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./Agent:/app
+      - ./models:/models
+      - ./Datasets:/app/Datasets
+      - "./Vector Pipeline:/pipelines/vector_pipeline"
+      - "./SQL Pipeline:/pipelines/sql_pipeline"
+      - "./Graph Pipeline:/pipelines/graph_pipeline"
+      - ./.env:/app/.env
+    command: >
+      bash -c "python init_auth_tables.py && streamlit run app.py"
+    deploy:                 
+      resources:            
+        reservations:       
+          devices:          
+            - driver: nvidia 
+              count: 1      
+              capabilities: [gpu]
+# Volume for DB persistence
+volumes:
+  postgres_data:
+  chroma_storage:
