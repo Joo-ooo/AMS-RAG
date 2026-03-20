@@ -90,7 +90,9 @@ The repository is organized into three main directories: **Agent** for the activ
 ```
 
 ## Visuals
-(Placeholder: Screenshot of Streamlit UI here showing the chat interface)
+![User Authentication Interface](assets/User%20Authentication%20Interface.png)
+![Chat Interface](assets/Chat%20Interface.png)
+![System Pop-Up Notification Indicating Active Retrieval Tools Based on User Authorisation](assets/Tools%20Available.png)
 
 ## Installation
 This project requires Python 3.10+ and a Neo4j instance for the Graph pipeline.
@@ -128,11 +130,17 @@ Ensure your Neo4j instance is running.
 Populate the Vector, SQL and Graph stores by initiating the ingestion process through the Streamlit Web UI (Agent/app.py) or by running the agent script directly (Agent/agent.py).
 
 ## Usage
-To launch the unified Orchestrator Agent and Web Interface:
+The system has been containerized for easy deployment. To launch the unified Orchestrator Agent, databases, LLM server, and Web Interface, use Docker Compose:
 
-```plaintext
-streamlit run Agent/app.py
+```bash
+docker compose up
 ```
+
+This single command will start all the necessary services:
+*   `postgres-db`: PostgreSQL database for structured data.
+*   `vllm-server`: vLLM server for local LLM inference.
+*   `chroma-server`: ChromaDB server for vector storage.
+*   `streamlit`: The main Streamlit web application.
 Once running, navigate to http://localhost:8501 in your browser. You can ask questions such as:
 
 Vector: "What were the key crime trends in 2022 based on the SPF Annual Report?"
