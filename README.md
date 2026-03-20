@@ -101,7 +101,7 @@ This project requires Python 3.10+ and a Neo4j instance for the Graph pipeline.
 1) Clone the repository
 
 ```plaintext
-git clone https://sgts.gitlab-dedicated.com/wog/htx/htxdsaicoga/rnd/rnd-interns/heng-joo-capstone.git
+git clone https://github.com/Joo-ooo/AMS-RAG.git
 cd heng-joo-capstone
 ```
 
