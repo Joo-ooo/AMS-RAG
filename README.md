@@ -42,17 +42,17 @@ The reference deployment is a **Home Team Unified Agent**, backed by three publi
 
 An officer-rank user (`juniorofficer@spf.gov.sg`) signs in and is granted access to the SPF corpus only. Their scam-statistics question is routed to the **Vector pipeline**, which answers from the SPF Annual Crime Reports.
 
-<video src="https://raw.githubusercontent.com/Joo-ooo/AMS-RAG/main/assets/demo-officer-access.mp4" poster="https://raw.githubusercontent.com/Joo-ooo/AMS-RAG/main/assets/demo-officer-access-poster.jpg" controls muted width="100%"></video>
+![Officer-tier login and vector-routed query](assets/demo-officer-access.gif)
 
-<sub>▶️ [Watch `demo-officer-access.mp4`](assets/demo-officer-access.mp4) if the player does not load.</sub>
+<sub>▶️ [Download the full-resolution recording with audio (MP4, 20s)](https://raw.githubusercontent.com/Joo-ooo/AMS-RAG/main/assets/demo-officer-access.mp4)</sub>
 
 ### 2. Multi-Store Routing — Director Tier (Graph + Vector + SQL)
 
 A director-rank user (`director@htx.gov.sg`) is authorised across all three stores (SPF, SPS, HTX). Successive questions in the **same conversation** are routed to different pipelines — an organisational-relationship question to the **Graph pipeline**, then a crime-statistics question to the **Vector pipeline** — with no manual store selection.
 
-<video src="https://raw.githubusercontent.com/Joo-ooo/AMS-RAG/main/assets/demo-director-multistore.mp4" poster="https://raw.githubusercontent.com/Joo-ooo/AMS-RAG/main/assets/demo-director-multistore-poster.jpg" controls muted width="100%"></video>
+![Director-tier login with routing across the graph and vector pipelines](assets/demo-director-multistore.gif)
 
-<sub>▶️ [Watch `demo-director-multistore.mp4`](assets/demo-director-multistore.mp4) if the player does not load.</sub>
+<sub>▶️ [Download the full-resolution recording with audio (MP4, 39s)](https://raw.githubusercontent.com/Joo-ooo/AMS-RAG/main/assets/demo-director-multistore.mp4)</sub>
 
 ---
 
@@ -133,7 +133,7 @@ The repository is organised into three main directories: **Agent** for the activ
 │   ├── Agent Evaluation/       # Performance metrics for the orchestrated agent
 │   └── Reports/                # Project proposals and progress reports
 │
-├── assets/                     # Architecture diagram, screenshots, and demo videos
+├── assets/                     # Architecture diagram, screenshots, and demo recordings
 ├── docker-compose.yml          # vLLM, ChromaDB, PostgreSQL, and Streamlit services
 └── pyproject.toml              # Project dependencies (managed with uv)
 ```
