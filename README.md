@@ -1,173 +1,295 @@
 # Agentic Multi-Store RAG (AMS-RAG)
 
+> A unified, agent-routed RAG framework that treats heterogeneous data stores — vector, relational, and graph — as specialised tools instead of a single monolithic index.
 
+![Python](https://img.shields.io/badge/python-3.11%2B-blue)
+![LlamaIndex](https://img.shields.io/badge/framework-LlamaIndex-purple)
+![Docker](https://img.shields.io/badge/deploy-Docker%20Compose-2496ED)
+
+---
+
+## Table of Contents
+
+- [Description](#description)
+- [Demo](#demo)
+- [Key Features](#key-features)
+- [Architecture & Methodology](#architecture--methodology)
+- [Directory Structure](#directory-structure)
+- [Screenshots](#screenshots)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Benchmarking](#benchmarking)
+- [Roadmap](#roadmap)
+- [Author & Acknowledgements](#author--acknowledgements)
+- [License](#license)
+- [Project Status](#project-status)
+
+---
 
 ## Description
-Agentic Multi-Store Retrieval-Augmented Generation (AMS-RAG) is a unified framework designed to overcome the limitations of "one-size-fits-all" RAG systems. While traditional RAG relies on a single vector store, real-world organizational data is heterogeneous—spanning unstructured documents, structured databases, and complex knowledge graphs.
 
-This project implements an Orchestrator Agent that acts as an intelligent router, analysing user queries to dynamically select the most appropriate retrieval pipeline. By treating data stores as specialised tools rather than a monolithic index, AMS-RAG ensures accurate retrieval across diverse data formats.
+Agentic Multi-Store Retrieval-Augmented Generation (AMS-RAG) is a unified framework designed to overcome the limitations of "one-size-fits-all" RAG systems. While traditional RAG relies on a single vector store, real-world organisational data is heterogeneous — spanning unstructured documents, structured databases, and complex knowledge graphs.
+
+This project implements an **Orchestrator Agent** that acts as an intelligent router, analysing user queries to dynamically select the most appropriate retrieval pipeline. By treating data stores as specialised tools rather than a monolithic index, AMS-RAG delivers accurate retrieval across diverse data formats behind a single conversational interface.
+
+The reference deployment is a **Home Team Unified Agent**, backed by three public-sector datasets (Singapore Police Force, Singapore Prison Service, and HTX) with role-based access control layered on top.
+
+---
+
+## Demo
+
+### 1. Role-Based Access — Officer Tier (Vector Pipeline)
+
+An officer-rank user (`juniorofficer@spf.gov.sg`) signs in and is granted access to the SPF corpus only. Their scam-statistics question is routed to the **Vector pipeline**, which answers from the SPF Annual Crime Reports.
+
+<video src="https://raw.githubusercontent.com/Joo-ooo/AMS-RAG/main/assets/demo-officer-access.mp4" poster="https://raw.githubusercontent.com/Joo-ooo/AMS-RAG/main/assets/demo-officer-access-poster.jpg" controls muted width="100%"></video>
+
+<sub>▶️ [Watch `demo-officer-access.mp4`](assets/demo-officer-access.mp4) if the player does not load.</sub>
+
+### 2. Multi-Store Routing — Director Tier (Graph + Vector + SQL)
+
+A director-rank user (`director@htx.gov.sg`) is authorised across all three stores (SPF, SPS, HTX). Successive questions in the **same conversation** are routed to different pipelines — an organisational-relationship question to the **Graph pipeline**, then a crime-statistics question to the **Vector pipeline** — with no manual store selection.
+
+<video src="https://raw.githubusercontent.com/Joo-ooo/AMS-RAG/main/assets/demo-director-multistore.mp4" poster="https://raw.githubusercontent.com/Joo-ooo/AMS-RAG/main/assets/demo-director-multistore-poster.jpg" controls muted width="100%"></video>
+
+<sub>▶️ [Watch `demo-director-multistore.mp4`](assets/demo-director-multistore.mp4) if the player does not load.</sub>
+
+---
 
 ## Key Features
-🤖 Orchestrator Agent: A central "brain" that classifies user intent and routes queries to the optimal pipeline (Vector, SQL, or Graph), enabling a single interface for diverse data questions.
 
-📄 Advanced Vector Pipeline: Optimised for unstructured text and visual data (PDFs/images).
+- **🤖 Orchestrator Agent** — A central "brain" that classifies user intent and routes queries to the optimal pipeline (Vector, SQL, or Graph), enabling a single interface for diverse data questions.
+- **📄 Advanced Vector Pipeline** — Optimised for unstructured text and visual data (PDFs/images), using Nanonets OCR for layout-aware parsing, hybrid retrieval (semantic + BM25), and cross-encoder re-ranking.
+- **🗄️ SQL Pipeline** — Specialised for precise lookup and aggregation over structured tabular data, using `Llama-3.1-8B-Instruct` for Text-to-SQL with Query-Time Table Retrieval (QTTR) to focus context on relevant schemas.
+- **🕸️ Graph Pipeline** — Designed for multi-hop reasoning and relationship discovery via Text-to-Cypher generation, grounded by entity disambiguation and schema-aware prompting to prevent hallucinations.
+- **🔐 Role-Based Access Control** — Authenticated users are granted tool access by rank, so the agent can only query the stores a user is authorised to see.
+- **📊 Comprehensive Benchmarking** — A custom evaluation suite using Ragas for vector metrics and execution-based metrics (DataCompy, CypherMatch) for validating SQL and Graph query accuracy.
 
-Tech Stack: Nanonets OCR for layout-aware parsing, Hybrid Retrieval (Semantic + BM25), and Cross-Encoder Re-ranking.
-
-🗄️ SQL Pipeline: Specialised for precise lookup and aggregation of structured tabular data.
-
-Tech Stack: Llama-3.1-8B-Instruct for Text-to-SQL, optimized with Query-Time Table Retrieval (QTTR) to focus context on relevant schemas.
-
-🕸️ Graph Pipeline: Designed for multi-hop reasoning and relationship discovery.
-
-Tech Stack: Text-to-Cypher generation grounded by Entity Disambiguation and Schema-Aware prompting to prevent hallucinations.
-
-📊 Comprehensive Benchmarking: Includes a custom evaluation suite using Ragas for vector metrics and execution-based metrics (DataCompy, CypherMatch) for validating SQL and Graph query accuracy.
+---
 
 ## Architecture & Methodology
 
 ### System Architecture
+
 ![AMS-RAG Architecture Diagram](assets/AMS-RAG%20Architecture.png)
 
-The AMS-RAG system operates on a **Hub-and-Spoke** architecture. The central hub is an **Orchestrator Agent** that intelligently routes user queries to one of three specialised retrieval pipelines ("spokes"), each optimised for a specific data type.
+AMS-RAG operates on a **hub-and-spoke** architecture. The central hub is an **Orchestrator Agent** that intelligently routes user queries to one of three specialised retrieval pipelines ("spokes"), each optimised for a specific data type.
 
 ### 🤖 Orchestrator Agent
-*   **Implementation:** `Agent/agent.py`
-*   **Logic:** Uses a `LlamaIndex` agent workflow with a specialized system prompt acting as the "Chief Data Orchestrator."
-*   **Routing:** It classifies user intent into three categories—**Crime/Scams** (Vector), **Inmate Statistics** (SQL), or **Project Relationships** (Graph)—and executes the corresponding tool (`spf_vector_tool`, `sps_sql_tool`, `htx_graph_tool`).
-*   **Key Libraries:** `llama_index.core.agent.workflow`, `transformers`.
+
+- **Implementation:** `Agent/agent.py`
+- **Logic:** A `LlamaIndex` agent workflow driven by a specialised system prompt acting as the "Chief Data Orchestrator."
+- **Routing:** Classifies user intent into three categories — **Crime/Scams** (Vector), **Inmate Statistics** (SQL), or **Project Relationships** (Graph) — and executes the corresponding tool (`spf_vector_tool`, `sps_sql_tool`, `htx_graph_tool`).
+- **Key libraries:** `llama_index.core.agent.workflow`, `transformers`.
 
 ### 📄 Vector Pipeline (Unstructured Data)
-*   **Implementation:** `vector_pipeline.py`
-*   **Data Source:** Singapore Police Force (SPF) Annual Crime Reports (PDFs).
-*   **Methodology:**
-    *   **Ingestion:** Uses **Nanonets OCR** (via `transformers` `AutoModelForImageTextToText`) to parse complex PDF layouts and tables.
-    *   **Indexing:** Stores embeddings in **ChromaDB**.
-    *   **Retrieval:** Implements **Hybrid Search** combining Semantic Search (embedding similarity) with Keyword Search (`BM25Retriever`).
-    *   **Refinement:** Results are re-ranked using a Cross-Encoder (`BGE-Reranker`) and expanded using **HyDE** (Hypothetical Document Embeddings) to improve context relevance.
+
+- **Implementation:** `Archive/Refactored Pipelines/Vector Pipeline/vector_pipeline.py`
+- **Data source:** Singapore Police Force (SPF) Annual Crime Reports (PDFs).
+- **Ingestion:** **Nanonets OCR** (via `transformers` `AutoModelForImageTextToText`) parses complex PDF layouts and tables.
+- **Indexing:** Embeddings stored in **ChromaDB** (`multilingual-e5-large`).
+- **Retrieval:** **Hybrid search** combining semantic similarity with keyword search (`BM25Retriever`).
+- **Refinement:** Results re-ranked with a cross-encoder (`BGE-Reranker-v2-m3`) and expanded using **HyDE** (Hypothetical Document Embeddings) to improve context relevance.
 
 ### 🗄️ SQL Pipeline (Structured Data)
-*   **Implementation:** `sql_pipeline.py`
-*   **Data Source:** Singapore Prison Service (SPS) Inmate Statistics (CSVs).
-*   **Methodology:**
-    *   **Storage:** Ingests CSVs directly into a **PostgreSQL** database.
-    *   **Querying:** Utilizes a **Text-to-SQL** engine powered by `Llama-3.1-8B-Instruct`.
-    *   **Optimization:** employs **Query-Time Table Retrieval (QTTR)** to dynamically select relevant table schemas before generating SQL, reducing token usage and hallucination risks.
+
+- **Implementation:** `Archive/Refactored Pipelines/SQL Pipeline/sql_pipeline.py`
+- **Data source:** Singapore Prison Service (SPS) inmate statistics (CSVs).
+- **Storage:** CSVs ingested directly into a **PostgreSQL** database.
+- **Querying:** A **Text-to-SQL** engine powered by `Llama-3.1-8B-Instruct` served through vLLM.
+- **Optimisation:** **Query-Time Table Retrieval (QTTR)** dynamically selects relevant table schemas before generating SQL, reducing token usage and hallucination risk.
 
 ### 🕸️ Graph Pipeline (Relationship Data)
-*   **Implementation:** `graph_pipeline.py`
-*   **Data Source:** HTX Annual Report (Complex Entity Relationships).
-*   **Methodology:**
-    *   **Storage:** **Neo4j** Graph Database.
-    *   **Indexing:** Constructs a Property Graph using `llama_index.core.PropertyGraphIndex`.
-    *   **Querying:** Uses **Text-to-Cypher** generation to traverse complex relationships (e.g., matching "Projects" to "Departments").
-    *   **Robustness:** Includes a custom `parse_cypher_query` regex utility to sanitize LLM outputs and ensure valid Cypher syntax execution.
+
+- **Implementation:** `Archive/Refactored Pipelines/Graph Pipeline/graph_pipeline.py`
+- **Data source:** HTX Annual Report (complex entity relationships).
+- **Storage:** **Neo4j** graph database.
+- **Indexing:** Builds a property graph using `llama_index.core.PropertyGraphIndex`.
+- **Querying:** **Text-to-Cypher** generation to traverse relationships (e.g. matching "Projects" to "Departments").
+- **Robustness:** A custom `parse_cypher_query` regex utility sanitises LLM output to ensure valid Cypher execution.
 
 ---
 
-## 📂 Directory Structure
+## Directory Structure
 
-The repository is organized into three main directories: **Agent** for the active application, **Datasets** for data management, and **Archive** for development history and benchmarks.
+The repository is organised into three main directories: **Agent** for the active application, **Datasets** for data management, and **Archive** for development history and benchmarks.
 
 ```plaintext
-├── Agent/                  # Unified pipeline and web interface
-│   ├── app.py              # Streamlit web application
-│   └── agent.py            # Agent Pipeline
+├── Agent/                      # Unified pipeline and web interface
+│   ├── app.py                  # Streamlit web application (auth + chat UI)
+│   └── agent.py                # Orchestrator agent pipeline
 │
-├── Datasets/               # Data sources for RAG pipelines and evaluation
-│   ├── Vector/             # Unstructured text data for the Vector pipeline
-│   ├── SQL/                # Structured data (CSV files) for the SQL pipeline
-│   ├── Graph/              # Knowledge graph data for the Graph pipeline
-│   └── Benchmarking/       # Evaluation datasets for pipeline performance testing
+├── Datasets/                   # Data sources for RAG pipelines and evaluation
+│   ├── Vector_Dataset/         # Unstructured documents for the Vector pipeline
+│   ├── SQL_Dataset/            # Structured data (CSV files) for the SQL pipeline
+│   ├── Graph_Dataset/          # Knowledge graph source data for the Graph pipeline
+│   └── Benchmark Dataset/      # Evaluation datasets for pipeline performance testing
 │
-└── Archive/                # Development artifacts, reports, and previous iterations
-    ├── Base Pipelines/     # Initial implementations of Vector, SQL, and Graph pipelines
-    ├── Advanced Pipelines/ # Fine-tuned versions of the base pipelines
-    ├── Refactored/         # Pipelines refactored into modular Python classes
-    ├── Benchmarks/         # Evaluation results for all pipeline iterations
-    ├── Agent Evaluation/   # Specific performance metrics for the Agent pipeline
-    └── Reports/            # Project proposals and progress reports
+├── Archive/                    # Development artifacts, reports, and previous iterations
+│   ├── Base Pipelines/         # Initial notebook implementations (Vector, SQL, Graph)
+│   ├── Advanced Pipelines/     # Fine-tuned notebook versions of the base pipelines
+│   ├── Refactored Pipelines/   # Pipelines refactored into modular Python classes
+│   ├── Benchmark Results/      # Evaluation results for all pipeline iterations
+│   ├── Agent Evaluation/       # Performance metrics for the orchestrated agent
+│   └── Reports/                # Project proposals and progress reports
+│
+├── assets/                     # Architecture diagram, screenshots, and demo videos
+├── docker-compose.yml          # vLLM, ChromaDB, PostgreSQL, and Streamlit services
+└── pyproject.toml              # Project dependencies (managed with uv)
 ```
 
-## Visuals
-![User Authentication Interface](assets/User%20Authentication%20Interface.png)
-![Chat Interface](assets/Chat%20Interface.png)
-![System Pop-Up Notification Indicating Active Retrieval Tools Based on User Authorisation](assets/Tools%20Available.png)
+> **Note:** The orchestrator imports the refactored pipeline modules dynamically via the `VECTOR_PIPELINE_DIR`, `SQL_PIPELINE_DIR`, and `GRAPH_PIPELINE_DIR` environment variables, so the pipeline files can live outside `Agent/`.
+
+---
+
+## Screenshots
+
+| Authentication | Chat Interface | Authorised Tools |
+| :--- | :--- | :--- |
+| ![User Authentication Interface](assets/User%20Authentication%20Interface.png) | ![Chat Interface](assets/Chat%20Interface.png) | ![System pop-up notification indicating active retrieval tools based on user authorisation](assets/Tools%20Available.png) |
+
+---
 
 ## Installation
-This project requires Python 3.10+ and a Neo4j instance for the Graph pipeline.
 
-### Setup Steps
-1) Clone the repository
+**Requirements**
 
-```plaintext
+- Python **3.11+** (see `.python-version`)
+- Docker and Docker Compose
+- An NVIDIA GPU with sufficient VRAM for `Llama-3.1-8B-Instruct` via vLLM
+- A running **Neo4j** instance for the Graph pipeline
+- A Hugging Face token with access to the gated Llama-3.1 weights
+
+### 1. Clone the repository
+
+```bash
 git clone https://github.com/Joo-ooo/AMS-RAG.git
-cd heng-joo-capstone
+cd AMS-RAG
 ```
 
-2) Install Dependencies
+### 2. Install dependencies
 
-```plaintext
+Dependencies are managed with [uv](https://docs.astral.sh/uv/):
+
+```bash
 uv sync
 ```
 
-3) Environment Configuration
-Create a .env file in the root directory and add your necessary API keys and database credentials:
+### 3. Configure the environment
 
-```plaintext
-Example .env structure
-OPENAI_API_KEY="sk-..."  # Or your local LLM endpoint
+Create a `.env` file in the project root:
+
+```dotenv
+# --- Model access ---
+HUGGINGFACE_TOKEN="hf_..."
+OPENAI_API_KEY="sk-..."            # Optional: only for hosted-LLM comparisons
+
+# --- Local model / LLM serving ---
+VLLM_API_BASE="http://localhost:8001/v1"
+NANONETS_OCR_S_DIR="/path/to/nanonets-ocr-s"
+MULTILINGUAL_E5_LARGE_DIR="/path/to/multilingual-e5-large"
+BGE_RERANKER_V2_M_DIR="/path/to/bge-reranker-v2-m3"
+
+# --- PostgreSQL (SQL pipeline + auth) ---
+POSTGRES_HOST="localhost"
+POSTGRES_PORT="5432"
+POSTGRES_USER="postgres"
+POSTGRES_PASSWORD="password"
+POSTGRES_DB="sps_statistics"       # Structured dataset (POSTGRES_SQL_DB in docker-compose.yml)
+POSTGRES_AUTH_DB="auth"            # User accounts and access tiers
+
+# --- Neo4j (Graph pipeline) ---
 NEO4J_URI="bolt://localhost:7687"
-NEO4J_USERNAME="neo4j"
 NEO4J_PASSWORD="password"
-NANONETS_API_KEY="..."
+NEO4J_DATABASE="neo4j"
+GRAPH_DATASET_DIR="./Datasets/Graph_Dataset"
+
+# --- Pipeline module locations (imported dynamically by Agent/agent.py) ---
+VECTOR_PIPELINE_DIR="./Archive/Refactored Pipelines/Vector Pipeline"
+SQL_PIPELINE_DIR="./Archive/Refactored Pipelines/SQL Pipeline"
+GRAPH_PIPELINE_DIR="./Archive/Refactored Pipelines/Graph Pipeline"
 ```
 
-4) Database Initialization
+### 4. Initialise the data stores
 
-Ensure your Neo4j instance is running.
+Ensure your Neo4j instance is running, then populate the Vector, SQL, and Graph stores by starting the ingestion process either through the Streamlit UI (`Agent/app.py`) or by running the orchestrator directly:
 
-Populate the Vector, SQL and Graph stores by initiating the ingestion process through the Streamlit Web UI (Agent/app.py) or by running the agent script directly (Agent/agent.py).
+```bash
+uv run python Agent/agent.py
+```
+
+---
 
 ## Usage
-The system has been containerized for easy deployment. To launch the unified Orchestrator Agent, databases, LLM server, and Web Interface, use Docker Compose:
+
+The system is containerised for deployment. To launch the databases, LLM server, and web interface together:
 
 ```bash
 docker compose up
 ```
 
-This single command will start all the necessary services:
-*   `postgres-db`: PostgreSQL database for structured data.
-*   `vllm-server`: vLLM server for local LLM inference.
-*   `chroma-server`: ChromaDB server for vector storage.
-*   `streamlit`: The main Streamlit web application.
-Once running, navigate to http://localhost:8501 in your browser. You can ask questions such as:
+This starts all required services:
 
-Vector: "What were the key crime trends in 2022 based on the SPF Annual Report?"
+| Service | Port | Purpose |
+| :--- | :--- | :--- |
+| `vllm` | 8001 | Local LLM inference (`Llama-3.1-8B-Instruct`) |
+| `chroma-server` | 8000 | ChromaDB vector store |
+| `postgres-db` | 5432 | PostgreSQL for structured data and auth |
+| `streamlit-app` | 8501 | Streamlit web application |
 
-SQL: "Calculate the total inmate population statistics from the provided CSV data."
+> The vLLM container needs several minutes to load model weights into VRAM on first start (`start_period: 300s`). The Streamlit app will report "System is ready" once dependencies are healthy.
 
-Graph: "How is the 'HTX' entity related to 'Projects' in the organization structure?"
+Once running, open **http://localhost:8501**, sign in, and ask questions such as:
+
+| Pipeline | Example query |
+| :--- | :--- |
+| **Vector** | "Which scam type had the highest number of cases in 2020?" |
+| **SQL** | "What was the total inmate population in 2021 by offence type?" |
+| **Graph** | "What is HTX and who does it serve?" |
+
+The answers you receive depend on your access tier — see the [Demo](#demo) section above for the officer-tier and director-tier walkthroughs.
+
+---
+
+## Benchmarking
+
+Each pipeline iteration (base → advanced → refactored → agent) was evaluated with a dedicated metric set:
+
+| Pipeline | Metrics | Tooling |
+| :--- | :--- | :--- |
+| Vector | Faithfulness, answer relevancy, context precision/recall | [Ragas](https://docs.ragas.io/) |
+| SQL | Execution accuracy (result-set equivalence) | [DataCompy](https://capitalone.github.io/datacompy/) |
+| Graph | Cypher query match / execution equivalence | Custom `CypherMatch` |
+| Agent | Routing accuracy and end-to-end answer quality | `Archive/Agent Evaluation/` |
+
+Evaluation datasets live in `Datasets/Benchmark Dataset/`; results are recorded under `Archive/Benchmark Results/`.
+
+---
 
 ## Roadmap
 
-
-For a detailed timeline of completed milestones and upcoming development phases, please refer to
+For a detailed timeline of completed milestones and upcoming development phases, see the project plan:
 
 **[📅 View Project Gantt Chart](https://docs.google.com/spreadsheets/d/1aQxM0jrjyhOpHAwQIIw-j-bsdkOsPX7a/edit?usp=sharing&ouid=103044922105855395613&rtpof=true&sd=true)**
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+---
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+## Author & Acknowledgements
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+Built by **[Joo-ooo](https://github.com/Joo-ooo)** as a final-year capstone project.
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+Thanks to the open-source projects this work builds on: [LlamaIndex](https://github.com/run-llama/llama_index), [vLLM](https://github.com/vllm-project/vllm), [ChromaDB](https://github.com/chroma-core/chroma), [Neo4j](https://neo4j.com/), [Nanonets OCR](https://huggingface.co/nanonets/Nanonets-OCR-s), and [Ragas](https://github.com/explodinggradients/ragas).
+
+Datasets are derived from publicly available Singapore Police Force, Singapore Prison Service, and HTX annual reports and statistics.
+
+---
 
 ## License
-For open source projects, say how it is licensed.
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+No license has been declared for this repository yet. Until one is added, all rights are reserved by the author — please open an issue if you would like to reuse this work.
+
+---
+
+## Project Status
+
+This project is complete as a capstone deliverable and is maintained on a best-effort basis. Issues and pull requests are welcome, though responses may be delayed. If you would like to extend the framework, feel free to fork it.
